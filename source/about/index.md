@@ -36,7 +36,6 @@ avatar=https://pic3.zhimg.com/80/v2-8bb491487280587026cd576b224ca91e_1440w.jpg, 
 {% btn center cool-2, Twitter, https://twitter.com/Orlando12138, fa-brands fa-twitter %}
 <span style="width:5px;"></span>
 {% btn center cool-2, YouTube, https://www.youtube.com/channel/UCabmZFmLZCFQzFp54o3rQeA, fa-brands fa-youtube %}
-{% btn center cool-2, WeChat, https://www.youtube.com/channel/UCabmZFmLZCFQzFp54o3rQeA, fa-brands fa-weixin %}
 </div>
 
 ## 我的技能
