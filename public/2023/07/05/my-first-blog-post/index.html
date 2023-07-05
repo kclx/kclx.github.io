@@ -637,7 +637,24 @@
   <div class="main-content">
     <article class="post post-detail">
       <div class="post-content">
-        <p>这是我的第一篇博客，还没有想好写什么</p>
+        <h1 id="如何搭建一个属于自己的博客网站？"><a href="#如何搭建一个属于自己的博客网站？" class="headerlink" title="如何搭建一个属于自己的博客网站？"></a>如何搭建一个属于自己的博客网站？</h1><h2 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h2><p><code>今天早些的时候我在看Nginx的教程，那位youtuber就使用了Hexo搭建的博客进行反向代理测试，于是我就很感兴趣，便去了解了一下</code></p>
+<div class="link-group"><div class="tagLink"><a class="link-card" title="30分钟Nginx入门教程 - YouTube" target="_blank" rel="noopener" href="https://youtu.be/sCJcusORiE8"><span class="link-card-backdrop" style="background-image: url(https://pica.zhimg.com/80/v2-970dd5538f106dd6be064c4eafc01c36_1440w.webp)"></span><div class="left"><img src="https://pica.zhimg.com/80/v2-970dd5538f106dd6be064c4eafc01c36_1440w.webp" class="lazyload placeholder" data-srcset="https://pica.zhimg.com/80/v2-970dd5538f106dd6be064c4eafc01c36_1440w.webp" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp"/></div><div class="right"><p class="text">30分钟Nginx入门教程 - YouTube</p><p class="url">https://youtu.be/sCJcusORiE8</p></div></a></div></div>
+
+<p>访问<a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>以了解更多内容。</p>
+<p>我选择了一个自己蛮喜欢的主题。</p>
+<p>我也修改了很多配置项，不过总的说还是非常容易理解的。</p>
+<h2 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h2><p>这过程中最最最离谱的问题（对我来说）是：关于git push的问题，经常push不上去，所以我就排查了问题原因，试过了修改<code>/etc/hosts</code>的配置</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo bash -c &#x27;echo &quot;&lt;IP&gt; &lt;hostname&gt;&quot; &gt;&gt; /etc/hosts&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>也尝试了修改<code>http.version</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global http.version HTTP/1.1</span><br></pre></td></tr></table></figure>
+
+<p>发现没有用，最后，我发现是代理的问题，因为在浏览器中打开GitHub没问题，但使用git的时候就<code>could&#39;t connect</code>，原因在于git默认不使用代理端口</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global http.proxy 127.0.0.1:[port]</span><br><span class="line">git config --global https.proxy 127.0.0.1:[port]</span><br></pre></td></tr></table></figure>
+
+<p><code>port</code>为代理端口号</p>
+<p>这个问题就如此解决了。</p>
+<h2 id="后言"><a href="#后言" class="headerlink" title="后言"></a>后言</h2><p>说实话，太累了写这东西。</p>
 
       </div>
       <div class="post-tags-categories">
@@ -892,7 +909,7 @@
   <div class='content'>
     <div class="toc-main">
       <div class="toc-content">
-        <!--  -->
+        <!-- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E5%B1%9E%E4%BA%8E%E8%87%AA%E5%B7%B1%E7%9A%84%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99%EF%BC%9F"><span class="toc-text">如何搭建一个属于自己的博客网站？</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B5%B7%E5%9B%A0"><span class="toc-text">起因</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-text">遇到的问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%8E%E8%A8%80"><span class="toc-text">后言</span></a></li></ol></li></ol> -->
         <div class="toc"></div>
       </div>
     </div>
