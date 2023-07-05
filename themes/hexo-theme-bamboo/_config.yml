@@ -59,14 +59,14 @@ sidebar:
       background: '#fff'
       order:  # 卡片排序, 数值越小，越在上面
       social:
-        - icon: fas fa-rss
-          url: /atom.xml
         - icon: fas fa-envelope
           url: mailto:ljc2481534548@163.com
         - icon: fab fa-github
           url: https://github.com/kclx
-        - icon: fab fa-qq
-          url: https://qm.qq.com/cgi-bin/qm/qr?k=PLBGQKx7jrlNbxEANzFijKsmR-9rpaAx&noverify=0&personal_qrcode_source=4#
+        - icon: fab fa-twitter
+          url: https://twitter.com/Orlando12138
+        - icon: fab fa-youtube
+          url: https://www.youtube.com/channel/UCabmZFmLZCFQzFp54o3rQeA
     # ---------------------------------------
     side_toc:
       on: true
