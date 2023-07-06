@@ -44,4 +44,6 @@ prismjs: true
 mathjax: false
 # 设置为false则文章和自定义页面顶部不要图片
 imgTop: ture
+# 设置header图片
+img: 
 ---
