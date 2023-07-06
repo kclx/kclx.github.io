@@ -7,6 +7,8 @@ bgImg: https://i.postimg.cc/d0Sh2PNd/11-280-3.jpg
 # 文章图片
 img: https://i.postimg.cc/d0Sh2PNd/11-280-3.jpg
 categories: [Pointless small talk]
+# 文章置顶
+top:
 ---
 
 # 如何搭建一个属于自己的博客网站？

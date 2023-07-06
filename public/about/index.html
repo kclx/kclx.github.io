@@ -80,10 +80,36 @@
   <!-- 页面预加载动画 -->
 
   
-    <div class="preloader_2" id="loader">
-  <div class="loader"></div>
-</div>
+    <div class="preloader_5" id="loader">
+  <div class="cube">
+    <div class="topD"></div>
+    <div>
+      <span style="--i:0"></span>
+      <span style="--i:1"></span>
+      <span style="--i:2"></span>
+      <span style="--i:3"></span>
+    </div>
 
+    <div class="cube2">
+      <div>
+        <span style="--i:0"></span>
+        <span style="--i:1"></span>
+        <span style="--i:2"></span>
+        <span style="--i:3"></span>
+      </div>
+
+      <div class="cube3">
+        <div class="top3"></div>
+        <div>
+          <span style="--i:0"></span>
+          <span style="--i:1"></span>
+          <span style="--i:2"></span>
+          <span style="--i:3"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
   
 <script>
   var endLoading = function () {
@@ -902,6 +928,11 @@
               id="categoriesPointless-small-talk"
               ><div class='name'>Pointless small talk</div><div class='badge'>(1)</div></a></li>
           
+            <li><a class="flat-box"
+              title="/categories/learn/" href="/categories/learn/"
+              id="categorieslearn"
+              ><div class='name'>learn</div><div class='badge'>(1)</div></a></li>
+          
         </ul>
       </div>
     </section>
@@ -920,57 +951,17 @@
 
 
     <div class='content'>
-    <a href="/tags/one/" style="font-size: 14px; color: #999">one</a>
+    <a href="/tags/one/" style="font-size: 14px; color: #999">one</a> <a href="/tags/%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/" style="font-size: 14px; color: #999">期末复习</a>
     </div>
 </section>
 
   
       
       
-  <section class="widget side_recent_post">
-    
-  <header>
-    
-      <a style="color: " href='/tags/'><i class="fas fa-book fa-fw" aria-hidden="true"></i><span class='name'>最新文章</span></a>
-    
-  </header>
-
-
-    <div class='content'>
-      
-      <!-- hash算法 -->
-      
-      <div class="aside-list">
-        
-          <div class="aside-list-item">
-            
-            
-            
-
-            <div class="post-img-box">
-              <a href="/2023/07/05/my-first-blog-post/" class="post-img " style="background-size: cover; 
-                background-position: center center;">
-                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://i.postimg.cc/d0Sh2PNd/11-280-3.jpg" class="lazyload placeholder" data-srcset="https://i.postimg.cc/d0Sh2PNd/11-280-3.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
-              </a>
-            </div>
-            <div class="post-date-title">
-              <div>
-                
-                  <span class="post-date">07-05</span>
-                
-              </div>
-              <a class="post-title" href="/2023/07/05/my-first-blog-post/">My first blog post</a>
-            </div>
-          </div>
-        
-      </div>
-    </div>
-  </section>
-
       
   <section class="widget side_archives">
     
-    <header><a style="color: red" href='/archives/'><i class="fas fa-archive fa-fw" aria-hidden="true"></i><span class='name'>归档</span></a></header><div class="content"><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/07/"><span class="card-archive-list-date">July 2023</span><span class="card-archive-list-count">1</span></a></li></ul></div>
+    <header><a style="color: red" href='/archives/'><i class="fas fa-archive fa-fw" aria-hidden="true"></i><span class='name'>归档</span></a></header><div class="content"><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/07/"><span class="card-archive-list-date">July 2023</span><span class="card-archive-list-count">2</span></a></li></ul></div>
   </section>
 
       <section class="widget side_webinfo">
@@ -987,7 +978,7 @@
       
         <div class="webinfo-item">
           <div>文章数目：</div>
-          <div>1 篇</div>
+          <div>2 篇</div>
         </div>
       
 
@@ -1007,17 +998,36 @@
 
 
       
-
+        <div class="webinfo-item">
+          <div>本站总字数：</div>
+          <div>3.6k 字</div>
+        </div>
       
 
+      
+        <div class="webinfo-item">
+          <div>本站访客数：</div>
+          
+          <div><span id="busuanzi_value_site_uv"><i class="fas fa-fan fa-spin fa-fw" aria-hidden="true"></i></span> 人</div>
+          
+        </div>
+      
+
+      
+        <div class="webinfo-item">
+          <div>本站总访问量：</div>
+          
+          <div><span id="busuanzi_value_site_pv"><i class="fas fa-fan fa-spin fa-fw" aria-hidden="true"></i></span> 次</div>
+          
+        </div>
       
 
       
         <div class="webinfo-item">
           <div>最后活动时间：</div>
           
-            <div id="last-update" style="display: none;">Wed Jul 05 2023 21:17:39 GMT+0800 (China Standard Time)</div>
-            <div id="last-update-show">2023-07-05 日</div>
+            <div id="last-update" style="display: none;">Thu Jul 06 2023 15:56:31 GMT+0800 (China Standard Time)</div>
+            <div id="last-update-show">2023-07-06 日</div>
           
         </div>
         
@@ -1067,7 +1077,7 @@
           try {
             document.getElementById('last-update-show').innerHTML = timeago(new Date(lastUpDate));
           } catch (error) {
-            document.getElementById('last-update-show').innerHTML = '2023-07-05 日';
+            document.getElementById('last-update-show').innerHTML = '2023-07-06 日';
           }
         </script>
         
