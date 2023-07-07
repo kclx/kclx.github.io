@@ -1,11 +1,7 @@
 ---
 title: 关于ChatGPT的tokens收费标准
 tags: [ 'gpt' ]
-<<<<<<< HEAD
 categories: [ 'Pointless small talk' ]
-=======
-categories: [ 'Pointless small talk category' ]
->>>>>>> origin/main
 top: false
 comments: true
 lang: en
