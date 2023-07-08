@@ -1,7 +1,7 @@
 ---
 title: 期末复习-hadoop
-tags: [ '期末复习' ]
-categories: [ 'learn' ]
+tags: [ 'Hadoop' ]
+categories: [ 'Final Review' ]
 top: false
 comments: true
 lang: en
@@ -23,7 +23,7 @@ date: 2023-07-07 21:01:48
 updated: 2023-07-07 21:01:48
 swiperImg:
 bgImg:
-img:
+img: https://i.postimg.cc/YCKLjNg9/2023-07-08-12-47-35.png
 
 ---
 
