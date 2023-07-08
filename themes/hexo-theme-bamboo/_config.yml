@@ -30,7 +30,7 @@ Github:
   url: https://github.com/kclx
 
 # 网站logo
-logo:  # 为空则不显示
+logo: /medias/logo.jpg # 为空则不显示
 
 # 网站 favicon
 favicon: /main.svg # or .png .jpg .svg .gif .jpeg .ico
