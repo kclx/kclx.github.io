@@ -3,9 +3,9 @@ title: My first blog post
 date: 2023-07-05 14:00:27
 tags: [one]
 # 文章主页背景图片
-bgImg: https://i.postimg.cc/d0Sh2PNd/11-280-3.jpg
+bgImg: 
 # 文章图片
-img: https://i.postimg.cc/d0Sh2PNd/11-280-3.jpg
+img: https://s1.imagehub.cc/images/2023/07/08/2023-07-08-20.55.54.png
 categories: [Pointless small talk]
 # 文章置顶
 top: true

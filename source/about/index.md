@@ -1,12 +1,42 @@
 ---
 title: "关于Orlando"
 onlyTitle: true
-bgImg: https://i.postimg.cc/sDSZpPxw/image.jpg
+bgImg: /about/index.jpg
 ---
 
 # 个人介绍
 
-博主: Orlando | 性别: 男 | 邮箱: ljc2481534548@163.com
+## 基本信息
+- **姓名：** Orlando
+- **性别：** 沃尔玛购物袋
+- **年龄：** 20
+- **所在地：** China
+
+## 教育背景
+- **学历：** 本科
+- **毕业院校：** 未毕业
+- **专业：** 数据科学与大数据技术
+
+## 工作经验
+- **公司/组织：** 我还没有上班
+- **职位：** 都说了还没上班
+- **工作内容：** 不工作，工作不了一点
+
+## 技能
+- **编程语言：** java、python
+- **技术栈：** spring、spring boot、spring security、spring mvc、mybatis、vue、machine learning、artificial intelligence
+- **项目经验：** 博客网站、数据分析
+
+## 个人特点
+- **自我评价：** 我是废物
+- **团队合作：** 独狼
+- **学习能力：** 只要不上班，我可以天天学
+
+## 兴趣爱好
+- 二刺猿
+- 听音乐
+- 收集好看的图片
+- 计算机
 
 [//]: # (## 我的书籍)
 

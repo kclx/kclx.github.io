@@ -23,7 +23,7 @@ date: 2023-07-07 15:14:06
 updated: 2023-07-07 15:14:06
 swiperImg:
 bgImg:
-img: https://i.postimg.cc/8c8k0RM9/2023-07-07-17-13-09.png
+img: https://s1.imagehub.cc/images/2023/07/08/2023-07-08-20.32.05.png
 ---
 
 # 关于ChatGPT的tokens收费标准

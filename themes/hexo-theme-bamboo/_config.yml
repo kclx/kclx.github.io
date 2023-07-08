@@ -30,7 +30,7 @@ Github:
   url: https://github.com/kclx
 
 # 网站logo
-logo: /medias/logo.png # 为空则不显示
+logo:  # 为空则不显示
 
 # 网站 favicon
 favicon: /main.svg # or .png .jpg .svg .gif .jpeg .ico
@@ -41,9 +41,9 @@ sidebar:
   widget_library:
     side_blogger:
       on: true
-      avatar: https://i.postimg.cc/Z0kBGn78/Fn-ZHqo4ac-AATo-WX.jpg
+      avatar: /default/avatar.jpg
       shape: rectangle # circle, rectangle
-      url: /about/
+      url: /about
       title: 亦珍亦随流水去
       subtitle: 打碎金鱼缸
       jinrishici: false # Poetry Today. You can set a string, and it will be displayed when loading fails.
@@ -187,9 +187,9 @@ swiper:
   bubble: true # 轮播图是否显示气泡,也可以打开底下的花瓣或者雪花特效 sakura（花瓣）: true snow(雪花): true
   wave: true # 轮播图底下的波浪特效
   # 当没有文章设置swiper: true时候，轮播图会显示以下default默认内容，可自行切换对应内容
-  defaultImg: 'https://i.postimg.cc/7ZdjJTs1/a276.jpg' # 图片，没有则随机选取
+  defaultImg: '/default/defaultImg.jpg' # 图片，没有则随机选取
   defaultVideo: '' # video，min-width:992px show
-  defaultVideoLoadingImg: 'https://img14.360buyimg.com/ddimg/jfs/t1/175057/18/19582/882056/60ee7ac8Ef0045710/202d2ad878684a3b.gif' # video loading img -- use .gif img, 视频预加载动画，使用gif图片作为loading，为空则视频没有预加载动画
+  defaultVideoLoadingImg: '/default/defaultVideoLoadingImg.gif' # video loading img -- use .gif img, 视频预加载动画，使用gif图片作为loading，为空则视频没有预加载动画
   defaultTile: '遇见你的那年，我抓住了一条鱼，便以为抓住了整个夏天' # 标题
   defaultDesc: [ ] #描 述，例如 ['煮酒洗净尘嚣，论知交', '万般付之一笑，共偕老']
   defaultLeftBtnText: '' # 左边按钮文字, 空字符串则不显示 阅读文档
@@ -489,8 +489,8 @@ danmu:
 # 归档页面图片、描述、视频，全屏 or 'http://xxx'
 archive:
   title: 'archive'
-  img: 'https://i.postimg.cc/jdg8hqm8/a29.png'
-  desc: '愿你如风，被人温柔以待'
+  img: '/default/archive.png'
+  desc: '前世坠海无声，今生坠梦无痕'
   full: true # 设置为true，则图片全屏显示
   video: '' # 如果有值，则在屏幕大于920px的时候，全屏显示视频，为空则显示图片(img)
   background: '' # red or rgba(255,255,255,0.8) or other color or url("http:xxx.png")
@@ -501,8 +501,8 @@ archive:
 # 标签页面，配置同上
 tag:
   title: 'Tags'
-  img: 'https://i.postimg.cc/9MwD70G6/1067359654-2.gif' # 标签页上面的图片
-  desc: '愿你如风，被人温柔以待'
+  img: '/default/tags.jpg' # 标签页上面的图片
+  desc: '拥有一半，失去一半'
   full: false # 标签页上面的图片是否全屏显示
   video: '' # 如果有值，则在屏幕大于920px的时候，全屏显示视频
   background: '' # red or rgba(255,255,255,0.8) or other color or url("http:xxx.png")
@@ -511,8 +511,8 @@ tag:
 # 标签详情页面，配置同上
 tagDetail:
   title: 'Tag'
-  img: 'https://i.postimg.cc/JhgDTZx6/FNGf2ad-Vg-AAi-Mwc.jpg'
-  desc: '愿你如风，被人温柔以待' # 标签页详情上上面的图片上的文字
+  img: '/default/tag.jpg'
+  desc: '选择一半，放弃一半' # 标签页详情上上面的图片上的文字
   full: true
   video: ''
   background: '' # red or rgba(255,255,255,0.8) or other color or url("http:xxx.png")
@@ -520,7 +520,7 @@ tagDetail:
 # 分类页面，配置同上
 categories:
   title: 'categories'
-  img: 'https://i.postimg.cc/Jtw3HTKj/FU9quis-UAAAuyh-J.jpg'
+  img: '/default/categories.jpeg'
   desc: '愿你如风，被人温柔以待'
   full: false
   video: ''
@@ -530,8 +530,8 @@ categories:
 #分类详情页面，配置同上
 categoryDetail:
   title: 'category'
-  img: 'https://i.postimg.cc/T2kDS00q/0-8-2023-6-15.jpg'
-  desc: '愿你如风，被人温柔以待'
+  img: '/default/category.jpeg'
+  desc: '落日余晖各取一色，前者挂在心上，后者伴我流浪'
   full: true
   video: ''
   background: 'rgba(180,130,130,0.6)' # red or rgba(255,255,255,0.8) or other color or url("http:xxx.png")
@@ -555,7 +555,7 @@ color_scheme:
     # 首页文章列表的背景颜色, url("http://xxx.png") or red or #000 or rgba() ..
     postListBackground: 'rgba(255,255,255,1)'
     # 首页页面的底部背景颜色，空字符串透明('transparent')，可以是白色('#fff')等颜色, 也可以是图片，例如  'url("https://img11.360buyimg.com/ddimg/jfs/t1/169624/29/16/4603017/5fec2c79Eecbd536a/308b28b82a013cd2.png")'
-    bgFloor: 'url("https://i.postimg.cc/Bb8mQpWf/a295.jpg")' # 如果是图片地址，url里面请用双引号
+    bgFloor: 'url("https://s1.imagehub.cc/images/2023/07/08/a295.jpeg")' # 如果是图片地址，url里面请用双引号
     headerMenuBackgroundColor: 'rgba(84,84,84,0.8)'
     # headerMenuBackgroundColor:头部导航背景颜色, 为空则使用theme主题色, 
     # headerMenuBackgroundColor写法: rgba(268, 264, 269, 0.8) or #42b983 or red or 也可以是渐变颜色 linear-gradient(45deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%)  or 也可以是url("图片地址")
@@ -570,7 +570,7 @@ color_scheme:
     # 如果背景只想要一个图片：可以使用 ['http://xxxxxx'] 或者 'http://xxxxxxx'，这样的写法, 图片地址也可以是本地路径('/img/xxx.png' or '/medias/xxx.png')
     # 也可以是颜色字符串（例如'#C7EDCC', 或者rgba(0 ,0 ,0, 0.8) 那么会使用该颜色作为背景）
     # 空字符串则背景颜色为透明
-    bgImg: ''
+    bgImg: '/default/defaultbgImg.jpg'
     # 背景图幻灯片模式--延迟时间
     # 如果bgImg设置为数组，数组里面是多个图片地址,则 bgImgDelay表示背景图幻灯片的 延迟间隔时间
     bgImgDelay: 180000 # 默认三分钟，切换一张图片
@@ -699,7 +699,7 @@ import:
 
     # 文章图片,不指定 img:xxx 的时候随机取下面的图片
 imgs:
-  - 'https://i.postimg.cc/d0Sh2PNd/11-280-3.jpg'
+  - 'https://s1.imagehub.cc/images/2023/07/08/2023-07-08-20.55.54.png'
 
 CDN:
   valine: /js/valine/index.js # https://unpkg.com/valine/dist/Valine.min.js ==> 用这个官方链接则没有 博主标识功能

@@ -23,6 +23,6 @@ date: 2023-07-06 16:58:34
 updated: 2023-07-06 16:58:34
 swiperImg:
 bgImg:
-img: /gallery/cat/index.png
+img: /gallery/cat/index.jpg
 ---
 {% getPhotoOnline /gallery/cat/index.json %}
