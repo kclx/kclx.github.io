@@ -39,7 +39,7 @@ bgImgTransition: fade
 # 该篇文章的bgImg设置为数组,该值表示背景图片切换的延迟时间 ms
 bgImgDelay: 180000
 # 如果使用的是hexo自带的prismjs代码高亮，通过设置该值为该篇文章设置不同的代码高亮主题（default, coy, dark, funky, okaidia, solarizedlight, tomorrow, twilight）
-prismjs: true
+prismjs: default
 # mathjax公式
 mathjax: false
 # 设置为false则文章和自定义页面顶部不要图片
