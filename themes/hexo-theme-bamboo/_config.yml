@@ -364,9 +364,13 @@ notice:
   background: 'url("https://img10.360buyimg.com/ddimg/jfs/t1/166587/8/21344/72069/6088c24fEda5fdeb6/f9730ab637b7ca47.png")' # url("xxx") or red or #000 or rgba() ..
   # list相当于数组对象，[{title:'xx',date: 'xx', url: 'xxx', color: 'red'}]根据自己实际情况，增加或者删除
   list:
-    - title: '# 期末考试结束啦！'
-      date: '2023-07-11'
+    - title: '# 现在是假期时间！'
+      date: '2023-07-26'
       url: ''   # 可以为空, 也可以是本地页面地址如 '/archives'
+      color: red   # 字体颜色
+    - title: '# 实训日记总结新鲜出炉！'
+      date: '2023-07-26'
+      url: '/2023/07/12/7-13-7-16技术培训实记/'   # 可以为空, 也可以是本地页面地址如 '/archives'
       color: red   # 字体颜色
 
 # 文章置顶
