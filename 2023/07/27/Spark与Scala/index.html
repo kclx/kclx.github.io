@@ -1,0 +1,2190 @@
+<!DOCTYPE html>
+<html>
+  <!-- meta/link... -->
+  
+
+
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+  <title>Spark与Scala | Orlando</title>
+
+  <link rel="icon" type="image/svg+xml" href="/main.svg">
+  <link rel="stylesheet" href="https://at.alicdn.com/t/font_1911880_c1nvbyezg17.css">
+  <link href="https://unpkg.com/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+  <link href="/js/swiper/swiper@5.4.1.min.css" rel="stylesheet">
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/animate.min.css">
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+    <link href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" rel="stylesheet">
+  
+  
+    
+<link rel="stylesheet" href="/js/shareJs/share.min.css">
+
+  
+  <style>
+        @media (max-width: 992px) {
+            #waifu {
+                display: none;
+            }
+        }
+    </style>
+    <script defer src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+
+    
+    
+    <!-- 依赖于jquery和vue -->
+    
+        <script src="https://unpkg.com/jquery@3.5.1/dist/jquery.min.js"></script>
+    
+
+    
+        <script src="https://unpkg.com/vue@2.6.11/dist/vue.min.js"></script>
+    
+
+    <!-- import link -->
+    
+        
+            
+        
+            
+        
+    
+    <!-- import script -->
+    
+        
+            
+        
+            
+        
+    
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+  
+  <!-- 预加载动画 -->
+  <!-- 页面预加载动画 -->
+
+  
+    <div class="preloader_5" id="loader">
+  <div class="cube">
+    <div class="topD"></div>
+    <div>
+      <span style="--i:0"></span>
+      <span style="--i:1"></span>
+      <span style="--i:2"></span>
+      <span style="--i:3"></span>
+    </div>
+
+    <div class="cube2">
+      <div>
+        <span style="--i:0"></span>
+        <span style="--i:1"></span>
+        <span style="--i:2"></span>
+        <span style="--i:3"></span>
+      </div>
+
+      <div class="cube3">
+        <div class="top3"></div>
+        <div>
+          <span style="--i:0"></span>
+          <span style="--i:1"></span>
+          <span style="--i:2"></span>
+          <span style="--i:3"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+<script>
+  var endLoading = function () {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loader').classList.add("loading");
+  }
+  window.addEventListener('DOMContentLoaded',endLoading);
+</script>
+
+  <body>
+    <!-- 判断是否为暗黑风格 -->
+    <!-- 判断是否为黑夜模式 -->
+<script>
+  let isDark = JSON.parse(localStorage.getItem('dark')) || JSON.parse('false');
+
+  if (isDark) {
+    $(document.body).addClass('darkModel');
+  }
+</script>
+
+    <!-- 需要在上面加载的js -->
+    <script>
+  function loadScript(src, cb) {
+    return new Promise(resolve => {
+      setTimeout(function () {
+        var HEAD = document.getElementsByTagName("head")[0] || document.documentElement;
+        var script = document.createElement("script");
+        script.setAttribute("type", "text/javascript");
+        if (cb) {
+          if (JSON.stringify(cb)) {
+            for (let p in cb) {
+              if (p == "onload") {
+                script[p] = () => {
+                  cb[p]()
+                  resolve()
+                }
+              } else {
+                script[p] = cb[p]
+                script.onload = resolve
+              }
+            }
+          } else {
+            script.onload = () => {
+              cb()
+              resolve()
+            };
+          }
+        } else {
+          script.onload = resolve
+        }
+        script.setAttribute("src", src);
+        HEAD.appendChild(script);
+      });
+    });
+  }
+
+  //https://github.com/filamentgroup/loadCSS
+  var loadCSS = function (src) {
+    return new Promise(resolve => {
+      setTimeout(function () {
+        var link = document.createElement('link');
+        link.rel = "stylesheet";
+        link.href = src;
+        link.onload = resolve;
+        document.getElementsByTagName("head")[0].appendChild(link);
+      });
+    });
+  };
+
+</script> 
+
+<!-- 轮播图所需要的js -->
+<script src="/js/swiper/swiper.min.js"></script>
+<script src="/js/swiper/vue-awesome-swiper.js"></script>
+<script src="/js/swiper/swiper.animate1.0.3.min.js"></script>
+
+<script type="text/javascript">
+  Vue.use(window.VueAwesomeSwiper)
+</script>
+
+
+  <script src="/js/vue-typed-js/index.js"></script>
+
+
+<!-- 首页的公告滚动插件的js需要重新加载 -->
+<script src="/js/vue-seamless-scroll/index.js"></script>
+
+<!-- 打字机效果js -->
+<script src="https://unpkg.com/typed.js@2.0.11"></script>
+
+
+    <div id="safearea">
+      <main class="main" id="pjax-container">
+        <!-- 头部导航 -->
+        
+<header class="header  " 
+  id="navHeader"
+  style="position: fixed;
+  left: 0; top: 0; z-index: 10;width: 100%;"
+>
+  <div class="header-content">
+    <div class="bars">
+      <div id="appDrawer" class="sidebar-image">
+  <div class="drawer-box-icon">
+    <i class="fas fa-bars" aria-hidden="true" @click="showDialogDrawer"></i>
+  </div>
+  
+  <transition name="fade">
+    <div class="drawer-box_mask" v-cloak style="display: none;" v-show="visible" @click.self="cancelDialogDrawer">
+    </div>
+  </transition>
+  <div class="drawer-box" :class="{'active': visible}">
+    <div class="drawer-box-head bg-color">
+      <img class="drawer-box-head_logo lazyload placeholder" src="/medias/logo.jpg" class="lazyload placeholder" data-srcset="/medias/logo.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="logo">
+      <h3 class="drawer-box-head_title">Orlando</h3>
+      <h5 class="drawer-box-head_desc"></h5>
+    </div>
+    
+    <div class="drawer-box-content">
+      <ul class="drawer-box-content_menu">
+        
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="/" class="drawer-menu-item-link">
+                  
+                    <i class="fas fa-home" aria-hidden="true"></i>
+                  
+                  <span class="name">主页</span>
+                </a>
+              
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="/archives" class="drawer-menu-item-link">
+                  
+                    <i class="fas fa-archive" aria-hidden="true"></i>
+                  
+                  <span class="name">归档</span>
+                </a>
+              
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="/tags" class="drawer-menu-item-link">
+                  
+                    <i class="fas fa-tags" aria-hidden="true"></i>
+                  
+                  <span class="name">标签</span>
+                </a>
+              
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="/categories" class="drawer-menu-item-link">
+                  
+                    <i class="fas fa-bookmark" aria-hidden="true"></i>
+                  
+                  <span class="name">分类</span>
+                </a>
+              
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="/friends" class="drawer-menu-item-link">
+                  
+                    <i class="fas fa-link" aria-hidden="true"></i>
+                  
+                  <span class="name">友情链接</span>
+                </a>
+              
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="javascript:;" class="drawer-menu-item-link has-children" @click="openOrCloseMenu(5)">
+                  <span>
+                    
+                    <span class="name">更多</span>
+                  </span>
+                  <i class="fas fa-chevron-left arrow " :class="{'icon-rotate': isOpen(5)}" aria-hidden="true"></i>
+                </a>
+                <ul class="drawer-sub-menu" v-if="isOpen(5)">
+                  
+                  <li>
+                    <a href="/gallery">
+                      
+                      <span>图库</span>
+                    </a>
+                  </li>
+                  
+                  <li>
+                    <a href="/about">
+                      
+                      <span>关于我</span>
+                    </a>
+                  </li>
+                  
+                </ul>
+              
+            </li>
+          
+        
+        
+          <li class="drawer-box-content_item">
+            <a target="_blank" rel="noopener" href="https://github.com/kclx">
+              <i class="fas fa-github" aria-hidden="true"></i>
+              <span>Github</span>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script>
+  var body = document.body || document.documentElement || window;
+  var vm = new Vue({
+    el: '#appDrawer',
+    data: {
+      visible: false,
+      top: 0,
+      openArr: [],
+    },
+    computed: {
+    },
+    mounted() {
+    },
+    methods: {
+      isOpen(index) {
+        if (this.openArr.includes(index)) {
+          return true;
+        } else {
+          return false;
+        }
+      },
+      openOrCloseMenu(curIndex) {
+        const index = this.openArr.indexOf(curIndex);
+        if (index !== -1) {
+          this.openArr.splice(index, 1);
+        } else {
+          this.openArr.push(curIndex);
+        }
+      },
+      showDialogDrawer() {
+        this.visible = true;
+        // 防止页面滚动，只能让弹框滚动
+        this.top = $(document).scrollTop()
+        body.style.cssText = 'width: 100%; height: 100%;overflow: hidden;';
+      },
+      cancelDialogDrawer() {
+        this.visible = false;
+        body.removeAttribute('style');
+        $(document).scrollTop(this.top)
+      }
+    },
+    created() {}
+  })
+</script>
+
+    </div>
+    <div class="blog-title" id="author-avatar">
+      
+        <div class="avatar">
+          <img src="/medias/logo.jpg" class="lazyload placeholder" data-srcset="/medias/logo.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="logo">
+        </div>
+      
+      <a href="/" class="logo">Orlando</a>
+    </div>
+    <nav class="navbar">
+      <ul class="menu">
+        
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="/" class="menu-item-link" title="主页">
+                  
+                    <i class="fas fa-home" aria-hidden="true"></i>
+                  
+                  <span class="name">主页</span>
+                </a>
+              
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="/archives" class="menu-item-link" title="归档">
+                  
+                    <i class="fas fa-archive" aria-hidden="true"></i>
+                  
+                  <span class="name">归档</span>
+                </a>
+              
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="/tags" class="menu-item-link" title="标签">
+                  
+                    <i class="fas fa-tags" aria-hidden="true"></i>
+                  
+                  <span class="name">标签</span>
+                </a>
+              
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="/categories" class="menu-item-link" title="分类">
+                  
+                    <i class="fas fa-bookmark" aria-hidden="true"></i>
+                  
+                  <span class="name">分类</span>
+                </a>
+              
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="/friends" class="menu-item-link" title="友情链接">
+                  
+                    <i class="fas fa-link" aria-hidden="true"></i>
+                  
+                  <span class="name">友情链接</span>
+                </a>
+              
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="javascript:;" class="menu-item-link" title="更多">
+                  
+                  <span class="name">更多</span>
+                  <i class="fas fa-chevron-down arrow" aria-hidden="true"></i>
+                </a>
+                <ul class="sub-menu">
+                  
+                  <li>
+                    <a href="/gallery">
+                      
+                      <span>图库</span>
+                    </a>
+                  </li>
+                  
+                  <li>
+                    <a href="/about">
+                      
+                      <span>关于我</span>
+                    </a>
+                  </li>
+                  
+                </ul>
+              
+            </li>
+          
+        
+      </ul>
+      
+      
+        <div id="appSearch">
+  <div class="search"  @click="showDialog()"><i class="fas fa-search" aria-hidden="true"></i></div>
+  <transition name="fade">
+    <div class="message-box_wrapper" style="display: none;" v-cloak v-show="dialogVisible" @click.self="cancelDialogVisible()">
+      <div class="message-box animated bounceInDown">
+        <h2>
+          <span>
+            <i class="fas fa-search" aria-hidden="true"></i>
+            <span class="title">Search</span>
+          </span>
+          <i class="fas fa-times close" pointer style="float:right;" aria-hidden="true" @click.self="cancelDialogVisible()"></i>
+        </h2>
+        <form class="site-search-form">
+          <input type="text"
+            placeholder="Please enter keywords"
+            id="local-search-input" 
+            @click="getSearchFile()"
+            class="st-search-input"
+            v-model="searchInput"
+          />
+        </form>
+        <div class="result-wrapper">
+          <div id="local-search-result" class="local-search-result-cls"></div>
+        </div>
+      </div>
+    </div>
+  </transition>
+</div>
+<script src="/js/local_search.js"></script>
+<script>
+  var body = document.body || document.documentElement || window;
+  var vm = new Vue({
+    el: '#appSearch',
+    data: {
+      dialogVisible: false,
+      searchInput: '',
+      top: 0,
+    },
+    computed: {
+    },
+    mounted() {
+      window.addEventListener('pjax:complete', () => {
+        this.cancelDialogVisible();
+      })
+    },
+    methods: {
+      showDialog() {
+        this.dialogVisible = true;
+        // 防止页面滚动，只能让弹框滚动
+        this.top = $(document).scrollTop()
+        body.style.cssText = 'overflow: hidden;';
+      },
+      getSearchFile() {
+        if (!this.searchInput) {
+          getSearchFile("/search.xml");
+        }
+      },
+      cancelDialogVisible() {
+        this.dialogVisible = false;
+        body.removeAttribute('style');
+        $(document).scrollTop(this.top)
+      },
+    },
+    created() {}
+  })
+</script>
+<!-- 解决刷新页面闪烁问题，可以在元素上添加display: none, 或者用vue.extend方法，详情：https://blog.csdn.net/qq_31393401/article/details/81017912 -->
+<!-- 下面是搜索基本写法 -->
+<!-- <script type="text/javascript" id="local.search.active">
+  var inputArea = document.querySelector("#local-search-input");
+  inputArea.onclick   = function(){ getSearchFile(); this.onclick = null }
+  inputArea.onkeydown = function(){ if(event.keyCode == 13) return false }
+</script> -->
+
+      
+
+    </nav>
+  </div>
+  
+    <a target="_blank" rel="noopener" href="https://github.com/kclx" class="github-corner color-primary" aria-label="View source on GitHub"><svg width="60" height="60" viewBox="0 0 250 250" style="fill:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+  
+  
+</header>
+        <!-- 内容区域 -->
+        
+ <!-- prismjs 代码高亮 -->
+ 
+
+
+<div class="bg-dark-floor" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -1;"></div>
+
+
+  <!-- 文章详情页顶部图片和标题 -->
+
+
+
+
+<div class="post-detail-header" id="thumbnail_canvas" style="background-repeat: no-repeat; background-size: cover; 
+  background-position: center center;position: relative;background-image:url('https://s1.imagehub.cc/images/2023/07/27/2023-07-27-10.35.38.png')">
+  <div class="post-detail-header-mask"></div>
+  <canvas id="header_canvas"style="position:absolute;bottom:0;pointer-events:none;"></canvas>
+  
+  <div class="post-detail-header_info-box">
+    <div class="title-box">
+      <span class="title">
+        Spark与Scala
+      </span>
+    </div>
+    
+    
+      
+        <span class="post-detail-header_date">
+          <i class="fas fa-calendar"></i> Published in：2023-07-27 |
+        </span>
+      
+
+      
+        <span class="post-detail-header_categories">
+          <i class="iconfont iconbookmark1"></i> category：
+          
+            <a href="/categories/Computer-Technology/" class="post-detail-header_category">
+              Computer Technology
+            </a>
+          
+        </span>
+      
+
+      
+        <div class="post-detail-header_wordcount">
+          <span class="totalcount">
+            <i class="fas fa-file-text-o"></i> Words: 6.8k |
+          </span>
+  
+          <span class="min2read">
+            <i class="fas fa-clock"></i> Reading time: 28min |
+          </span>
+  
+          
+            <span class="reading">
+              <i class="fas fa-eye"></i> reading：<span id="busuanzi_value_page_pv"></span>
+            </span>
+          
+        </div>
+      
+    
+  </div>
+  
+  
+    <script src="/js/bubble/bubble.js"></script>
+  
+</div>
+
+
+
+
+
+<div class="post-detail-content post-row" 
+  style="padding-top: 0px;">
+  <div class="main-content">
+    <article class="post post-detail">
+      <div class="post-content">
+        <h1 id="Spark与Scala"><a href="#Spark与Scala" class="headerlink" title="Spark与Scala"></a>Spark与Scala</h1><p>Scala是一种通用的编程语言，旨在融合面向对象编程和函数式编程的特性。它运行在Java虚拟机（JVM）上，因此可以与Java库和框架无缝交互，并且可以利用Java生态系统中的各种工具和库。Scala的设计目标之一是让编程更具表现力和简洁，同时提供强大的类型系统和静态类型检查。</p>
+<p>Apache Spark是一个开源的大数据处理框架，它旨在处理大规模数据集的分布式计算。Spark提供了许多用于处理数据的高级API，例如批处理（Spark Core）和流处理（Spark Streaming），还支持SQL查询（Spark SQL）、图处理（GraphX）和机器学习（MLlib）等功能。Spark的一个关键特点是其内存计算能力，它允许在内存中进行数据处理，从而大大提高了性能。</p>
+<p>Scala与Spark之间有着密切的关系。事实上，Spark最初是用Scala编写的，并且Scala一直是Spark主要的编程语言。这是因为Scala语言具有与Spark的分布式计算模型和函数式编程特性非常契合的特点。Scala的函数式编程范式特性使得Spark的代码可以更具表现力和易读性，从而更容易编写和维护复杂的分布式计算任务。</p>
+<p>Spark提供了Scala API以及其他语言（如Java、Python和R）的API，但Scala API通常被认为是最原生和最灵活的。许多Spark的核心开发人员和社区成员都喜欢使用Scala来编写Spark应用程序，因为Scala的语法和功能可以更好地利用Spark提供的高级特性，使得开发更加高效。</p>
+<p>总结：Scala是Spark的主要编程语言，它与Spark之间有着紧密的关系，Scala的设计特点与Spark的分布式计算模型和函数式编程特性非常契合，使得使用Scala编写Spark应用程序更加方便和高效。</p>
+<h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><div class="tagLink"><a class="link-card" title="Scala官网" target="_blank" rel="noopener" href="https://www.scala-lang.org/"><span class="link-card-backdrop" style="background-image: url(https://www.scala-lang.org/resources/img/frontpage/scala-spiral.png)"></span><div class="left"><img src="https://www.scala-lang.org/resources/img/frontpage/scala-spiral.png" class="lazyload placeholder" data-srcset="https://www.scala-lang.org/resources/img/frontpage/scala-spiral.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp"/></div><div class="right"><p class="text">Scala官网</p><p class="url">https://www.scala-lang.org/</p></div></a></div>
+
+<div class="tagLink"><a class="link-card" title="Spark官网" target="_blank" rel="noopener" href="https://spark.apache.org/"><span class="link-card-backdrop" style="background-image: url(https://spark.apache.org/images/spark-logo-rev.svg)"></span><div class="left"><img src="https://spark.apache.org/images/spark-logo-rev.svg" class="lazyload placeholder" data-srcset="https://spark.apache.org/images/spark-logo-rev.svg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp"/></div><div class="right"><p class="text">Spark官网</p><p class="url">https://spark.apache.org/</p></div></a></div>
+
+<h2 id="使用IDEA构建一个Spark-Scala项目"><a href="#使用IDEA构建一个Spark-Scala项目" class="headerlink" title="使用IDEA构建一个Spark Scala项目"></a>使用IDEA构建一个Spark Scala项目</h2><ol>
+<li><p>下载Scala</p>
+</li>
+<li><p>在IDEA中设置使用Scala语言<br>添加maven依赖</p>
+ <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- https://mvnrepository.com/artifact/org.apache.spark/spark-core --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.spark<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spark-core_2.11<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.4.3<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- https://mvnrepository.com/artifact/org.apache.spark/spark-sql --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.spark<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spark-sql_2.11<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.4.3<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将Scala添加到全局库中</p>
+</li>
+<li><p>下载插件Scala并重启IDEA</p>
+</li>
+</ol>
+<h2 id="案例解析"><a href="#案例解析" class="headerlink" title="案例解析"></a>案例解析</h2><figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> com.hankcs.hanlp.<span class="type">HanLP</span></span><br><span class="line"><span class="keyword">import</span> com.hankcs.hanlp.seg.common.<span class="type">Term</span></span><br><span class="line"><span class="keyword">import</span> org.apache.log4j.&#123;<span class="type">Level</span>, <span class="type">Logger</span>&#125;</span><br><span class="line"><span class="keyword">import</span> org.apache.spark.storage.<span class="type">StorageLevel</span></span><br><span class="line"><span class="keyword">import</span> org.apache.spark.&#123;<span class="type">SparkConf</span>, <span class="type">SparkContext</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">object</span> <span class="title">SearchEngineLogAnalysis</span> </span>&#123;</span><br><span class="line"> <span class="function"><span class="keyword">def</span> <span class="title">main</span></span>(args: <span class="type">Array</span>[<span class="type">String</span>]): <span class="type">Unit</span> = &#123;</span><br><span class="line">   <span class="type">Logger</span></span><br><span class="line">     .getLogger(<span class="string">&quot;org.apache.spark&quot;</span>)</span><br><span class="line">     .setLevel(<span class="type">Level</span>.<span class="type">ERROR</span>)</span><br><span class="line">   <span class="keyword">val</span> conf = <span class="keyword">new</span> <span class="type">SparkConf</span>()</span><br><span class="line">     .setAppName(<span class="string">&quot;SearchEngineLogAnalysis&quot;</span>)</span><br><span class="line">     .setMaster(<span class="string">&quot;local[*]&quot;</span>)</span><br><span class="line">   <span class="keyword">val</span> sparkContext = <span class="keyword">new</span> <span class="type">SparkContext</span>(config = conf)</span><br><span class="line">   <span class="keyword">val</span> file = <span class="string">&quot;/Volumes/KeQing/Documents/IntelliJ IDEA Ultimate/SparkTraning/src/main/resources/reduced.txt&quot;</span></span><br><span class="line">   <span class="keyword">val</span> outputPath1 = <span class="string">&quot;/Volumes/KeQing/Documents/IntelliJ IDEA Ultimate/SparkTraning/src/main/resources/output/queryWordsWordCountRDD&quot;</span></span><br><span class="line">   <span class="keyword">val</span> outputPath2 = <span class="string">&quot;/Volumes/KeQing/Documents/IntelliJ IDEA Ultimate/SparkTraning/src/main/resources/output/userQueryAnalysisRDD&quot;</span></span><br><span class="line">   <span class="keyword">val</span> outputPath3 = <span class="string">&quot;/Volumes/KeQing/Documents/IntelliJ IDEA Ultimate/SparkTraning/src/main/resources/output/timeQueryCountAnalysisRDD&quot;</span></span><br><span class="line">   <span class="keyword">val</span> rddSougouRecord = sparkContext.textFile(file)</span><br><span class="line">     .filter(line =&gt; line != <span class="literal">null</span> &amp;&amp; line.trim.split(<span class="string">&quot;\\s+&quot;</span>).length == <span class="number">6</span>)</span><br><span class="line">     .mapPartitions(it =&gt; &#123;</span><br><span class="line">       it.map(line =&gt; &#123;</span><br><span class="line">         <span class="keyword">val</span> contents = line.trim.split(<span class="string">&quot;\\s+&quot;</span>)</span><br><span class="line">         <span class="type">SogouRecord</span>(</span><br><span class="line">           contents(<span class="number">0</span>),</span><br><span class="line">           contents(<span class="number">1</span>),</span><br><span class="line">           contents(<span class="number">2</span>).replaceAll(<span class="string">&quot;[\\[|\\]]&quot;</span>, <span class="string">&quot;&quot;</span>),</span><br><span class="line">           contents(<span class="number">3</span>).toInt,</span><br><span class="line">           contents(<span class="number">4</span>).toInt,</span><br><span class="line">           contents(<span class="number">5</span>)</span><br><span class="line">         )</span><br><span class="line">       &#125;)</span><br><span class="line">     &#125;)</span><br><span class="line">   rddSougouRecord.persist(<span class="type">StorageLevel</span>.<span class="type">MEMORY_AND_DISK</span>).count()</span><br><span class="line"></span><br><span class="line">   <span class="keyword">val</span> queryWordsWordCountRDD = rddSougouRecord.mapPartitions(it =&gt; &#123;</span><br><span class="line">     it.flatMap(record =&gt; &#123;</span><br><span class="line">       <span class="keyword">val</span> terms: util.<span class="type">List</span>[<span class="type">Term</span>] = <span class="type">HanLP</span>.segment(record.queryWords.trim)</span><br><span class="line">       <span class="keyword">import</span> scala.collection.<span class="type">JavaConverters</span>._</span><br><span class="line">       terms.asScala.map(_.word)</span><br><span class="line">     &#125;)</span><br><span class="line">   &#125;).map((_, <span class="number">1</span>)).reduceByKey(_ + _).sortBy(_._2, ascending = <span class="literal">false</span>)</span><br><span class="line"></span><br><span class="line">   queryWordsWordCountRDD.coalesce(numPartitions = <span class="number">1</span>).saveAsTextFile(outputPath1)</span><br><span class="line"></span><br><span class="line">   <span class="keyword">val</span> userQueryAnalysisRDD = rddSougouRecord.mapPartitions(it =&gt; &#123;</span><br><span class="line">     it.map(record =&gt; &#123;</span><br><span class="line">       ((record.userId, record.queryWords), <span class="number">1</span>)</span><br><span class="line">     &#125;)</span><br><span class="line">   &#125;).reduceByKey(_ + _).sortBy(_._2, ascending = <span class="literal">false</span>)</span><br><span class="line">   userQueryAnalysisRDD.coalesce(<span class="number">1</span>).saveAsTextFile(outputPath2)</span><br><span class="line"></span><br><span class="line">   <span class="keyword">val</span> timeQueryCountAnalysisRDD = rddSougouRecord.mapPartitions(it =&gt; &#123;</span><br><span class="line">     it.map(record =&gt; &#123;</span><br><span class="line">       (record.queryTime.substring(<span class="number">0</span>, <span class="number">2</span>), <span class="number">1</span>)</span><br><span class="line">     &#125;)</span><br><span class="line">   &#125;).reduceByKey(_ + _).sortBy(_._2, ascending = <span class="literal">false</span>)</span><br><span class="line">   timeQueryCountAnalysisRDD.coalesce(<span class="number">1</span>).saveAsTextFile(outputPath3)</span><br><span class="line"></span><br><span class="line">   rddSougouRecord.unpersist()</span><br><span class="line">   sparkContext.stop()</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="逐步分析"><a href="#逐步分析" class="headerlink" title="逐步分析"></a>逐步分析</h3><figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Logger</span></span><br><span class="line">  .getLogger(<span class="string">&quot;org.apache.spark&quot;</span>)</span><br><span class="line">  .setLevel(<span class="type">Level</span>.<span class="type">ERROR</span>)</span><br></pre></td></tr></table></figure>
+
+<p>设置<code>org.apache.spark</code>的日志输出级别，可以在测试阶段更加方便的观察控制台的输出结果</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> conf = <span class="keyword">new</span> <span class="type">SparkConf</span>()</span><br><span class="line">  .setAppName(<span class="string">&quot;SearchEngineLogAnalysis&quot;</span>)</span><br><span class="line">  .setMaster(<span class="string">&quot;local[*]&quot;</span>)</span><br></pre></td></tr></table></figure>
+<p>这段代码是使用Scala语言创建一个Spark应用程序的配置对象（SparkConf），并对其进行一些设置。</p>
+<ol>
+<li><p><code>val conf = new SparkConf()</code>: 首先，创建了一个名为<code>conf</code>的不可变（val）变量，并通过<code>new SparkConf()</code>来实例化一个新的SparkConf对象。SparkConf是用于配置Spark应用程序的类。</p>
+</li>
+<li><p><code>.setAppName(&quot;SearchEngineLogAnalysis&quot;)</code>: 使用<code>.setAppName()</code>方法为Spark应用程序设置一个名称，这里将应用程序的名称设置为”SearchEngineLogAnalysis”。应用程序的名称将在Spark集群中显示，用于标识不同的应用程序。</p>
+</li>
+<li><p><code>.setMaster(&quot;local[*]&quot;)</code>: 使用<code>.setMaster()</code>方法设置Spark应用程序的主节点URL或本地模式。在这里，将主节点URL设置为”local[*]”，表示在本地模式下运行Spark应用程序，并使用所有可用的CPU内核。</p>
+</li>
+</ol>
+<p>综合起来，这段代码的作用是创建一个Spark应用程序的配置对象，设置了应用程序的名称为<code>SearchEngineLogAnalysis</code>，并将其配置为在本地模式下运行，并使用所有可用的CPU内核进行并行处理。请注意，在本地模式下运行的Spark应用程序将不会连接到Spark集群，而是在本地计算机上以单机模式运行，适用于开发和测试阶段。在实际生产环境中，你需要将<code>.setMaster()</code>方法的参数设置为连接到Spark集群的主节点URL，以便在集群上分布式运行你的Spark应用程序。</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> sparkContext = <span class="keyword">new</span> <span class="type">SparkContext</span>(config = conf)</span><br></pre></td></tr></table></figure>
+<p>这段代码用于创建一个SparkContext对象，它是Spark应用程序与Spark集群之间的主要接口。</p>
+<ol>
+<li><p><code>val sparkContext</code>: 这是一个不可变（val）变量，用于存储SparkContext对象。</p>
+</li>
+<li><p><code>new SparkContext(config = conf)</code>: 这是创建SparkContext对象的语句。通过<code>new SparkContext()</code>来实例化一个新的SparkContext对象，并通过<code>config = conf</code>参数将之前创建的SparkConf对象<code>conf</code>传递给SparkContext构造函数。</p>
+</li>
+</ol>
+<p>在这里，我们使用之前配置好的SparkConf对象<code>conf</code>来初始化SparkContext。SparkConf对象包含了应用程序的各种配置设置，而SparkContext则使用这些配置在Spark集群上执行任务。</p>
+<p>需要注意的是，创建SparkContext对象是Spark早期版本（2.x及之前）的做法。从Spark 2.0版本开始，推荐使用SparkSession来代替SparkContext。SparkSession是一个更高级的接口，它封装了SparkContext和SQLContext，并且提供了更方便的功能，例如对DataFrame和Dataset的支持。</p>
+<p>如果在使用Spark 2.x及之后版本，建议改用SparkSession来初始化Spark应用程序，示例如下：</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> org.apache.spark.sql.<span class="type">SparkSession</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">val</span> spark = <span class="type">SparkSession</span>.builder()</span><br><span class="line">  .appName(<span class="string">&quot;SearchEngineLogAnalysis&quot;</span>)</span><br><span class="line">  .master(<span class="string">&quot;local[*]&quot;</span>)</span><br><span class="line">  .getOrCreate()</span><br></pre></td></tr></table></figure>
+
+<p>使用<code>SparkSession.builder()</code>来构建SparkSession对象，并使用<code>.appName()</code>方法设置应用程序名称，<code>.master()</code>方法设置主节点URL或本地模式。最后，通过<code>.getOrCreate()</code>方法来获取或创建一个SparkSession对象。使用SparkSession之后，可以通过<code>.sparkContext</code>属性来访问底层的SparkContext对象，以便进行一些底层操作。</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> rddSougouRecord = sparkContext.textFile(file)</span><br><span class="line">  .filter(line =&gt; line != <span class="literal">null</span> &amp;&amp; line.trim.split(<span class="string">&quot;\\s+&quot;</span>).length == <span class="number">6</span>)</span><br><span class="line">  .mapPartitions(it =&gt; &#123;</span><br><span class="line">    it.map(line =&gt; &#123;</span><br><span class="line">      <span class="keyword">val</span> contents = line.trim.split(<span class="string">&quot;\\s+&quot;</span>)</span><br><span class="line">      <span class="type">SogouRecord</span>(</span><br><span class="line">        contents(<span class="number">0</span>),</span><br><span class="line">        contents(<span class="number">1</span>),</span><br><span class="line">        contents(<span class="number">2</span>).replaceAll(<span class="string">&quot;[\\[|\\]]&quot;</span>, <span class="string">&quot;&quot;</span>),</span><br><span class="line">        contents(<span class="number">3</span>).toInt,</span><br><span class="line">        contents(<span class="number">4</span>).toInt,</span><br><span class="line">        contents(<span class="number">5</span>)</span><br><span class="line">      )</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;)</span><br></pre></td></tr></table></figure>
+<p>这段代码是使用Spark的RDD（Resilient Distributed Dataset） API来读取一个文本文件，并根据特定的规则将每行数据转换为自定义的SogouRecord对象。</p>
+<ol>
+<li><p><code>val rddSougouRecord = sparkContext.textFile(file)</code>: 这行代码读取文本文件并创建了一个RDD（Resilient Distributed Dataset）。<code>file</code>是指定的文件路径。<code>textFile</code>方法将文件的每一行作为RDD的一个元素。</p>
+</li>
+<li><p><code>.filter(line =&gt; line != null &amp;&amp; line.trim.split(&quot;\\s+&quot;).length == 6)</code>: 在上一步创建的RDD上调用<code>filter</code>方法，过滤掉一些不符合条件的行。<code>filter</code>方法接受一个函数作为参数，这里使用了一个Lambda表达式。Lambda表达式中的条件<code>line != null &amp;&amp; line.trim.split(&quot;\\s+&quot;).length == 6</code>判断是否满足过滤条件：行不为null且按空格拆分后有6个元素。</p>
+</li>
+<li><p><code>.mapPartitions(it =&gt; &#123; ... &#125;)</code>: 这是一个转换操作，使用<code>mapPartitions</code>方法对每个分区（partition）中的数据进行转换。<code>mapPartitions</code>方法也接受一个函数作为参数，该函数的输入是每个分区的迭代器（iterator），输出是转换后的迭代器。</p>
+</li>
+<li><p><code>it.map(line =&gt; &#123; ... &#125;)</code>: 在<code>mapPartitions</code>方法的函数体内，对每个分区的数据（即每行文本）进行转换。使用<code>map</code>方法对每行文本应用一个函数，将文本按空格拆分，并根据自定义的规则构造<code>SogouRecord</code>对象。</p>
+</li>
+<li><p><code>val contents = line.trim.split(&quot;\\s+&quot;)</code>: 将当前行去除首尾空格后按空格进行拆分，将结果保存在<code>contents</code>数组中。</p>
+</li>
+<li><p><code>SogouRecord(...)</code>：根据拆分后的<code>contents</code>数组的内容构造<code>SogouRecord</code>对象。<code>SogouRecord</code>是一个自定义的类，它包含了6个字段，对应着每行文本中拆分后的6个元素。</p>
+</li>
+</ol>
+<p>最后，整个代码的作用是从给定的文件中读取数据，根据特定的条件过滤掉无效的行，然后按照自定义的规则将每行文本转换为<code>SogouRecord</code>对象，并最终得到一个包含<code>SogouRecord</code>对象的RDD <code>rddSougouRecord</code>。</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rddSougouRecord.persist(<span class="type">StorageLevel</span>.<span class="type">MEMORY_AND_DISK</span>).count()</span><br></pre></td></tr></table></figure>
+<p>这行代码对之前的RDD <code>rddSougouRecord</code> 进行了持久化（缓存）操作，并计算了RDD中元素的数量。</p>
+<ol>
+<li><p><code>rddSougouRecord.persist(StorageLevel.MEMORY_AND_DISK)</code>: 这部分代码对RDD <code>rddSougouRecord</code> 进行了持久化操作。在Spark中，RDD是一个不可变的分布式数据集，当对一个RDD执行一系列的转换操作时，每个转换都会生成一个新的RDD，而原始RDD则不会受到影响。持久化（缓存）操作的目的是将RDD的数据缓存在内存或磁盘中，这样可以避免在后续的操作中重复计算，提高计算效率。</p>
+<p><code>persist</code>方法接受一个参数，即存储级别（StorageLevel）。在这里，使用了<code>StorageLevel.MEMORY_AND_DISK</code>存储级别，表示将数据缓存在内存中，如果内存空间不足，则溢写到磁盘。这样可以在内存充足时快速访问数据，并在内存不足时保留数据在磁盘上，以便后续使用。</p>
+</li>
+<li><p><code>.count()</code>: 这部分代码对持久化后的RDD执行了<code>count</code>操作，用于计算RDD中元素的数量。<code>count</code>是一个动作（action）操作，会触发实际的计算并返回RDD中元素的数量。</p>
+</li>
+</ol>
+<p>综合起来，这行代码的作用是对RDD <code>rddSougouRecord</code> 进行持久化操作，将数据缓存在内存或磁盘中，然后计算RDD中元素的数量。持久化操作使得在后续对<code>rddSougouRecord</code>执行其他转换或动作操作时，可以从缓存中快速访问数据，而不必每次都重新计算。</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> queryWordsWordCountRDD = rddSougouRecord.mapPartitions(it =&gt; &#123;</span><br><span class="line">  it.flatMap(record =&gt; &#123;</span><br><span class="line">    <span class="keyword">val</span> terms: util.<span class="type">List</span>[<span class="type">Term</span>] = <span class="type">HanLP</span>.segment(record.queryWords.trim)</span><br><span class="line">    <span class="keyword">import</span> scala.collection.<span class="type">JavaConverters</span>._</span><br><span class="line">    terms.asScala.map(_.word)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;).map((_, <span class="number">1</span>)).reduceByKey(_ + _).sortBy(_._2, ascending = <span class="literal">false</span>)</span><br></pre></td></tr></table></figure>
+<p>这段代码是对之前持久化的RDD <code>rddSougouRecord</code> 进行一系列转换操作，最终得到一个包含查询词（queryWords）及其出现频率的RDD <code>queryWordsWordCountRDD</code>。</p>
+<ol>
+<li><p><code>val queryWordsWordCountRDD = rddSougouRecord.mapPartitions(it =&gt; &#123; ... &#125;)</code>: 这行代码首先对持久化的RDD <code>rddSougouRecord</code> 进行了 <code>mapPartitions</code> 转换操作。<code>mapPartitions</code> 方法对 RDD 的每个分区进行操作，并返回一个新的 RDD，它的每个元素都是转换后的结果。这里使用了一个 Lambda 表达式来处理每个分区的数据。</p>
+</li>
+<li><p><code>it.flatMap(record =&gt; &#123; ... &#125;)</code>: 在 <code>mapPartitions</code> 中，对每个分区的元素进行 <code>flatMap</code> 转换操作。<code>flatMap</code> 方法类似于 <code>map</code> 方法，但是它可以将每个输入元素映射为零个或多个输出元素。在这里，<code>flatMap</code> 用于将每个 <code>SogouRecord</code> 对象的 <code>queryWords</code> 字段拆分为单个词语。</p>
+</li>
+<li><p><code>val terms: util.List[Term] = HanLP.segment(record.queryWords.trim)</code>: 这行代码使用了 HanLP 中文分词库对每个 <code>queryWords</code> 进行中文分词，并将结果保存在 <code>terms</code> 变量中。<code>HanLP.segment</code> 方法返回一个 <code>util.List[Term]</code> 对象，其中包含了分词后的词语。</p>
+</li>
+<li><p><code>import scala.collection.JavaConverters._</code>: 这行代码导入了 Scala 与 Java 集合之间的转换工具，用于将 Java 集合转换为 Scala 集合，方便后续的处理。</p>
+</li>
+<li><p><code>terms.asScala.map(_.word)</code>: 在前面的步骤中，将 <code>queryWords</code> 分词后得到的结果是一个 Java 集合，这里使用 <code>asScala</code> 方法将其转换为 Scala 集合，并使用 <code>map</code> 方法提取每个 <code>Term</code> 对象的 <code>word</code> 字段，即每个词语，形成一个包含所有词语的新的 Scala 集合。</p>
+</li>
+<li><p><code>.map((_, 1))</code>: 这一步是对每个词语添加一个计数值 1，将每个词语映射为一个二元组 <code>(词语, 1)</code>。</p>
+</li>
+<li><p><code>.reduceByKey(_ + _)</code>: 接着使用 <code>reduceByKey</code> 方法，将相同的词语进行分组并求和。即将相同词语的计数值相加，得到每个词语的出现频率。</p>
+</li>
+<li><p><code>.sortBy(_._2, ascending = false)</code>: 最后使用 <code>sortBy</code> 方法，按照词语出现频率（即二元组的第二个元素）进行降序排序，得到包含查询词及其出现频率的 RDD <code>queryWordsWordCountRDD</code>。</p>
+</li>
+</ol>
+<p>综合起来，这段代码的作用是将每个 <code>SogouRecord</code> 对象的 <code>queryWords</code> 字段进行中文分词，统计查询词的出现频率，并按频率降序排列，得到一个包含查询词及其出现频率的 RDD <code>queryWordsWordCountRDD</code>。</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">queryWordsWordCountRDD.coalesce(numPartitions = <span class="number">1</span>).saveAsTextFile(outputPath1)</span><br></pre></td></tr></table></figure>
+<p>这段代码是将之前得到的RDD <code>queryWordsWordCountRDD</code> 进行一系列操作，并将结果保存为文本文件。</p>
+<ol>
+<li><p><code>queryWordsWordCountRDD.coalesce(numPartitions = 1)</code>: 这部分代码使用了 <code>coalesce</code> 方法对RDD进行重新分区。<code>coalesce</code> 方法可以将RDD的分区数量减少到指定的数量。在这里，<code>numPartitions = 1</code> 表示将RDD合并为一个分区，也就是将所有数据合并到一个分区中。</p>
+</li>
+<li><p><code>.saveAsTextFile(outputPath1)</code>: 接着使用 <code>saveAsTextFile</code> 方法将RDD保存为文本文件。<code>saveAsTextFile</code> 方法将RDD中的每个元素（每行文本）写入到文本文件中。<code>outputPath1</code> 是保存文本文件的输出路径。</p>
+</li>
+</ol>
+<p>综合起来，这段代码的作用是将之前计算得到的 <code>queryWordsWordCountRDD</code> 重新分区为一个分区，并将结果保存为文本文件。在文本文件中，每个查询词及其出现频率将以文本行的形式存储。注意，由于使用了 <code>coalesce(1)</code>，结果文件将只有一个分区，并且所有数据都会写入同一个文件中。如果数据量很大，可能会造成单个文件过大的问题。如果想要分多个文件保存，可以调整 <code>coalesce</code> 方法中的分区数为需要的值。</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rddSougouRecord.unpersist()</span><br><span class="line">sparkContext.stop()</span><br></pre></td></tr></table></figure>
+<p>这段代码是对之前持久化的RDD <code>rddSougouRecord</code> 进行解除持久化，并停止SparkContext对象，从而终止Spark应用程序的执行。</p>
+<ol>
+<li><p><code>rddSougouRecord.unpersist()</code>: 这行代码调用了 <code>unpersist</code> 方法，用于解除RDD的持久化。在之前的代码中，我们对 <code>rddSougouRecord</code> 进行了持久化（缓存）操作，将数据缓存到内存或磁盘中，以便后续的操作可以快速访问数据。而 <code>unpersist</code> 方法的作用就是解除持久化，即释放RDD的缓存，从而释放内存或磁盘空间。在某些情况下，当RDD不再被频繁使用时，可以手动调用 <code>unpersist</code> 方法来释放资源，以避免占用过多的存储空间。</p>
+</li>
+<li><p><code>sparkContext.stop()</code>: 这行代码调用了 <code>stop</code> 方法，用于停止SparkContext对象，从而终止Spark应用程序的执行。<code>SparkContext</code> 是Spark应用程序与Spark集群之间的主要接口，调用 <code>stop</code> 方法将会关闭与集群的连接，并释放资源。在应用程序执行完成后，通常会调用 <code>stop</code> 方法来优雅地终止Spark应用程序，释放集群资源，避免资源浪费。</p>
+</li>
+</ol>
+<p>综合起来，这段代码的作用是解除之前对RDD的持久化，释放缓存的资源，并停止SparkContext对象，从而正常终止Spark应用程序的执行。</p>
+<h2 id="使用Spark-SQL案例解析"><a href="#使用Spark-SQL案例解析" class="headerlink" title="使用Spark SQL案例解析"></a>使用Spark SQL案例解析</h2><figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> org.apache.log4j.&#123;<span class="type">Level</span>, <span class="type">Logger</span>&#125;</span><br><span class="line"><span class="keyword">import</span> org.apache.spark.sql.&#123;<span class="type">Row</span>, <span class="type">SparkSession</span>&#125;</span><br><span class="line"><span class="keyword">import</span> org.apache.spark.sql.types.&#123;<span class="type">IntegerType</span>, <span class="type">StringType</span>, <span class="type">StructField</span>, <span class="type">StructType</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">object</span> <span class="title">SogouAnalysisSQL</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">main</span></span>(args: <span class="type">Array</span>[<span class="type">String</span>]): <span class="type">Unit</span> = &#123;</span><br><span class="line">    <span class="comment">// 设置输出的日志级别</span></span><br><span class="line">    <span class="type">Logger</span>.getLogger(<span class="string">&quot;org.apache.spark&quot;</span>).setLevel(<span class="type">Level</span>.<span class="type">ERROR</span>)</span><br><span class="line">    <span class="keyword">val</span> spark = <span class="type">SparkSession</span>.builder()</span><br><span class="line">      .appName(<span class="string">&quot;SogouAnalysisSQL&quot;</span>)</span><br><span class="line">      .master(<span class="string">&quot;local[*]&quot;</span>)</span><br><span class="line">      .getOrCreate()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">val</span> file = <span class="string">&quot;/Volumes/KeQing/Documents/IntelliJ IDEA Ultimate/SparkTraning/src/main/resources/reduced.txt&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">val</span> fileRDD = spark.sparkContext.textFile(file)</span><br><span class="line">      .filter(line =&gt; line != <span class="literal">null</span> &amp;&amp; line.trim.split(<span class="string">&quot;\\s+&quot;</span>).length == <span class="number">6</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">val</span> schema = <span class="type">StructType</span>(<span class="type">Array</span>(</span><br><span class="line">      <span class="type">StructField</span>(<span class="string">&quot;queryTime&quot;</span>, <span class="type">StringType</span>, <span class="literal">false</span>),</span><br><span class="line">      <span class="type">StructField</span>(<span class="string">&quot;userId&quot;</span>, <span class="type">StringType</span>, <span class="literal">false</span>),</span><br><span class="line">      <span class="type">StructField</span>(<span class="string">&quot;queryWords&quot;</span>, <span class="type">StringType</span>, <span class="literal">false</span>),</span><br><span class="line">      <span class="type">StructField</span>(<span class="string">&quot;resultRank&quot;</span>, <span class="type">IntegerType</span>, <span class="literal">false</span>),</span><br><span class="line">      <span class="type">StructField</span>(<span class="string">&quot;clickRank&quot;</span>, <span class="type">IntegerType</span>, <span class="literal">false</span>),</span><br><span class="line">      <span class="type">StructField</span>(<span class="string">&quot;clickUrl&quot;</span>, <span class="type">StringType</span>, <span class="literal">false</span>)</span><br><span class="line">    ))</span><br><span class="line"></span><br><span class="line">    <span class="keyword">val</span> rddRow = fileRDD.mapPartitions(it =&gt; &#123;</span><br><span class="line">      it.map(line =&gt; &#123;</span><br><span class="line">        <span class="keyword">val</span> contents = line.trim.split(<span class="string">&quot;\\s+&quot;</span>)</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">          <span class="comment">// 封装的字段的时候，顺序要与定义的schema顺序完全一致</span></span><br><span class="line">          <span class="type">Row</span>(</span><br><span class="line">            contents(<span class="number">0</span>),</span><br><span class="line">            contents(<span class="number">1</span>),</span><br><span class="line">            contents(<span class="number">2</span>).replaceAll(<span class="string">&quot;[\\[|\\]]&quot;</span>, <span class="string">&quot;&quot;</span>),</span><br><span class="line">            contents(<span class="number">3</span>).toInt,</span><br><span class="line">            contents(<span class="number">4</span>).toInt,</span><br><span class="line">            contents(<span class="number">5</span>)</span><br><span class="line">          )</span><br><span class="line">        &#125; <span class="keyword">catch</span> &#123;</span><br><span class="line">          <span class="keyword">case</span> e: <span class="type">Exception</span> =&gt; <span class="type">Row</span>(<span class="string">&quot;error&quot;</span>, <span class="string">&quot;error&quot;</span>, <span class="string">&quot;error&quot;</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="string">&quot;error&quot;</span>)</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">val</span> df = spark.createDataFrame(rddRow, schema)</span><br><span class="line"></span><br><span class="line">    df.createOrReplaceTempView(<span class="string">&quot;sogou_view&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">val</span> sql =</span><br><span class="line">      <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">        |select * from sogou_view where clickUrl like &#x27;www%&#x27;</span></span><br><span class="line"><span class="string">        |limit 3</span></span><br><span class="line"><span class="string">        |&quot;&quot;&quot;</span>.stripMargin</span><br><span class="line"></span><br><span class="line">    <span class="keyword">val</span> sqlResult = spark.sql(sql)</span><br><span class="line">    <span class="comment">//    sqlResult.show(truncate = false)</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">val</span> querySQL =</span><br><span class="line">      <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">        |select userId,queryWords,count(*) as query_count from sogou_view</span></span><br><span class="line"><span class="string">        |group by userId,queryWords</span></span><br><span class="line"><span class="string">        |order by userid,query_count desc</span></span><br><span class="line"><span class="string">        |&quot;&quot;&quot;</span>.stripMargin</span><br><span class="line"></span><br><span class="line">    <span class="keyword">val</span> queryResult = spark.sql(querySQL)</span><br><span class="line"></span><br><span class="line">    <span class="comment">//    queryResult.show(truncate = false)</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">val</span> timeSQL =</span><br><span class="line">      <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">        |select substring(queryTime,0,5) as query_time,count(*) as query_count from sogou_view</span></span><br><span class="line"><span class="string">        |group by substring(queryTime,0,5)</span></span><br><span class="line"><span class="string">        |order by query_time,query_count desc</span></span><br><span class="line"><span class="string">        |&quot;&quot;&quot;</span>.stripMargin</span><br><span class="line"></span><br><span class="line">    <span class="keyword">val</span> timeResult = spark.sql(timeSQL)</span><br><span class="line">    timeResult.show(truncate = <span class="literal">false</span>)</span><br><span class="line">    timeResult.rdd.coalesce(<span class="number">1</span>).saveAsTextFile(<span class="string">&quot;/Volumes/KeQing/Documents/IntelliJ IDEA Ultimate/SparkTraning/src/main/resources/output/timeResult&quot;</span>)</span><br><span class="line">    spark.stop()</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> schema = <span class="type">StructType</span>(<span class="type">Array</span>(</span><br><span class="line">  <span class="type">StructField</span>(<span class="string">&quot;queryTime&quot;</span>, <span class="type">StringType</span>, <span class="literal">false</span>),</span><br><span class="line">  <span class="type">StructField</span>(<span class="string">&quot;userId&quot;</span>, <span class="type">StringType</span>, <span class="literal">false</span>),</span><br><span class="line">  <span class="type">StructField</span>(<span class="string">&quot;queryWords&quot;</span>, <span class="type">StringType</span>, <span class="literal">false</span>),</span><br><span class="line">  <span class="type">StructField</span>(<span class="string">&quot;resultRank&quot;</span>, <span class="type">IntegerType</span>, <span class="literal">false</span>),</span><br><span class="line">  <span class="type">StructField</span>(<span class="string">&quot;clickRank&quot;</span>, <span class="type">IntegerType</span>, <span class="literal">false</span>),</span><br><span class="line">  <span class="type">StructField</span>(<span class="string">&quot;clickUrl&quot;</span>, <span class="type">StringType</span>, <span class="literal">false</span>)</span><br><span class="line">))</span><br></pre></td></tr></table></figure>
+<p>这段代码定义了一个Spark SQL的Schema，用于描述数据的结构和字段类型。Spark SQL是Spark的模块，它提供了用于处理结构化数据的高级数据处理接口。</p>
+<ol>
+<li><p><code>val schema = StructType(Array(...))</code>: 这行代码创建了一个<code>StructType</code>对象，该对象表示了数据的结构。<code>StructType</code>是Spark SQL中用于表示数据结构的类，它包含一个包含了多个<code>StructField</code>的数组。</p>
+</li>
+<li><p><code>StructField(&quot;queryTime&quot;, StringType, false)</code>: 这行代码创建了一个<code>StructField</code>对象，表示数据的一个字段。<code>StructField</code>接受三个参数：字段名称（”queryTime”）、字段类型（StringType）和是否可空（false）。</p>
+</li>
+<li><p><code>StructField(&quot;userId&quot;, StringType, false)</code>: 同上，创建了一个表示”userId”字段的<code>StructField</code>对象。</p>
+</li>
+<li><p><code>StructField(&quot;queryWords&quot;, StringType, false)</code>: 同上，创建了一个表示”queryWords”字段的<code>StructField</code>对象。</p>
+</li>
+<li><p><code>StructField(&quot;resultRank&quot;, IntegerType, false)</code>: 同上，创建了一个表示”resultRank”字段的<code>StructField</code>对象。这里字段类型是<code>IntegerType</code>，表示整数类型。</p>
+</li>
+<li><p><code>StructField(&quot;clickRank&quot;, IntegerType, false)</code>: 同上，创建了一个表示”clickRank”字段的<code>StructField</code>对象。</p>
+</li>
+<li><p><code>StructField(&quot;clickUrl&quot;, StringType, false)</code>: 同上，创建了一个表示”clickUrl”字段的<code>StructField</code>对象。</p>
+</li>
+</ol>
+<p>综合起来，这段代码定义了一个包含六个字段的Schema，每个字段都有一个名称、一个字段类型和一个是否可空的标志。这个Schema描述了一个数据集，其中包含了查询时间（queryTime）、用户ID（userId）、查询词（queryWords）、结果排名（resultRank）、点击排名（clickRank）和点击URL（clickUrl）等六个字段。通过定义Schema，我们可以将RDD转换为DataFrame，从而利用Spark SQL的高级功能进行数据处理和查询。</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> rddRow = fileRDD.mapPartitions(it =&gt; &#123;</span><br><span class="line">  it.map(line =&gt; &#123;</span><br><span class="line">    <span class="keyword">val</span> contents = line.trim.split(<span class="string">&quot;\\s+&quot;</span>)</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      <span class="comment">// 封装的字段的时候，顺序要与定义的schema顺序完全一致</span></span><br><span class="line">      <span class="type">Row</span>(</span><br><span class="line">        contents(<span class="number">0</span>),</span><br><span class="line">        contents(<span class="number">1</span>),</span><br><span class="line">        contents(<span class="number">2</span>).replaceAll(<span class="string">&quot;[\\[|\\]]&quot;</span>, <span class="string">&quot;&quot;</span>),</span><br><span class="line">        contents(<span class="number">3</span>).toInt,</span><br><span class="line">        contents(<span class="number">4</span>).toInt,</span><br><span class="line">        contents(<span class="number">5</span>)</span><br><span class="line">      )</span><br><span class="line">    &#125; <span class="keyword">catch</span> &#123;</span><br><span class="line">      <span class="keyword">case</span> e: <span class="type">Exception</span> =&gt; <span class="type">Row</span>(<span class="string">&quot;error&quot;</span>, <span class="string">&quot;error&quot;</span>, <span class="string">&quot;error&quot;</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="string">&quot;error&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>这段代码对之前的RDD <code>fileRDD</code> 进行了一系列转换操作，将每行文本数据转换为Spark SQL的<code>Row</code>对象，并得到一个新的RDD <code>rddRow</code>。</p>
+<ol>
+<li><p><code>val rddRow = fileRDD.mapPartitions(it =&gt; &#123; ... &#125;)</code>: 这行代码首先对RDD <code>fileRDD</code> 进行了 <code>mapPartitions</code> 转换操作。<code>mapPartitions</code> 方法对RDD的每个分区进行操作，并返回一个新的RDD，它的每个元素都是转换后的结果。这里使用了一个 Lambda 表达式来处理每个分区的数据。</p>
+</li>
+<li><p><code>it.map(line =&gt; &#123; ... &#125;)</code>: 在 <code>mapPartitions</code> 中，对每个分区的元素（即每行文本）进行转换操作。</p>
+</li>
+<li><p><code>val contents = line.trim.split(&quot;\\s+&quot;)</code>: 将当前行去除首尾空格后按空格进行拆分，将结果保存在 <code>contents</code> 数组中。</p>
+</li>
+<li><p><code>try &#123; ... &#125; catch &#123; ... &#125;</code>: 这是一个异常处理结构，用于捕获可能的异常。在这里，代码尝试根据之前定义的Schema封装每行数据为<code>Row</code>对象。如果成功封装，则返回封装好的<code>Row</code>对象；如果出现异常（例如数组越界或类型转换失败），则将异常捕获，并返回一个包含错误信息的<code>Row</code>对象。</p>
+</li>
+<li><p><code>Row(...)</code>: 在 <code>try</code> 块中，根据之前定义的Schema构造<code>Row</code>对象。<code>Row</code>对象是Spark SQL中的一种数据结构，它用于表示一行数据，其中的参数按照之前定义的Schema的顺序对应各个字段。</p>
+</li>
+<li><p><code>contents(2).replaceAll(&quot;[\\[|\\]]&quot;, &quot;&quot;)</code>: 这行代码对第三个字段（contents(2)）进行处理，去除其中的方括号 “[ ]”。</p>
+</li>
+<li><p><code>contents(3).toInt, contents(4).toInt</code>: 这行代码将第四个字段（contents(3)）和第五个字段（contents(4)）转换为整数类型。</p>
+</li>
+<li><p><code>case e: Exception =&gt; Row(&quot;error&quot;, &quot;error&quot;, &quot;error&quot;, 0, 0, &quot;error&quot;)</code>: 在 <code>catch</code> 块中，捕获异常，并返回一个包含错误信息的<code>Row</code>对象。如果出现异常，则用”error”字符串代替无法解析的字段，并将数值类型字段设为0。</p>
+</li>
+</ol>
+<p>综合起来，这段代码的作用是将每行文本数据转换为Spark SQL的<code>Row</code>对象，并根据之前定义的Schema对字段进行类型转换和处理。如果能成功转换，则得到一个包含正确数据的<code>Row</code>对象；如果出现异常，则返回一个包含错误信息的<code>Row</code>对象。最终得到的RDD <code>rddRow</code> 包含了经过处理的<code>Row</code>对象，可以用于构建DataFrame并使用Spark SQL的高级功能进行数据处理和查询。</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> df = spark.createDataFrame(rddRow, schema)</span><br></pre></td></tr></table></figure>
+<p>这段代码使用之前得到的RDD <code>rddRow</code> 和之前定义的Schema <code>schema</code> 来创建一个DataFrame。DataFrame是Spark SQL中的一个分布式数据表，它可以使用结构化的数据和Schema进行处理和查询。</p>
+<ol>
+<li><p><code>val df = spark.createDataFrame(rddRow, schema)</code>: 这行代码调用了SparkSession对象的 <code>createDataFrame</code> 方法，用于创建一个DataFrame。<code>createDataFrame</code> 方法接受两个参数：第一个参数是之前创建的RDD <code>rddRow</code>，第二个参数是之前定义的Schema <code>schema</code>。</p>
+</li>
+<li><p><code>rddRow</code>: 这是之前转换得到的RDD，其中的每个元素都是一个Spark SQL的<code>Row</code>对象。该RDD包含了处理后的数据，每个<code>Row</code>对象按照之前定义的Schema的顺序对应各个字段。</p>
+</li>
+<li><p><code>schema</code>: 这是之前定义的Schema，它描述了DataFrame中每个字段的名称和类型。</p>
+</li>
+</ol>
+<p>综合起来，这段代码的作用是利用之前处理得到的<code>rddRow</code> 和定义好的 <code>schema</code>，创建一个DataFrame <code>df</code>。DataFrame是一个结构化的、可分布式处理的数据表，现在我们可以使用<code>df</code> 来使用Spark SQL的高级功能进行数据处理和查询。DataFrame提供了更方便的数据处理接口，可以使用SQL语句或DataFrame API来进行数据分析、过滤、聚合、连接等操作。</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.createOrReplaceTempView(<span class="string">&quot;sogou_view&quot;</span>)</span><br></pre></td></tr></table></figure>
+<p>这段代码在Spark SQL中将DataFrame <code>df</code> 注册为一个临时视图（Temporary View），使其可以在当前SparkSession中被查询。临时视图是一种临时的数据表，仅在当前SparkSession的生命周期内有效，通常用于执行SQL查询。</p>
+<ol>
+<li><p><code>df.createOrReplaceTempView(&quot;sogou_view&quot;)</code>: 这行代码调用了DataFrame <code>df</code> 的 <code>createOrReplaceTempView</code> 方法，用于创建或替换一个临时视图。<code>createOrReplaceTempView</code> 方法接受一个字符串参数，表示视图的名称。在这里，视图名称被设置为”sogou_view”。</p>
+</li>
+<li><p>“sogou_view”: 这是临时视图的名称。通过此名称，可以在当前SparkSession中使用SQL语句查询DataFrame <code>df</code> 的数据。</p>
+</li>
+</ol>
+<p>综合起来，这段代码的作用是在当前SparkSession中将DataFrame <code>df</code> 注册为一个临时视图，使得我们可以在后续的操作中使用SQL语句查询临时视图的数据。通过创建临时视图，我们可以使用更熟悉的SQL语法来进行数据查询和分析。视图只在当前SparkSession的生命周期内有效，不会被持久化到存储系统中。如果需要在不同的SparkSession中访问相同的视图，可以使用<code>createGlobalTempView</code>方法，创建一个全局临时视图。</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> timeSQL =</span><br><span class="line">  <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    |select substring(queryTime,0,5) as query_time,count(*) as query_count from sogou_view</span></span><br><span class="line"><span class="string">    |group by substring(queryTime,0,5)</span></span><br><span class="line"><span class="string">    |order by query_time,query_count desc</span></span><br><span class="line"><span class="string">    |&quot;&quot;&quot;</span>.stripMargin</span><br><span class="line"></span><br><span class="line"><span class="keyword">val</span> timeResult = spark.sql(timeSQL)</span><br><span class="line">timeResult.show(truncate = <span class="literal">false</span>)</span><br></pre></td></tr></table></figure>
+<p>这段代码使用Spark SQL查询之前创建的临时视图 <code>sogou_view</code>，并统计查询时间（<code>queryTime</code>字段）的每年月份（截取前5个字符）的查询次数。然后按照查询时间（年月份）进行分组，并按查询次数降序排序，最后将查询结果打印输出。</p>
+<ol>
+<li><p><code>val timeSQL = &quot;&quot;&quot; ... &quot;&quot;&quot;</code>: 这是一个包含SQL查询语句的多行字符串。在Scala中，可以使用三个双引号 <code>&quot;&quot;&quot; ... &quot;&quot;&quot;</code> 来定义多行字符串，其中的换行符和缩进都会被保留。这个SQL查询语句用于统计查询时间（<code>queryTime</code>字段）的每年月份的查询次数，并按照年月份进行分组和排序。</p>
+</li>
+<li><p><code>select substring(queryTime,0,5) as query_time, count(*) as query_count from sogou_view group by substring(queryTime,0,5) order by query_time, query_count desc</code>: 这是SQL查询语句的主体部分。在这里，使用<code>substring</code>函数截取<code>queryTime</code>字段的前5个字符（即年月份），并将其命名为<code>query_time</code>。然后使用<code>count(*)</code>函数对查询结果进行计数，得到每个年月份的查询次数。接着使用<code>group by</code>子句对结果按照年月份进行分组，最后使用<code>order by</code>子句按照年月份和查询次数降序排序。</p>
+</li>
+<li><p><code>val timeResult = spark.sql(timeSQL)</code>: 这行代码使用<code>spark.sql</code>方法执行之前定义的SQL查询语句，并将结果保存在<code>timeResult</code>中。<code>spark.sql</code>方法接受一个SQL查询字符串作为参数，并返回一个DataFrame，其中包含了查询结果的数据。</p>
+</li>
+<li><p><code>timeResult.show(truncate = false)</code>: 最后，使用<code>show</code>方法打印输出查询结果。<code>show</code>方法用于显示DataFrame的内容，默认显示前20行，并且截断字段内容以便于显示。通过设置<code>truncate = false</code>，可以禁用字段内容的截断，以便完整显示字段的内容。</p>
+</li>
+</ol>
+<p>综合起来，这段代码的作用是执行SQL查询，统计每个查询时间（年月份）的查询次数，并按照年月份进行分组和降序排序，然后将查询结果打印输出。</p>
+
+      </div>
+      <div class="post-tags-categories">
+        
+        <div class="tags">
+          
+            <a href="/tags/Scala/" class="">
+              Scala
+            </a>
+          
+            <a href="/tags/Spark/" class="">
+              Spark
+            </a>
+          
+        </div>
+        
+      </div>
+      
+        <div class="copyright">
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+    <strong>author:  </strong>Orlando</a>
+    </li>
+    <li class="post-copyright-link">
+    <strong>link:  </strong>
+    <a href="/2023/07/27/Spark与Scala/" target="_blank" title="Spark与Scala">http://example.com/2023/07/27/Spark与Scala/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>Copyright notice:   </strong>
+      All articles on this website, unless otherwise stated, adopt <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">CC BY-NC-ND 4.0</a>
+      reprint policy. If reproduced, please indicate source!
+    </li>
+  </ul>
+<div>
+      
+    </article>
+    <!-- 上一篇文章和下一篇文章 -->
+    
+      <!-- 文章详情页的上一页和下一页 -->
+<div class="post-nav">
+
+
+
+
+
+  
+  <div class="post-nav-next post-nav-item">
+    <div class="post-nav-img" style="background-size: cover; 
+      background-position: center center;">
+      <img class="lazyload lazyload placeholder" src="https://s1.imagehub.cc/images/2023/07/12/2023-07-12-14.31.22.png" class="lazyload placeholder" data-srcset="https://s1.imagehub.cc/images/2023/07/12/2023-07-12-14.31.22.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" src="" alt="">
+    </div>
+    <a href="/2023/07/12/7-13-7-16%E6%8A%80%E6%9C%AF%E5%9F%B9%E8%AE%AD%E5%AE%9E%E8%AE%B0/" class="post-nav-link">
+      <div class="title">
+        Next: <i class="fas fa-angle-right"></i>
+        <div class="title-text">7.13-7.16技术培训实记</div>
+      </div>
+      <!-- <div class="content">
+        培训报告[学院组织]
+[7.13-7.16]
+培训目的本次技术培训的目的是提升参与人员在特定技术领域的知识和技能，以应对
+      </div> -->
+    </a>
+  </div>
+
+</div>
+
+    
+    
+
+    <!-- 打赏 -->
+    
+      <div id="appDonate" class="post-donate">
+  <div id="donate_board" class="donate_bar center" ref="donate">
+    <a id="btn_donate" class="btn_donate" href="javascript:;" title="打赏" @click="showDialogDrawer()"></a>
+  </div>
+  <transition name="fade">
+    <div 
+      class="donate-box-mask"
+      v-cloak 
+      v-show="visible"
+      @click="cancelDialogDrawer()"
+    >
+    </div>
+  </transition>
+  <transition name="bounce">
+    <div class="donate-box" v-cloak v-show="visible">
+      <div class="donate-box_close">
+        <i class="fas fa-times" aria-hidden="true" @click="cancelDialogDrawer" pointer></i>
+      </div>
+      <div class="donate-box_title">
+        <h4>
+          你的赏识是我前进的动力
+        </h4>
+      </div>
+      <div class="donate-box_tab">
+        <div class="Alipay" pointer :class="{'active': tabActive === 'Alipay'}" @click="changeTabActive('Alipay')">
+          支付宝
+        </div>
+        <div class="WeChatpay" pointer :class="{'active': tabActive === 'WeChatpay'}" @click="changeTabActive('WeChatpay')">
+          微信
+        </div>
+      </div>
+      <div class="donate-box_img">
+        <div class="AlipayImg" v-show="tabActive === 'Alipay'">
+          <img src="https://i.postimg.cc/mZ7DJc2p/IMG-8572.jpg" class="lazyload placeholder" data-srcset="https://i.postimg.cc/mZ7DJc2p/IMG-8572.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="支付宝打赏" />
+        </div> 
+        <div class="WeChatpayImg" v-show="tabActive === 'WeChatpay'">
+          <img src="https://i.postimg.cc/wvmv6M5v/IMG-8574.jpg" class="lazyload placeholder" data-srcset="https://i.postimg.cc/wvmv6M5v/IMG-8574.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="微信打赏" />
+        </div>
+      </div>
+    </div>
+  </transition>
+</div>
+
+<script>
+  var body = document.body || document.documentElement || window;
+  var vm = new Vue({
+    el: '#appDonate',
+    data: {
+      visible: false,
+      tabActive: 'Alipay',
+      top: 0,
+    },
+    computed: {
+    },
+    mounted() {
+    },
+    methods: {
+      showDialogDrawer() {
+        this.visible = true;
+        // 防止页面滚动，只能让弹框滚动
+        // function getScroll() {
+        //   return {
+        //     left: window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft || 0,
+        //     top: window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0
+        //   };
+        // }
+        this.top = $(document).scrollTop() // or getScroll().top
+        // console.log('aa', $('.main-content'));
+        body.style.cssText = 'overflow: hidden;';
+      },
+      cancelDialogDrawer() {
+        this.visible = false;
+        body.removeAttribute('style');
+        $(document).scrollTop(this.top)
+      },
+      changeTabActive(name) {
+        this.tabActive = name;
+      }
+    },
+    created() {}
+  })
+</script>
+    
+
+    <!-- 分享 -->
+    
+      <!-- https://github.com/overtrue/share.js -->
+<!-- 文章详情页的分享 -->
+<div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+
+<script src="/js/shareJs/social-share.min.js"></script>
+</script>
+
+<style>
+  .social-share {
+    margin: 20px 0;
+  }
+</style>
+
+
+    
+    
+    <!-- 评论 -->
+    <!-- 评论 -->
+
+  <div id="myComment">
+    
+      <div id="gitment-container"></div>
+
+    
+  </div>
+
+<!-- comment script in themes\hexo-theme-bamboo\layout\_partial\scripts\index.ejs -->
+
+
+  </div>
+
+  <!-- 目录 -->
+  <aside id='l_side'>
+  
+    
+      <section class="widget side_blogger">
+  <div class='content'>
+    
+      
+        <a class='avatar flat-box rectangle' href='/about'>
+          <img src='/default/avatar.jpg'/>
+        </a>
+      
+    
+    
+      <div class='text'>
+        
+          <h2>亦珍亦随流水去</h2>
+        
+        
+          <p>打碎金鱼缸</p>
+
+        
+        
+      </div>
+    
+    
+      <div class="social-wrapper">
+        
+          
+            <a href="mailto:ljc2481534548@163.com"
+              class="social fas fa-envelope flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+          
+            <a href="https://github.com/kclx"
+              class="social fab fa-github flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+          
+            <a href="https://twitter.com/Orlando12138"
+              class="social fab fa-twitter flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+          
+            <a href="https://www.youtube.com/channel/UCabmZFmLZCFQzFp54o3rQeA"
+              class="social fab fa-youtube flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+      </div>
+    
+  </div>
+</section>
+
+    
+  
+  
+  
+
+  <div class="layout_sticky">    
+    
+      
+<section class="widget side_toc">
+  
+  <header>
+    
+      <i style="color: " class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name' style="color: ">本文目录</span>
+    
+  </header>
+
+
+  <div class='content'>
+    <div class="toc-main">
+      <div class="toc-content">
+        <!-- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Spark%E4%B8%8EScala"><span class="toc-text">Spark与Scala</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD"><span class="toc-text">下载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8IDEA%E6%9E%84%E5%BB%BA%E4%B8%80%E4%B8%AASpark-Scala%E9%A1%B9%E7%9B%AE"><span class="toc-text">使用IDEA构建一个Spark Scala项目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A1%88%E4%BE%8B%E8%A7%A3%E6%9E%90"><span class="toc-text">案例解析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%90%E6%AD%A5%E5%88%86%E6%9E%90"><span class="toc-text">逐步分析</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8Spark-SQL%E6%A1%88%E4%BE%8B%E8%A7%A3%E6%9E%90"><span class="toc-text">使用Spark SQL案例解析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E6%9E%90"><span class="toc-text">分析</span></a></li></ol></li></ol></li></ol> -->
+        <div class="toc"></div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- 手机端目录按钮 -->
+<div id="toc-mobile-btn">
+  <i class="fas fa-list-ul" aria-hidden="true"></i>
+</div>
+
+      
+    
+  </div>
+</aside>
+
+  <!-- 图片放大 Wrap images with fancybox support -->
+  <script src="/js/wrapImage.js"></script>
+</div>
+
+<!-- 文章详情页背景图 -->
+<div id="appBgSwiper" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -2;"
+	:style="{'background-color': bgColor ? bgColor : 'transparent'}">
+	<transition-group tag="ul" :name="names">
+		<li v-for='(image,index) in img' :key='index' v-show="index === mark" class="bg-swiper-box">
+			<img :src="image" class="bg-swiper-img no-lazy">
+		</li>
+	</transition-group>
+</div>
+<script>
+	var vm = new Vue({
+		el: '#appBgSwiper',
+		data: {
+			names: 'fade' || 'fade' || 'fade', // translate-fade fade
+			mark: 0,
+			img: [],
+			bgColor: '',
+			time: null
+		},
+		methods: {   //添加方法
+			change(i, m) {
+				if (i > m) {
+					// this.names = 'fade';
+				} else if (i < m) {
+					// this.names = 'fade';
+				} else {
+					return;
+				}
+				this.mark = i;
+			},
+			prev() {
+				// this.names = 'fade';
+				this.mark--;
+				if (this.mark === -1) {
+					this.mark = 3;
+					return
+				}
+			},
+			next() {
+				// this.names = 'fade';
+				this.mark++;
+				if (this.mark === this.img.length) {
+					this.mark = 0;
+					return
+				}
+			},
+			autoPlay() {
+				// this.names = 'fade';
+				this.mark++;
+				if (this.mark === this.img.length) {
+					this.mark = 0;
+					return
+				}
+			},
+			play() {
+				let bgImgDelay = '180000' || '180000'
+				let delay = parseInt(bgImgDelay) || 180000;
+				this.time = setInterval(this.autoPlay, delay);
+			},
+			enter() {
+				clearInterval(this.time);
+			},
+			leave() {
+				this.play();
+			}
+		},
+		created() {
+			this.play()
+		},
+		beforeDestroy() {
+			clearInterval(this.time);
+		},
+		mounted() {
+			let prop = '' || '/default/defaultbgImg.jpg';
+			let isImg = prop.includes('.bmp') || prop.includes('.jpg') || prop.includes('.png') || prop.includes('.tif') || prop.includes('.gif') || prop.includes('.pcx') || prop.includes('.tga') || prop.includes('.exif') || prop.includes('.fpx') || prop.includes('.psd') || prop.includes('.cdr') || prop.includes('.pcd') || prop.includes('.dxf') || prop.includes('.ufo') || prop.includes('.eps') || prop.includes('.ai') || prop.includes('.raw') || prop.includes('.WMF') || prop.includes('.webp') || prop.includes('.jpeg') || prop.includes('http://') || prop.includes('https://')
+			if (isImg) {
+				let img = prop.split(',');
+				let configRoot = '/'
+				let arrImg = [];
+				img.forEach(el => {
+					var Expression = /http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w- .\/?%&=]*)?/;
+					var objExp = new RegExp(Expression);
+
+					if (objExp.test(el)) {
+						// http or https
+						arrImg.push(el);
+					} else {
+						// 非http or https开头
+						// 本地文件
+						let firstStr = el.charAt(0);
+						if (firstStr == '/') {
+							el = el.substr(1); // 删除第一个字符 '/',因为 configRoot最后一个字符为 /
+						}
+						el = configRoot + el;
+						arrImg.push(el);
+					}
+				})
+				this.img = arrImg;
+			} else {
+				this.bgColor = prop;
+			}
+		}
+	})
+</script>
+
+<style>
+	.bg-swiper-box {
+		position: absolute;
+		display: block;
+		width: 100%;
+		height: 100%;
+	}
+
+	.bg-swiper-img {
+		object-fit: cover;
+		width: 100%;
+		height: 100%;
+	}
+</style>
+
+
+
+
+  <script>
+  function loadMermaid() {
+    if (document.getElementsByClassName('mermaid').length) {
+      if (window.mermaidJsLoad) mermaid.init()
+      else {
+        loadScript('https://unpkg.com/mermaid/dist/mermaid.min.js').then(() => {
+          window.mermaidJsLoad = true
+          mermaid.initialize({
+            theme: 'default',
+          })
+          if ('true') {
+            mermaid.init();
+          }
+        })
+      }
+    }
+  };
+  document.addEventListener("DOMContentLoaded", function () {
+    loadMermaid();
+  })
+
+  document.addEventListener('pjax:complete', function () {
+    loadMermaid();
+  })
+  
+</script>
+
+
+      </main>
+    </div>
+
+    <!-- 页脚 -->
+    
+  
+  
+    <!-- 底部鱼儿跳动效果，依赖于jquery-->
+<div id="j-fish-skip" style=" position: relative;height: 153px;width: auto;"></div>
+<script>
+  var RENDERER = {
+    POINT_INTERVAL: 5,
+    FISH_COUNT: 3,
+    MAX_INTERVAL_COUNT: 50,
+    INIT_HEIGHT_RATE: .5,
+    THRESHOLD: 50,
+    FISH_COLOR: '',
+    init: function () {
+      this.setFishColor(); this.setParameters(), this.reconstructMethods(), this.setup(), this.bindEvent(), this.render()
+    },
+    setFishColor: function () {
+      let isDark = JSON.parse(localStorage.getItem('dark')) || JSON.parse('false');
+      if (isDark) {
+        this.FISH_COLOR = '#222'; // 暗黑色，有时间把这整成一个变量
+      } else {
+        this.FISH_COLOR = 'rgba(134, 134, 134, 0.8)' || 'rgba(66, 185, 133, 0.8)';
+      }
+    },
+    setParameters: function () {
+      this.$window = $(window), this.$container = $("#j-fish-skip"), this.$canvas = $("<canvas />"), this.context = this.$canvas.appendTo(this.$container).get(0).getContext("2d"), this.points = [], this.fishes = [], this.watchIds = []
+    },
+    createSurfacePoints: function () {
+      var t = Math.round(this.width / this.POINT_INTERVAL);
+      this.pointInterval = this.width / (t - 1), this.points.push(new SURFACE_POINT(this, 0));
+      for (var i = 1; i < t; i++) {
+        var e = new SURFACE_POINT(this, i * this.pointInterval),
+          h = this.points[i - 1];
+        e.setPreviousPoint(h), h.setNextPoint(e), this.points.push(e)
+      }
+    },
+    reconstructMethods: function () {
+      this.watchWindowSize = this.watchWindowSize.bind(this), this.jdugeToStopResize = this.jdugeToStopResize.bind(this), this.startEpicenter = this.startEpicenter.bind(this), this.moveEpicenter = this.moveEpicenter.bind(this), this.reverseVertical = this.reverseVertical.bind(this), this.render = this.render.bind(this)
+    },
+    setup: function () {
+      this.points.length = 0, this.fishes.length = 0, this.watchIds.length = 0, this.intervalCount = this.MAX_INTERVAL_COUNT, this.width = this.$container.width(), this.height = this.$container.height(), this.fishCount = this.FISH_COUNT * this.width / 500 * this.height / 500, this.$canvas.attr({
+        width: this.width,
+        height: this.height
+      }), this.reverse = !1, this.fishes.push(new FISH(this)), this.createSurfacePoints()
+    },
+    watchWindowSize: function () {
+      this.clearTimer(), this.tmpWidth = this.$window.width(), this.tmpHeight = this.$window.height(), this.watchIds.push(setTimeout(this.jdugeToStopResize, this.WATCH_INTERVAL))
+    },
+    clearTimer: function () {
+      for (; this.watchIds.length > 0;) clearTimeout(this.watchIds.pop())
+    },
+    jdugeToStopResize: function () {
+      var t = this.$window.width(),
+        i = this.$window.height(),
+        e = t == this.tmpWidth && i == this.tmpHeight;
+      this.tmpWidth = t, this.tmpHeight = i, e && this.setup()
+    },
+    bindEvent: function () {
+      this.$window.on("resize", this.watchWindowSize), this.$container.on("mouseenter", this.startEpicenter), this.$container.on("mousemove", this.moveEpicenter)
+    },
+    getAxis: function (t) {
+      var i = this.$container.offset();
+      return {
+        x: t.clientX - i.left + this.$window.scrollLeft(),
+        y: t.clientY - i.top + this.$window.scrollTop()
+      }
+    },
+    startEpicenter: function (t) {
+      this.axis = this.getAxis(t)
+    },
+    moveEpicenter: function (t) {
+      var i = this.getAxis(t);
+      this.axis || (this.axis = i), this.generateEpicenter(i.x, i.y, i.y - this.axis.y), this.axis = i
+    },
+    generateEpicenter: function (t, i, e) {
+      if (!(i < this.height / 2 - this.THRESHOLD || i > this.height / 2 + this.THRESHOLD)) {
+        var h = Math.round(t / this.pointInterval);
+        h < 0 || h >= this.points.length || this.points[h].interfere(i, e)
+      }
+    },
+    reverseVertical: function () {
+      this.reverse = !this.reverse;
+      for (var t = 0, i = this.fishes.length; t < i; t++) this.fishes[t].reverseVertical()
+    },
+    controlStatus: function () {
+      for (var t = 0, i = this.points.length; t < i; t++) this.points[t].updateSelf();
+      for (t = 0, i = this.points.length; t < i; t++) this.points[t].updateNeighbors();
+      this.fishes.length < this.fishCount && 0 == --this.intervalCount && (this.intervalCount = this.MAX_INTERVAL_COUNT, this.fishes.push(new FISH(this)))
+    },
+    render: function () {
+      requestAnimationFrame(this.render), this.controlStatus(), this.context.clearRect(0, 0, this.width, this.height), this.context.fillStyle = this.FISH_COLOR;
+      for (var t = 0, i = this.fishes.length; t < i; t++) this.fishes[t].render(this.context);
+      this.context.save(), this.context.globalCompositeOperation = "xor", this.context.beginPath(), this.context.moveTo(0, this.reverse ? 0 : this.height);
+      for (t = 0, i = this.points.length; t < i; t++) this.points[t].render(this.context);
+      this.context.lineTo(this.width, this.reverse ? 0 : this.height), this.context.closePath(), this.context.fill(), this.context.restore()
+    }
+  },
+  SURFACE_POINT = function (t, i) {
+    this.renderer = t, this.x = i, this.init()
+  };
+  SURFACE_POINT.prototype = {
+    SPRING_CONSTANT: .03,
+    SPRING_FRICTION: .9,
+    WAVE_SPREAD: .3,
+    ACCELARATION_RATE: .01,
+    init: function () {
+      this.initHeight = this.renderer.height * this.renderer.INIT_HEIGHT_RATE, this.height = this.initHeight, this.fy = 0, this.force = {
+        previous: 0,
+        next: 0
+      }
+    },
+    setPreviousPoint: function (t) {
+      this.previous = t
+    },
+    setNextPoint: function (t) {
+      this.next = t
+    },
+    interfere: function (t, i) {
+      this.fy = this.renderer.height * this.ACCELARATION_RATE * (this.renderer.height - this.height - t >= 0 ? -1 : 1) * Math.abs(i)
+    },
+    updateSelf: function () {
+      this.fy += this.SPRING_CONSTANT * (this.initHeight - this.height), this.fy *= this.SPRING_FRICTION, this.height += this.fy
+    },
+    updateNeighbors: function () {
+      this.previous && (this.force.previous = this.WAVE_SPREAD * (this.height - this.previous.height)), this.next && (this.force.next = this.WAVE_SPREAD * (this.height - this.next.height))
+    },
+    render: function (t) {
+      this.previous && (this.previous.height += this.force.previous, this.previous.fy += this.force.previous), this.next && (this.next.height += this.force.next, this.next.fy += this.force.next), t.lineTo(this.x, this.renderer.height - this.height)
+    }
+  };
+  var FISH = function (t) {
+    this.renderer = t, this.init()
+  };
+  FISH.prototype = {
+    GRAVITY: .4,
+    init: function () {
+      this.direction = Math.random() < .5, this.x = this.direction ? this.renderer.width + this.renderer.THRESHOLD : -this.renderer.THRESHOLD, this.previousY = this.y, this.vx = this.getRandomValue(4, 10) * (this.direction ? -1 : 1), this.renderer.reverse ? (this.y = this.getRandomValue(1 * this.renderer.height / 10, 4 * this.renderer.height / 10), this.vy = this.getRandomValue(2, 5), this.ay = this.getRandomValue(.05, .2)) : (this.y = this.getRandomValue(6 * this.renderer.height / 10, 9 * this.renderer.height / 10), this.vy = this.getRandomValue(-5, -2), this.ay = this.getRandomValue(-.2, -.05)), this.isOut = !1, this.theta = 0, this.phi = 0
+    },
+    getRandomValue: function (t, i) {
+      return t + (i - t) * Math.random()
+    },
+    reverseVertical: function () {
+      this.isOut = !this.isOut, this.ay *= -1
+    },
+    controlStatus: function (t) {
+      this.previousY = this.y, this.x += this.vx, this.y += this.vy, this.vy += this.ay, this.renderer.reverse ? this.y > this.renderer.height * this.renderer.INIT_HEIGHT_RATE ? (this.vy -= this.GRAVITY, this.isOut = !0) : (this.isOut && (this.ay = this.getRandomValue(.05, .2)), this.isOut = !1) : this.y < this.renderer.height * this.renderer.INIT_HEIGHT_RATE ? (this.vy += this.GRAVITY, this.isOut = !0) : (this.isOut && (this.ay = this.getRandomValue(-.2, -.05)), this.isOut = !1), this.isOut || (this.theta += Math.PI / 20, this.theta %= 2 * Math.PI, this.phi += Math.PI / 30, this.phi %= 2 * Math.PI), this.renderer.generateEpicenter(this.x + (this.direction ? -1 : 1) * this.renderer.THRESHOLD, this.y, this.y - this.previousY), (this.vx > 0 && this.x > this.renderer.width + this.renderer.THRESHOLD || this.vx < 0 && this.x < -this.renderer.THRESHOLD) && this.init()
+    },
+    render: function (t) {
+      t.save(), t.translate(this.x, this.y), t.rotate(Math.PI + Math.atan2(this.vy, this.vx)), t.scale(1, this.direction ? 1 : -1), t.beginPath(), t.moveTo(-30, 0), t.bezierCurveTo(-20, 15, 15, 10, 40, 0), t.bezierCurveTo(15, -10, -20, -15, -30, 0), t.fill(), t.save(), t.translate(40, 0), t.scale(.9 + .2 * Math.sin(this.theta), 1), t.beginPath(), t.moveTo(0, 0), t.quadraticCurveTo(5, 10, 20, 8), t.quadraticCurveTo(12, 5, 10, 0), t.quadraticCurveTo(12, -5, 20, -8), t.quadraticCurveTo(5, -10, 0, 0), t.fill(), t.restore(), t.save(), t.translate(-3, 0), t.rotate((Math.PI / 3 + Math.PI / 10 * Math.sin(this.phi)) * (this.renderer.reverse ? -1 : 1)), t.beginPath(), this.renderer.reverse ? (t.moveTo(5, 0), t.bezierCurveTo(10, 10, 10, 30, 0, 40), t.bezierCurveTo(-12, 25, -8, 10, 0, 0)) : (t.moveTo(-5, 0), t.bezierCurveTo(-10, -10, -10, -30, 0, -40), t.bezierCurveTo(12, -25, 8, -10, 0, 0)), t.closePath(), t.fill(), t.restore(), t.restore(), this.controlStatus(t)
+    }
+  }, $(function () {
+    RENDERER.init()
+    $('.dark').click(function () {
+      setTimeout(() => {
+        RENDERER.setFishColor();
+        RENDERER.context.fill();
+      });
+    })
+  });
+</script>
+  
+  <div class="footer bg-color">
+    <div class="footer-main">
+      
+        
+          <div class="footer-copyright">
+            <p>Copyright © 2023 - 2024 <a target="_blank" rel="noopener" href="https://github.com/kclx">kclx</a> | Powered by <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/">Hexo</a> | Theme <a target="_blank" rel="noopener" href="https://github.com/yuang01/theme">Bamboo</a> </p>
+
+          </div>
+        
+      
+    </div>
+  </div>
+
+
+
+    <!-- 渲染暗黑按钮 -->
+    
+      <div class="dark">
+  <div class="dark-content">
+    <i class="fas fa-moon" aria-hidden="true"></i>
+    <!-- <span>关灯</span> -->
+  </div>
+  
+</div>
+
+<script>
+  $(function() {
+    let isDark = JSON.parse(localStorage.getItem('dark'))  || JSON.parse('false');
+    if (isDark) {
+      $(".dark-content").replaceWith(
+          `
+          <div class='dark-content'>
+            <i class="fas fa-lightbulb" aria-hidden="true"></i>
+          </div>
+          `
+        );
+    }
+    $('.dark').click(function() {
+      if ($(document.body).is('.darkModel')) {
+        $(document.body).removeClass('darkModel');
+        localStorage.setItem('dark', false);
+        $(".dark-content").replaceWith(
+          `
+          <div class='dark-content'>
+            <i class="fas fa-moon" aria-hidden="true"></i>
+          </div>
+          `
+        );
+      } else {
+        $(document.body).addClass('darkModel');
+        localStorage.setItem('dark', true);
+        $(".dark-content").replaceWith(
+          `
+          <div class='dark-content'>
+            <i class="fas fa-lightbulb" aria-hidden="true"></i>
+          </div>
+          `
+        );
+      }
+    })
+  })
+</script>
+    
+    <!-- 渲染回到顶部按钮 -->
+    
+      <div class="goTop top-btn-color" pointer>
+  <i class="fas fa-arrow-up" aria-hidden="true"></i>
+</div>
+<script src="/js/goTop.js"></script>
+
+    
+    <!-- 渲染左下角音乐播放器 -->
+    
+      <link rel="stylesheet" href="/js/aplayer/APlayer@1.10.1.min.css">
+<style>
+.aplayer .aplayer-lrc p {
+  
+  display: none;
+  
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 16px !important;
+}
+
+.aplayer .aplayer-lrc p.aplayer-lrc-current {
+  
+  display: none;
+  
+  font-size: 15px;
+  color: #42b983;
+}
+
+
+.aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+  left: -66px !important;
+}
+
+.aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+  left: 0px !important;
+}
+
+
+</style>
+<meting-js  
+  class=""
+  server="netease"
+  type="playlist"
+  id="2958464971"
+  fixed='true'
+  autoplay='false'
+  theme='#42b983'
+  loop='all'
+  order='list'
+  preload='auto'
+  volume='0.7'
+  list-folded='true'
+>
+</meting-js>
+
+<!-- <style>
+  #aplayer {
+    position: fixed;
+    left: 0;
+    bottom: 300px;
+  }
+</style> -->
+<script src="https://unpkg.com/aplayer@1.10.1/dist/APlayer.min.js"></script>
+<script src="https://unpkg.com/meting@2/dist/Meting.min.js"></script>
+    
+
+    <!-- 图片放大 -->
+    
+      <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+    
+
+    <!-- 百度解析 -->
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <!-- 背景彩带 -->
+    
+      <script type="text/javascript" size="100" alpha='0.4' zIndex="-1" src="/js/ribbon.min.js"></script>
+    
+
+    <script src="/js/utils/index.js"></script>
+    <script src="/js/app.js"></script>
+    
+    <!-- 文章目录所需js -->
+<!-- <link href="/js/tocbot/tocbot.css" rel="stylesheet">
+<script src="/js/tocbot/tocbot.min.js"></script> -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.18.2/tocbot.min.js"></script>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.18.2/tocbot.css">
+
+<script>
+  var headerEl = 'h2, h3, h4',  //headers 
+    content = '.post-detail',//文章容器
+    idArr = {};  //标题数组以确定是否增加索引id
+  //add #id
+  var option = {
+    // Where to render the table of contents.
+    tocSelector: '.toc',
+    // Where to grab the headings to build the table of contents.
+    contentSelector: content,
+    // Which headings to grab inside of the contentSelector element.
+    headingSelector: headerEl,
+    scrollSmooth: true,
+    scrollSmoothOffset: -70,
+    // headingsOffset: -($(window).height() * 0.4 - 45),
+    headingsOffset: -($(window).height() * 0.4 - 70),
+    // positionFixedSelector: '.toc-main',
+    // positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto',
+    activeLinkClass: 'is-active-link',
+    orderedList: true,
+    collapseDepth: 20,
+    // onClick: function (e) {},
+  }
+  if ($('.toc').length > 0) {
+
+    $(content).children(headerEl).each(function () {
+      //去除空格以及多余标点
+      var headerId = $(this).text().replace(/[\s|\~|`|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\_|\+|\=|\||\|\[|\]|\{|\}|\;|\:|\"|\'|\,|\<|\.|\>|\/|\?|\：|\，|\。]/g, '');
+
+      headerId = headerId.toLowerCase();
+      if (idArr[headerId]) {
+        //id已经存在
+        $(this).attr('id', headerId + '-' + idArr[headerId]);
+        idArr[headerId]++;
+      }
+      else {
+        //id未存在
+        idArr[headerId] = 1;
+        $(this).attr('id', headerId);
+      }
+    });
+
+    document.addEventListener("DOMContentLoaded", function () {
+      tocbot.init(option);
+      mobileTocClick();
+    });
+
+  }
+
+  window.tocScrollFn = function () {
+    return bamboo.throttle(function () {
+      findHeadPosition();
+    }, 100)()
+  }
+  window.addEventListener('scroll', tocScrollFn);
+
+  const findHeadPosition = function (top) {
+    if ($('.toc-list').length <= 0) {
+      return false;
+    }
+    setTimeout(() => {  // or DOMContentLoaded 
+      autoScrollToc();
+    }, 0);
+  }
+
+  const autoScrollToc = function () {
+    const $activeItem = document.querySelector('.is-active-link');
+    const $cardToc = document.querySelector('.toc-content');
+    const activePosition = $activeItem.getBoundingClientRect().top
+    const sidebarScrollTop = $cardToc.scrollTop
+    if (activePosition > (document.documentElement.clientHeight - 100)) {
+      $cardToc.scrollTop = sidebarScrollTop + 150
+    }
+    if (activePosition < 150) {
+      $cardToc.scrollTop = sidebarScrollTop - 150
+    }
+  }
+
+  document.addEventListener('pjax:send', function () {
+    if ($('.toc').length) {
+      tocbot.destroy();
+    }
+  });
+
+  document.addEventListener('pjax:complete', function () {
+    if ($('.toc').length) {
+      tocbot.init(option);
+      mobileTocClick();
+    }
+  });
+  
+  // 手机端toc按钮点击出现目录
+  const mobileTocClick = function () {
+    const $cardTocLayout = document.getElementsByClassName('side_toc')[0];
+    const $cardToc = $cardTocLayout.getElementsByClassName('toc-content')[0];
+    let right = '45px';
+    if (window.innerWidth >= 551 && window.innerWidth <= 992) {
+      right = '100px'
+    }
+    const mobileToc = {
+      open: () => {
+        $cardTocLayout.style.cssText = 'animation: toc-open .3s; opacity: 1; right: ' + right
+      },
+
+      close: () => {
+        $cardTocLayout.style.animation = 'toc-close .2s'
+        setTimeout(() => {
+          $cardTocLayout.style.cssText = "opacity:''; animation: ''; right: ''"
+        }, 100)
+      }
+    }
+    document.getElementById('toc-mobile-btn').addEventListener('click', () => {
+      if (window.getComputedStyle($cardTocLayout).getPropertyValue('opacity') === '0') mobileToc.open()
+      else mobileToc.close()
+    })
+
+    $cardToc.addEventListener('click', (e) => {
+      if (window.innerWidth < 992) { // 小于992px的时候
+        mobileToc.close()
+      }
+    })
+  }
+</script>
+
+<style>
+  /* .is-position-fixed {
+    position: sticky !important;
+    top: 74px;
+  }
+
+  .toc-main ul {
+    counter-reset: show-list;
+  }
+
+  .toc-main ul li::before {
+    content: counter(item)".";
+    display: block;
+    position: absolute;
+    left: 12px;
+    top: 0;
+  } */
+</style>
+ 
+
+<!-- 设置导航背景 -->
+<script>
+  let setHeaderClass = () => {
+    const nav = $('#navHeader');
+    const navTop = nav.outerHeight();
+    const winTop = $(window).scrollTop();
+    if(winTop > navTop) {
+      nav.addClass('header-bg-color');
+    }
+    else {
+      nav.removeClass('header-bg-color');
+    }
+  };
+
+  let scrollCollect = () => {
+    return bamboo.throttle(function (e) {
+      setHeaderClass();
+    }, 200)()
+  }
+
+  let initHeaderBg = () => {
+    setHeaderClass();
+  }
+
+  setHeaderClass();
+  window.addEventListener('scroll', scrollCollect);
+
+  document.addEventListener('pjax:send', function () {
+    window.removeEventListener('scroll', scrollCollect)
+  })
+  document.addEventListener('pjax:complete', function () {
+    window.addEventListener('scroll', scrollCollect);
+    setHeaderClass();
+  })
+</script> 
+
+<!-- 渲染issues标签里的内容 -->
+<script>
+  function loadIssuesJS() {
+    if ($(".post-detail").find(".issues-api").length == 0) {
+      return;
+    } 
+    loadScript('/js/issues/index.js');
+  };
+  $(function () {
+    loadIssuesJS();
+  });
+  document.addEventListener('pjax:complete', function () {
+    if (typeof IssuesAPI == "undefined") {
+      loadIssuesJS();
+    }
+  })
+</script>
+
+<!-- 渲染远程json加载的图片标签(getPhotoOnline)里的内容 -->
+<script>
+  function loadPhotoOnlineJS() {
+    if ($(".post-detail").find(".getJsonPhoto-api").length == 0) {
+      return;
+    } 
+    loadScript('/js/getPhotoOnline/index.js');
+  };
+  $(function () {
+    loadPhotoOnlineJS();
+  });
+  document.addEventListener('pjax:complete', function () {
+    if (typeof getPhotoJson == "undefined") {
+      loadPhotoOnlineJS();
+    }
+  })
+</script>
+
+<!-- 渲染远程json加载的talk标签(getTalkOnline)里的内容 -->
+<script>
+  function loadTalkOnlineJS() {
+    if ($(".post-detail").find(".getJsonTalk-api").length == 0) {
+      return;
+    } 
+    loadScript('https://cdnjs.cloudflare.com/ajax/libs/waterfall.js/1.0.2/waterfall.min.js'); // 瀑布流插件，https://raphamorim.io/waterfall.js/
+    loadScript('/js/getTalkOnline/index.js');
+  };
+  $(function () {
+    loadTalkOnlineJS();
+  });
+  document.addEventListener('pjax:complete', function () {
+    if (typeof getTalkJson == "undefined") {
+      loadTalkOnlineJS();
+    }
+  })
+</script>
+
+<!-- 渲染远程json加载的site-card标签(getSiteOnline)里的内容 -->
+<script>
+  function loadSiteOnlineJS() {
+    if ($(".post-detail").find(".getJsonSite-api").length == 0) {
+      return;
+    } 
+    loadScript('/js/getSiteOnline/index.js');
+  };
+  $(function () {
+    loadSiteOnlineJS();
+  });
+  document.addEventListener('pjax:complete', function () {
+    if (typeof getSiteJson == "undefined") {
+      loadSiteOnlineJS();
+    }
+  })
+</script>
+
+<!-- 输入框打字特效 -->
+<!-- 输入框打字特效 -->
+
+  <script src="/js/activate-power-mode.js"></script>
+  <script>
+    POWERMODE.colorful = true;  // 打开随机颜色特效
+    POWERMODE.shake = false;    // 关闭输入框抖动
+    document.body.addEventListener('input', POWERMODE);//监听打字事件
+  </script>
+
+
+<!-- markdown代码一键复制功能 -->
+
+  <link rel="stylesheet" href="https://unpkg.com/v-plugs-ayu/lib/ayu.css">
+  <script src="https://unpkg.com/v-plugs-ayu/lib/ayu.umd.min.js"></script>
+  <script src="/js/clipboard/clipboard.min.js"></script>
+  <div id="appCopy">
+  </div>
+  <script data-pjax>
+    var vm = new Vue({
+      el: '#appCopy',
+      data: {
+      },
+      computed: {
+      },
+      mounted() {
+        const that = this;
+        var copy = 'copy';
+        /* code */
+        var initCopyCode = function () {
+          var copyHtml = '';
+          copyHtml += '<button class="btn-copy" data-clipboard-snippet="" style="position:absolute;top:0;right:0;z-index:1;">';
+          copyHtml += '<i class="fas fa-copy"></i><span>' + copy + '</span>';
+          copyHtml += '</button>';
+          $(".post-detail pre").not('.gutter pre').wrap("<div class='codeBox' style='position:relative;width:100%;'></div>")
+          $(".post-detail pre").not('.gutter pre').before(copyHtml);
+          new ClipboardJS('.btn-copy', {
+            target: function (trigger) {
+              return trigger.nextElementSibling;
+            }
+          });
+        }
+        initCopyCode();
+        $('.btn-copy').unbind('click').bind('click', function () {
+          doSomething();
+        })
+        $(document).unbind('keypress').bind('keypress', function (e) {
+          if (e.ctrlKey && e.keyCode == 67) {
+            doSomething();
+          }
+        })
+
+        function doSomething() {
+          that.$notify({
+            title: "成功",
+            content: "代码已复制，请遵守相关授权协议。",
+            type: 'success'
+          })
+        }
+      },
+      methods: {
+      },
+      created() { }
+    })
+  </script>
+  
+
+<!-- 图片懒加载 -->
+<script defer src="https://unpkg.com/vanilla-lazyload@17.1.0/dist/lazyload.min.js"></script>
+<script>
+  // https://www.npmjs.com/package/vanilla-lazyload
+  // Set the options globally
+  // to make LazyLoad self-initialize
+  window.lazyLoadOptions = {
+    elements_selector: ".lazyload",
+    threshold: 0
+  };
+  // Listen to the initialization event
+  // and get the instance of LazyLoad
+  window.addEventListener(
+    "LazyLoad::Initialized",
+    function (event) {
+      window.lazyLoadInstance = event.detail.instance;
+    },
+    false
+  );
+  document.addEventListener('DOMContentLoaded', function () {
+    lazyLoadInstance.update();
+  });
+  document.addEventListener('pjax:complete', function () {
+    lazyLoadInstance.update();
+  });
+</script>
+
+
+<!-- 卡片滚动动画 -->
+   
+
+<!-- 评论所需js -->
+
+  
+    <script type="text/javascript">
+  var utteranceCommon = {};
+
+  function check_utterance() {
+    let isDark = JSON.parse(localStorage.getItem('dark')) || JSON.parse('false');
+    if (isDark) {
+      utteranceCommon.Theme = 'github-dark';
+    } else {
+      utteranceCommon.Theme = 'github-light';
+    }
+
+    return document.getElementById("gitment-container");
+  }
+  comment_el = '#gitment-container';
+  load_utterance = function () {
+    if ($(comment_el).length) {
+      // 匿名函数，防止污染全局变量
+      const HEAD = check_utterance();
+
+      var utterances = document.createElement('script');
+      utterances.type = 'text/javascript';
+      utterances.async = true;
+      utterances.setAttribute('issue-term', 'pathname')
+      utterances.setAttribute('theme', utteranceCommon.Theme)
+      utterances.setAttribute('repo', 'kclx/kclx.github.io')
+      utterances.crossorigin = 'anonymous';
+      utterances.src = 'https://utteranc.es/client.js';
+      // content 是要插入评论的地方
+      document.getElementById('gitment-container').appendChild(utterances);
+
+    }
+  }
+
+  function dark_utterance() {
+    const HEAD = check_utterance();
+    if (!HEAD) return;
+    const message = {
+      type: 'set-theme',
+      theme: utteranceCommon.Theme
+    };
+    const utteranceIframe = document.querySelector('iframe');
+    utteranceIframe.contentWindow.postMessage(message, 'https://utteranc.es');
+  }
+
+  $(document).ready(load_utterance);
+  document.addEventListener('pjax:complete', function () {
+    load_utterance();
+  });
+
+  $('.dark').click(function () {
+    setTimeout(() => {
+      dark_utterance();
+    });
+  })
+
+</script>
+
+<style>
+  .utterances {
+    max-width: inherit !important;
+  }
+</style>
+  
+
+
+<!-- 鼠标点击特效 -->
+<!-- 爱心点击 -->
+
+  
+    <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 999; pointer-events: none;" ></canvas>
+    <script src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
+    <script src="/js/cursor/explosion.min.js"></script>
+  
+
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" data-pjax></script>
+
+
+<!-- 轮播图标签 -->
+<script>
+  var bambooSwiperTag = {};
+  function load_swiper() {
+    if (!document.querySelectorAll(".post-swiper-container")[0]) return;
+    loadCSS("https://unpkg.com/swiper@6/swiper-bundle.min.css")
+    loadScript("https://unpkg.com/swiper@6/swiper-bundle.min.js").then(() => {
+      pjax_swiper();
+    });
+  }
+
+  load_swiper();
+
+  function pjax_swiper() {
+    bambooSwiperTag.swiper = new Swiper('.post-swiper-container', {
+      slidesPerView: 'auto',
+      spaceBetween: 8,
+      centeredSlides: true,
+      loop: true,
+      autoplay: true ? {
+        delay: 3000,
+        stopOnLastSlide: false,
+        disableOnInteraction: false,
+      } : false,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      on:{
+        init: function(){
+          swiperAnimateCache(this); //隐藏动画元素 
+          swiperAnimate(this); //初始化完成开始动画
+        }, 
+        slideChangeTransitionEnd: function(){ 
+          swiperAnimate(this); //每个slide切换结束时也运行当前slide动画
+          //this.slides.eq(this.activeIndex).find('.ani').removeClass('ani'); 动画只展现一次，去除ani类名
+        } 
+      }
+    });
+  }
+
+  document.addEventListener('pjax:complete', function () {
+    if (!document.querySelectorAll(".post-swiper-container")[0]) return;
+    if (typeof bambooSwiperTag.swiper === "undefined") {
+      load_swiper();
+    } else {
+      pjax_swiper();
+    }
+  });
+</script>
+    <!-- pjax -->
+    
+
+<!-- pjax -->
+
+
+  <script src="/js/pjax@0.2.8/index.js"></script>
+  
+    <!-- 样式位于：source/css/_third-party/pjaxanimate.styl -->
+
+<div class="pjax-animate">
+  
+    <div class="loading-circle"><div id="loader-circle"></div></div>
+    <script>
+      window.ShowLoading = function() {
+        $(".loading-circle").css("display", "block");
+      };
+      window.HideLoading = function() {
+        $(".loading-circle").css("display", "none");
+      }
+    </script>
+  
+	<script>
+    document.addEventListener('pjax:complete', function () {
+      window.HideLoading();
+    })
+    document.addEventListener('pjax:send', function () {
+      window.ShowLoading();
+    })
+    document.addEventListener('pjax:error', function () {
+      window.HideLoading();
+    })
+	</script>
+</div>
+
+  
+
+  <script>
+    var pjax = new Pjax({
+      elements: 'a[href]:not([href^="#"]):not([href="javascript:void(0)"]):not([no-pjax])',   // 拦截正常带链接的 a 标签
+      selectors: ["#pjax-container","title"],                                   // 根据实际需要确认重载区域
+      cacheBust: false,   // url 地址追加时间戳，用以避免浏览器缓存
+      timeout: 5000
+    });
+
+    document.addEventListener('pjax:send', function (e) {
+
+      try {
+        var currentUrl = window.location.pathname;
+        var targetUrl = e.triggerElement.href;
+        var banUrl = [""];
+        if (banUrl[0] != "") {
+          banUrl.forEach(item => {
+            if(currentUrl.indexOf(item) != -1 || targetUrl.indexOf(item) != -1) {
+              window.location.href = targetUrl;
+            }
+          });
+        }
+      } catch (error) {}
+
+      $(window).unbind('resize');
+      $(window).unbind('scroll');
+      $(document).unbind('scroll');
+      $(document).unbind('click');
+      $('body').unbind('click');
+
+    })
+    
+    document.addEventListener('pjax:complete', function () {
+      $('script[data-pjax], .pjax-reload script').each(function () {
+        $(this).parent().append($(this).remove());
+      });
+    });
+
+    document.addEventListener('pjax:error', function (e) {
+      window.location.href = e.triggerElement.href;
+    })
+    
+    // 刷新不从顶部开始
+    document.addEventListener("DOMContentLoaded", function () {
+      history.scrollRestoration = 'auto';
+    })
+  </script>
+
+
+
+  </body>
+</html>
