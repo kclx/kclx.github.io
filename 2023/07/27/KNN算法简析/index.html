@@ -11,7 +11,7 @@
   <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-  <title>Categories | Orlando</title>
+  <title>KNN算法简析 | Orlando</title>
 
   <link rel="icon" type="image/svg+xml" href="/main.svg">
   <link rel="stylesheet" href="https://at.alicdn.com/t/font_1911880_c1nvbyezg17.css">
@@ -559,75 +559,721 @@
 </header>
         <!-- 内容区域 -->
         
-<div class="bg-dark-floor" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -2;"></div>
-<div class="bg-light-floor-categories" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -3;"></div>
+ <!-- prismjs 代码高亮 -->
+ 
 
-<div class="categories-header" style="background-image:url('/default/categories.jpeg')">
-    <div class="categories-header-title">
-        categories
+
+<div class="bg-dark-floor" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -1;"></div>
+
+
+  <!-- 文章详情页顶部图片和标题 -->
+
+
+
+
+<div class="post-detail-header" id="thumbnail_canvas" style="background-repeat: no-repeat; background-size: cover; 
+  background-position: center center;position: relative;background-image:url('https://s1.imagehub.cc/images/2023/07/27/2023-07-27-19.23.37.png')">
+  <div class="post-detail-header-mask"></div>
+  <canvas id="header_canvas"style="position:absolute;bottom:0;pointer-events:none;"></canvas>
+  
+  <div class="post-detail-header_info-box">
+    <div class="title-box">
+      <span class="title">
+        KNN算法简析
+      </span>
     </div>
-    <div class="categories-header-desc">
     
-        <span class="title" id="categories-header-desc"></span>
-    <script>
-  function typedFn() {
-    const el = '#categories-header-desc';
-    const type = 'categories';
-    let desc = '愿你如风，被人温柔以待'
-    var typed = new Typed(el, {
-      strings: [desc],
-      startDelay: 100,
-      typeSpeed: 100,
-      loop: true,
-      backSpeed: 50,
-      showCursor: true
-    });
-  }
-  typedFn();
+    
+      
+        <span class="post-detail-header_date">
+          <i class="fas fa-calendar"></i> Published in：2023-07-27 |
+        </span>
+      
+
+      
+        <span class="post-detail-header_categories">
+          <i class="iconfont iconbookmark1"></i> category：
+          
+            <a href="/categories/Computer-Technology/" class="post-detail-header_category">
+              Computer Technology
+            </a>
+          
+        </span>
+      
+
+      
+        <div class="post-detail-header_wordcount">
+          <span class="totalcount">
+            <i class="fas fa-file-text-o"></i> Words: 3.2k |
+          </span>
+  
+          <span class="min2read">
+            <i class="fas fa-clock"></i> Reading time: 12min |
+          </span>
+  
+          
+            <span class="reading">
+              <i class="fas fa-eye"></i> reading：<span id="busuanzi_value_page_pv"></span>
+            </span>
+          
+        </div>
+      
+    
+  </div>
+  
+  
+    <script src="/js/bubble/bubble.js"></script>
+  
+</div>
+
+
+
+
+
+<div class="post-detail-content post-row" 
+  style="padding-top: 0px;">
+  <div class="main-content">
+    <article class="post post-detail">
+      <div class="post-content">
+        <h1 id="KNN算法简析"><a href="#KNN算法简析" class="headerlink" title="KNN算法简析"></a>KNN算法简析</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>K最近邻算法（K-Nearest Neighbors，KNN）是一种常用的监督学习算法，用于分类和回归问题。它是一种简单而有效的算法，在实践中广泛应用。KNN算法基于实例之间的相似性来进行分类或回归预测。</p>
+<p>以下是KNN算法的概述：</p>
+<ol>
+<li><p>算法原理：</p>
+<ul>
+<li>对于分类问题，KNN算法通过测量新样本点与训练数据集中已标记样本点之间的距离来进行分类。它选择与新样本点距离最近的K个已标记样本点，并根据这K个点中占多数的类别来对新样本进行分类。</li>
+<li>对于回归问题，KNN算法计算新样本点与训练数据集中已标记样本点之间的距离，然后选择距离最近的K个样本点，并使用这K个样本点的平均值（或加权平均值）作为新样本点的预测值。</li>
+</ul>
+</li>
+<li><p>距离度量：</p>
+<ul>
+<li>在KNN算法中，常用的距离度量方法包括欧氏距离（Euclidean distance）、曼哈顿距离（Manhattan distance）和闵可夫斯基距离（Minkowski distance）。欧氏距离在连续特征空间中广泛使用，而曼哈顿距离对于具有稀疏特征的数据集更为适用。</li>
+</ul>
+</li>
+<li><p>确定K值：</p>
+<ul>
+<li>K值是KNN算法中的一个重要参数。它表示选择多少个最近邻来进行分类或回归。较小的K值可能会导致模型复杂，容易受到噪声的影响，而较大的K值可能会导致模型过于简单，忽略了局部的数据模式。通常，K值的选择通过交叉验证等技术来进行调优。</li>
+</ul>
+</li>
+<li><p>优缺点：</p>
+<ul>
+<li>优点：KNN算法简单易懂，易于实现，对于多类别问题表现良好。它不需要对数据进行假设，适用于非线性数据。</li>
+<li>缺点：KNN算法计算复杂度较高，特别是在大规模数据集上。对于高维数据，容易受到维度灾难的影响。此外，KNN算法对于不平衡数据集的处理效果可能较差。</li>
+</ul>
+</li>
+<li><p>实现步骤：</p>
+<ul>
+<li>加载数据集。</li>
+<li>选择距离度量方法。</li>
+<li>选择K值。</li>
+<li>对于分类问题，计算新样本与训练样本的距离，选择最近的K个样本进行投票得出分类结果。</li>
+<li>对于回归问题，计算新样本与训练样本的距离，选择最近的K个样本进行平均（或加权平均）得出预测值。</li>
+</ul>
+</li>
+</ol>
+<p>总结：KNN算法是一种简单而强大的算法，适用于许多分类和回归问题。它的实现简单，但在大规模数据集上计算效率较低。合理选择K值以及适当的距离度量方法是使用KNN算法时需要注意的要点。</p>
+<h2 id="涉及到的数学公式"><a href="#涉及到的数学公式" class="headerlink" title="涉及到的数学公式"></a>涉及到的数学公式</h2><ol>
+<li><p>欧氏距离（Euclidean distance）：<br>$$ d(A, B) &#x3D; \sqrt{\sum_{i&#x3D;1}^{n}(x_i - y_i)^2} $$</p>
+</li>
+<li><p>曼哈顿距离（Manhattan distance）：<br>$$ d(A, B) &#x3D; \sum_{i&#x3D;1}^{n}|x_i - y_i| $$</p>
+</li>
+<li><p>KNN分类公式：<br>$$ \text{Class}(\text{new_sample}) &#x3D; \text{argmax}\left(\sum_{i}{\mathbb{I}(label_i &#x3D; c) \text{ for } i \text{ in neighbors}}\right) $$</p>
+<p> 其中，$\text{Class}(\text{new_sample})$ 表示新样本点的预测类别，$label_i$ 是第 $i$ 个邻居样本的类别，$c$ 表示所有可能的类别，$\mathbb{I}(condition)$ 是指示函数，如果 $condition$ 为真，则 $\mathbb{I}(condition) &#x3D; 1$，否则为 0。 $\text{argmax}$ 函数返回使括号内表达式最大的类别 $c$。</p>
+</li>
+<li><p>KNN回归公式：<br>$$ \text{Prediction}(\text{new_sample}) &#x3D; \frac{1}{K}\sum_{i}{label_i \text{ for } i \text{ in neighbors}} $$</p>
+</li>
+</ol>
+<p>其中，$\text{Prediction}(\text{new_sample})$ 表示新样本点的回归预测值，$label_i$ 是第 $i$ 个邻居样本的回归标签。</p>
+<h3 id="欧式距离与曼哈顿距离"><a href="#欧式距离与曼哈顿距离" class="headerlink" title="欧式距离与曼哈顿距离"></a>欧式距离与曼哈顿距离</h3><p>欧式距离（Euclidean distance）和曼哈顿距离（Manhattan distance）是两种常用的距离度量方法，用于衡量在n维空间中两个点之间的距离。它们在计算方法和性质上有一些异同：</p>
+<p>异同点如下：</p>
+<ol>
+<li><p>计算方法：</p>
+<ul>
+<li><p>欧式距离：欧式距离是两点之间直线距离的度量，也称为直线距离。在n维空间中，欧式距离计算公式为：<br>$$ d_{\text{euclidean}}(A, B) &#x3D; \sqrt{\sum_{i&#x3D;1}^{n}(x_i - y_i)^2} $$</p>
+</li>
+<li><p>曼哈顿距离：曼哈顿距离是两点之间沿坐标轴方向的距离之和，也称为城市街区距离。在n维空间中，曼哈顿距离计算公式为：<br>$$ d_{\text{manhattan}}(A, B) &#x3D; \sum_{i&#x3D;1}^{n}|x_i - y_i| $$</p>
+</li>
+</ul>
+</li>
+<li><p>距离形状：</p>
+<ul>
+<li>欧式距离：欧式距离在几何上对应于直线的长度，因此在n维空间中呈现圆形等距离轮廓。</li>
+<li>曼哈顿距离：曼哈顿距离在几何上对应于沿坐标轴方向的步行距离，因此在n维空间中呈现方形等距离轮廓。</li>
+</ul>
+</li>
+<li><p>敏感度：</p>
+<ul>
+<li>欧式距离：欧式距离对各个维度的差异比较敏感，当特征维度之间的差异很大时，欧式距离可能会受到影响。</li>
+<li>曼哈顿距离：曼哈顿距离对各个维度的差异不那么敏感，因为它只考虑了沿坐标轴方向的距离。</li>
+</ul>
+</li>
+<li><p>计算效率：</p>
+<ul>
+<li>欧式距离：计算欧式距离需要进行平方和开方的运算，计算相对较慢。</li>
+<li>曼哈顿距离：计算曼哈顿距离只需要进行绝对值和求和运算，计算相对较快。</li>
+</ul>
+</li>
+</ol>
+<p>在实际应用中，选择使用欧式距离还是曼哈顿距离取决于数据的特点和具体问题。通常情况下，欧式距离更适合用于连续特征空间，而曼哈顿距离更适合用于具有稀疏特征或特征之间具有明显分隔的数据。在KNN算法中，我们可以根据实际情况选择合适的距离度量方法来获得更好的分类或回归结果。</p>
+<h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><h3 id="Python实现"><a href="#Python实现" class="headerlink" title="Python实现"></a>Python实现</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> Counter</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">KNNClassifier</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, k=<span class="number">3</span></span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">        Initialize the KNNClassifier.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">        Parameters:</span></span><br><span class="line"><span class="string">            k (int): Number of nearest neighbors to consider for classification. Default is 3.</span></span><br><span class="line"><span class="string">        &quot;&quot;&quot;</span></span><br><span class="line">        self.k = k</span><br><span class="line">        self.X_train = <span class="literal">None</span></span><br><span class="line">        self.y_train = <span class="literal">None</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">fit</span>(<span class="params">self, X_train, y_train</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">        Train the KNN classifier.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">        Parameters:</span></span><br><span class="line"><span class="string">            X_train (numpy.ndarray): Training feature matrix.</span></span><br><span class="line"><span class="string">            y_train (numpy.ndarray): Labels for the training data.</span></span><br><span class="line"><span class="string">        &quot;&quot;&quot;</span></span><br><span class="line">        self.X_train = X_train</span><br><span class="line">        self.y_train = y_train</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">_euclidean_distance</span>(<span class="params">self, point1, point2</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">        Calculate the Euclidean distance between two points.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">        Parameters:</span></span><br><span class="line"><span class="string">            point1 (numpy.ndarray): First data point.</span></span><br><span class="line"><span class="string">            point2 (numpy.ndarray): Second data point.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">        Returns:</span></span><br><span class="line"><span class="string">            float: The Euclidean distance between the two points.</span></span><br><span class="line"><span class="string">        &quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">return</span> np.sqrt(np.<span class="built_in">sum</span>((point1 - point2) ** <span class="number">2</span>))</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">predict</span>(<span class="params">self, X_test, predict_type=<span class="string">&quot;classify&quot;</span></span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">        Predict class labels or regression values for the given input data.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">        Parameters:</span></span><br><span class="line"><span class="string">            X_test (numpy.ndarray): Input feature matrix for prediction.</span></span><br><span class="line"><span class="string">            predict_type (str): Type of prediction, either &quot;classify&quot; or &quot;regress&quot;. Default is &quot;classify&quot;.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">        Returns:</span></span><br><span class="line"><span class="string">            numpy.ndarray: Predicted class labels or regression values.</span></span><br><span class="line"><span class="string">        &quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">if</span> predict_type == <span class="string">&quot;classify&quot;</span>:</span><br><span class="line">            y_pred = [self._predict_single_classify(x) <span class="keyword">for</span> x <span class="keyword">in</span> X_test]</span><br><span class="line">            <span class="keyword">return</span> np.array(y_pred)</span><br><span class="line">        <span class="keyword">if</span> predict_type == <span class="string">&quot;regress&quot;</span>:</span><br><span class="line">            y_pred = [self._predict_single_regress(x) <span class="keyword">for</span> x <span class="keyword">in</span> X_test]</span><br><span class="line">            <span class="keyword">return</span> y_pred</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">_predict_single_classify</span>(<span class="params">self, x</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">        Classify a single data point.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">        Parameters:</span></span><br><span class="line"><span class="string">            x (numpy.ndarray): Input data point for classification.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">        Returns:</span></span><br><span class="line"><span class="string">            int: Predicted class label for the input data point.</span></span><br><span class="line"><span class="string">        &quot;&quot;&quot;</span></span><br><span class="line">        distances = [self._euclidean_distance(x, x_train) <span class="keyword">for</span> x_train <span class="keyword">in</span> self.X_train]</span><br><span class="line">        k_indices = np.argsort(distances)[:self.k]  <span class="comment"># Get indices of k nearest neighbors</span></span><br><span class="line">        k_nearest_labels = [self.y_train[i] <span class="keyword">for</span> i <span class="keyword">in</span> k_indices]  <span class="comment"># Get class labels of k nearest neighbors</span></span><br><span class="line">        most_common = Counter(k_nearest_labels).most_common(</span><br><span class="line">            <span class="number">1</span>)  <span class="comment"># Find the most common class label among k nearest neighbors</span></span><br><span class="line">        <span class="keyword">return</span> most_common[<span class="number">0</span>][<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">_predict_single_regress</span>(<span class="params">self, x</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">        Make a regression prediction for a single data point.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">        Parameters:</span></span><br><span class="line"><span class="string">            x (numpy.ndarray): Input data point for regression prediction.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">        Returns:</span></span><br><span class="line"><span class="string">            float: Predicted regression value for the input data point.</span></span><br><span class="line"><span class="string">        &quot;&quot;&quot;</span></span><br><span class="line">        distances = [self._euclidean_distance(x, x_train) <span class="keyword">for</span> x_train <span class="keyword">in</span> self.X_train]</span><br><span class="line">        k_indices = np.argsort(distances)[:self.k]  <span class="comment"># Get indices of k nearest neighbors</span></span><br><span class="line">        k_nearest_y = [self.y_train[i] <span class="keyword">for</span> i <span class="keyword">in</span> k_indices]  <span class="comment"># Get target values of k nearest neighbors</span></span><br><span class="line">        <span class="keyword">return</span> np.mean(k_nearest_y)  <span class="comment"># Use the mean of nearest target values as the prediction</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h3><p>类的使用方式</p>
+<ol>
+<li>导入该类：<code>from knn_classifier import KNNClassifier</code> (假设该类的定义保存在名为 <code>knn_classifier.py</code> 的文件中)</li>
+<li>创建KNN分类器对象：<code>knn = KNNClassifier(k=k_value)</code>，其中 <code>k_value</code> 是最近邻居的数量，可以选择性地指定，默认为 3。</li>
+<li>使用训练数据对分类器进行训练：<code>knn.fit(X_train, y_train)</code>，其中 <code>X_train</code> 是训练数据的特征矩阵，<code>y_train</code> 是对应的类标签。</li>
+<li>对新数据进行预测：<code>predictions = knn.predict(X_test, predict_type=&quot;classify&quot;)</code>，其中 <code>X_test</code> 是包含新数据点的特征矩阵，<code>predict_type</code> 可以选择 “classify” 或 “regress”，分别用于分类和回归预测。</li>
+</ol>
+<p>方法说明</p>
+<ol>
+<li><code>__init__(self, k=3)</code>: 构造函数，初始化 KNN 分类器对象，可以传入最近邻居的数量 <code>k</code>，默认为 3。</li>
+<li><code>fit(self, X_train, y_train)</code>: 训练 KNN 分类器，将特征矩阵 <code>X_train</code> 和对应的类标签 <code>y_train</code> 用于模型训练。</li>
+<li><code>predict(self, X_test, predict_type=&quot;classify&quot;)</code>: 预测给定输入数据的类标签或回归值，根据 <code>predict_type</code> 参数选择分类预测或回归预测。</li>
+<li><code>_euclidean_distance(self, point1, point2)</code>: 计算两个数据点之间的欧几里得距离。</li>
+<li><code>_predict_single_classify(self, x)</code>: 对单个数据点进行分类预测，返回预测的类标签。</li>
+<li><code>_predict_single_regress(self, x)</code>: 对单个数据点进行回归预测，返回预测的回归值。</li>
+</ol>
+<p>属性说明</p>
+<ol>
+<li><code>k</code>: 最近邻居的数量，在构造函数中初始化，用于 KNN 算法中指定最近的邻居数目。</li>
+<li><code>X_train</code>: 训练数据的特征矩阵，用于存储训练过程中的输入特征。</li>
+<li><code>y_train</code>: 训练数据的类标签，用于存储训练过程中的目标标签。</li>
+</ol>
+<h3 id="示例用法"><a href="#示例用法" class="headerlink" title="示例用法"></a>示例用法</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 生成一些示例数据</span></span><br><span class="line">X_train = np.array([[<span class="number">1</span>, <span class="number">2</span>], [<span class="number">2</span>, <span class="number">3</span>], [<span class="number">3</span>, <span class="number">4</span>], [<span class="number">5</span>, <span class="number">1</span>], [<span class="number">6</span>, <span class="number">2</span>], [<span class="number">7</span>, <span class="number">3</span>]])</span><br><span class="line">y_train = np.array([<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>])</span><br><span class="line"></span><br><span class="line">knn = KNNClassifier(k=<span class="number">3</span>)  <span class="comment"># 创建KNN分类器对象</span></span><br><span class="line">knn.fit(X_train, y_train)  <span class="comment"># 使用示例数据进行训练</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 预测新数据点</span></span><br><span class="line">X_test = np.array([[<span class="number">2</span>, <span class="number">1</span>], [<span class="number">7</span>, <span class="number">4</span>]])</span><br><span class="line">predictions = knn.predict(X_test, predict_type=<span class="string">&quot;classify&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;预测结果:&quot;</span>, predictions)</span><br></pre></td></tr></table></figure>
+
+<p>以上代码展示了使用 <code>KNNClassifier</code> 类的示例用法。首先，我们创建一个包含两个类的示例数据集 <code>X_train</code> 和 <code>y_train</code>，然后创建了一个 <code>KNNClassifier</code> 对象，并使用示例数据进行训练。接着，我们使用新数据 <code>X_test</code> 对模型进行分类预测，并打印预测结果。</p>
+<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><ol>
+<li><p><strong>特征缩放</strong>：KNN算法基于距离度量来进行分类或回归，因此特征的尺度会影响距离计算的结果。如果特征具有不同的尺度范围，建议进行特征缩放，确保各个特征对距离计算的影响相对均衡。常用的特征缩放方法包括标准化（z-score标准化）和归一化（min-max缩放）。</p>
+</li>
+<li><p><strong>K值的选择</strong>：KNN算法中的K值决定了用于分类或回归的最近邻样本的数量。选择适当的K值对算法的性能至关重要。较小的K值可能会导致模型过拟合，过于敏感，容易受到噪声的影响。较大的K值可能会导致模型过于简单，忽略了局部的数据模式。通常，K值的选择通过交叉验证等技术来进行调优。</p>
+</li>
+<li><p><strong>距离度量方法的选择</strong>：KNN算法需要选择适当的距离度量方法，例如欧氏距离、曼哈顿距离或其他距离度量方法。不同的距离度量方法适用于不同的数据类型和特征空间，因此在选择时需要根据数据的特点进行合理选择。</p>
+</li>
+<li><p><strong>数据量和计算复杂度</strong>：KNN算法在大规模数据集上的计算复杂度较高，因为它需要计算新样本与所有训练样本之间的距离。在处理大规模数据时，需要考虑使用更高效的数据结构和算法来加速计算过程。</p>
+</li>
+<li><p><strong>处理不平衡数据集</strong>：对于不平衡的数据集（某些类别样本数量较少），KNN算法可能会偏向于占主导地位的类别。这时可以考虑采用过采样、欠采样或合成新样本的方法来平衡数据集，以获得更好的分类结果。</p>
+</li>
+<li><p><strong>避免数据泄露</strong>：在使用KNN算法时，应确保测试集和训练集的样本是独立的，避免数据泄露。数据泄露可能导致模型在测试集上的表现过于乐观，无法真实地评估算法的性能。</p>
+</li>
+<li><p><strong>模型的解释性</strong>：KNN算法是一种基于实例的学习方法，它不生成显式的模型，因此模型的解释性较差。在某些应用场景中，模型的解释性可能是非常重要的，此时需要考虑其他类型的算法。</p>
+</li>
+</ol>
+<p>综上所述，KNN算法是一种简单而强大的分类和回归算法，在实践中有广泛的应用。但要获得好的性能，需要合理选择K值、距离度量方法，并注意数据预处理等注意事项。</p>
+
+      </div>
+      <div class="post-tags-categories">
+        
+        <div class="tags">
+          
+            <a href="/tags/ML/" class="">
+              ML
+            </a>
+          
+            <a href="/tags/KNN/" class="">
+              KNN
+            </a>
+          
+        </div>
+        
+      </div>
+      
+        <div class="copyright">
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+    <strong>author:  </strong>Orlando</a>
+    </li>
+    <li class="post-copyright-link">
+    <strong>link:  </strong>
+    <a href="/2023/07/27/KNN算法简析/" target="_blank" title="KNN算法简析">http://example.com/2023/07/27/KNN算法简析/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>Copyright notice:   </strong>
+      All articles on this website, unless otherwise stated, adopt <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">CC BY-NC-ND 4.0</a>
+      reprint policy. If reproduced, please indicate source!
+    </li>
+  </ul>
+<div>
+      
+    </article>
+    <!-- 上一篇文章和下一篇文章 -->
+    
+      <!-- 文章详情页的上一页和下一页 -->
+<div class="post-nav">
+
+
+
+  
+  <div class="post-nav-prev post-nav-item">
+    <div class="post-nav-img" style="background-size: cover; 
+      background-position: center center;">
+      <img class="lazyload lazyload placeholder" src="https://s1.imagehub.cc/images/2023/07/28/2023-07-28-18.30.24.png" class="lazyload placeholder" data-srcset="https://s1.imagehub.cc/images/2023/07/28/2023-07-28-18.30.24.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+    </div>
+    <a href="/2023/07/27/matplotlib%E7%AE%80%E6%9E%90/" class="post-nav-link">
+      <div class="title">
+        <i class="fas fa-angle-left"></i> Prev:
+        <div class="title-text">matplotlib简析</div>
+      </div>
+      
+      <!-- <div class="content">
+        matplotlib简析Matplotlib是一个用于创建静态、动态和交互式图表的Python绘图库。它提供了广泛的功能
+      </div> -->
+    </a>
+  </div>
+
+
+
+  
+  <div class="post-nav-next post-nav-item">
+    <div class="post-nav-img" style="background-size: cover; 
+      background-position: center center;">
+      <img class="lazyload lazyload placeholder" src="https://s1.imagehub.cc/images/2023/07/27/2023-07-27-10.35.38.png" class="lazyload placeholder" data-srcset="https://s1.imagehub.cc/images/2023/07/27/2023-07-27-10.35.38.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" src="" alt="">
+    </div>
+    <a href="/2023/07/27/Spark%E4%B8%8EScala/" class="post-nav-link">
+      <div class="title">
+        Next: <i class="fas fa-angle-right"></i>
+        <div class="title-text">Spark与Scala</div>
+      </div>
+      <!-- <div class="content">
+        Spark与ScalaScala是一种通用的编程语言，旨在融合面向对象编程和函数式编程的特性。它运行在Java虚拟机（J
+      </div> -->
+    </a>
+  </div>
+
+</div>
+
+    
+    
+
+    <!-- 打赏 -->
+    
+      <div id="appDonate" class="post-donate">
+  <div id="donate_board" class="donate_bar center" ref="donate">
+    <a id="btn_donate" class="btn_donate" href="javascript:;" title="打赏" @click="showDialogDrawer()"></a>
+  </div>
+  <transition name="fade">
+    <div 
+      class="donate-box-mask"
+      v-cloak 
+      v-show="visible"
+      @click="cancelDialogDrawer()"
+    >
+    </div>
+  </transition>
+  <transition name="bounce">
+    <div class="donate-box" v-cloak v-show="visible">
+      <div class="donate-box_close">
+        <i class="fas fa-times" aria-hidden="true" @click="cancelDialogDrawer" pointer></i>
+      </div>
+      <div class="donate-box_title">
+        <h4>
+          你的赏识是我前进的动力
+        </h4>
+      </div>
+      <div class="donate-box_tab">
+        <div class="Alipay" pointer :class="{'active': tabActive === 'Alipay'}" @click="changeTabActive('Alipay')">
+          支付宝
+        </div>
+        <div class="WeChatpay" pointer :class="{'active': tabActive === 'WeChatpay'}" @click="changeTabActive('WeChatpay')">
+          微信
+        </div>
+      </div>
+      <div class="donate-box_img">
+        <div class="AlipayImg" v-show="tabActive === 'Alipay'">
+          <img src="https://i.postimg.cc/mZ7DJc2p/IMG-8572.jpg" class="lazyload placeholder" data-srcset="https://i.postimg.cc/mZ7DJc2p/IMG-8572.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="支付宝打赏" />
+        </div> 
+        <div class="WeChatpayImg" v-show="tabActive === 'WeChatpay'">
+          <img src="https://i.postimg.cc/wvmv6M5v/IMG-8574.jpg" class="lazyload placeholder" data-srcset="https://i.postimg.cc/wvmv6M5v/IMG-8574.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="微信打赏" />
+        </div>
+      </div>
+    </div>
+  </transition>
+</div>
+
+<script>
+  var body = document.body || document.documentElement || window;
+  var vm = new Vue({
+    el: '#appDonate',
+    data: {
+      visible: false,
+      tabActive: 'Alipay',
+      top: 0,
+    },
+    computed: {
+    },
+    mounted() {
+    },
+    methods: {
+      showDialogDrawer() {
+        this.visible = true;
+        // 防止页面滚动，只能让弹框滚动
+        // function getScroll() {
+        //   return {
+        //     left: window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft || 0,
+        //     top: window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0
+        //   };
+        // }
+        this.top = $(document).scrollTop() // or getScroll().top
+        // console.log('aa', $('.main-content'));
+        body.style.cssText = 'overflow: hidden;';
+      },
+      cancelDialogDrawer() {
+        this.visible = false;
+        body.removeAttribute('style');
+        $(document).scrollTop(this.top)
+      },
+      changeTabActive(name) {
+        this.tabActive = name;
+      }
+    },
+    created() {}
+  })
 </script>
     
+
+    <!-- 分享 -->
+    
+      <!-- https://github.com/overtrue/share.js -->
+<!-- 文章详情页的分享 -->
+<div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+
+<script src="/js/shareJs/social-share.min.js"></script>
+</script>
+
+<style>
+  .social-share {
+    margin: 20px 0;
+  }
+</style>
+
+
+    
+    
+    <!-- 评论 -->
+    <!-- 评论 -->
+
+  <div id="myComment">
+    
+      <div id="gitment-container"></div>
+
+    
+  </div>
+
+<!-- comment script in themes\hexo-theme-bamboo\layout\_partial\scripts\index.ejs -->
+
+
+  </div>
+
+  <!-- 目录 -->
+  <aside id='l_side'>
+  
+    
+      <section class="widget side_blogger">
+  <div class='content'>
+    
+      
+        <a class='avatar flat-box rectangle' href='/about'>
+          <img src='/default/avatar.jpg'/>
+        </a>
+      
+    
+    
+      <div class='text'>
+        
+          <h2>亦珍亦随流水去</h2>
+        
+        
+          <p>打碎金鱼缸</p>
+
+        
+        
+      </div>
+    
+    
+      <div class="social-wrapper">
+        
+          
+            <a href="mailto:ljc2481534548@163.com"
+              class="social fas fa-envelope flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+          
+            <a href="https://github.com/kclx"
+              class="social fab fa-github flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+          
+            <a href="https://twitter.com/Orlando12138"
+              class="social fab fa-twitter flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+          
+            <a href="https://www.youtube.com/channel/UCabmZFmLZCFQzFp54o3rQeA"
+              class="social fab fa-youtube flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+      </div>
+    
+  </div>
+</section>
+
+    
+  
+  
+  
+
+  <div class="layout_sticky">    
+    
+      
+<section class="widget side_toc">
+  
+  <header>
+    
+      <i style="color: " class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name' style="color: ">本文目录</span>
+    
+  </header>
+
+
+  <div class='content'>
+    <div class="toc-main">
+      <div class="toc-content">
+        <!-- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#KNN%E7%AE%97%E6%B3%95%E7%AE%80%E6%9E%90"><span class="toc-text">KNN算法简析</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0"><span class="toc-text">概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B6%89%E5%8F%8A%E5%88%B0%E7%9A%84%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F"><span class="toc-text">涉及到的数学公式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AC%A7%E5%BC%8F%E8%B7%9D%E7%A6%BB%E4%B8%8E%E6%9B%BC%E5%93%88%E9%A1%BF%E8%B7%9D%E7%A6%BB"><span class="toc-text">欧式距离与曼哈顿距离</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0"><span class="toc-text">实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Python%E5%AE%9E%E7%8E%B0"><span class="toc-text">Python实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%B4%E6%98%8E"><span class="toc-text">说明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B%E7%94%A8%E6%B3%95"><span class="toc-text">示例用法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="toc-text">注意事项</span></a></li></ol></li></ol> -->
+        <div class="toc"></div>
+      </div>
     </div>
-    <div class="mask-box"></div>
+  </div>
+</section>
+<!-- 手机端目录按钮 -->
+<div id="toc-mobile-btn">
+  <i class="fas fa-list-ul" aria-hidden="true"></i>
 </div>
 
+      
+    
+  </div>
+</aside>
 
-
-<div id="categories" class="container">
-    <div class="card">
-        <div class="card-content">
-            <div class="category-title center-align">
-                <i class="fas fa-tags"></i>&nbsp;&nbsp;Article Categories
-            </div>
-            <div class="category-chips">
-                
-                
-                <a href="/categories/Pointless-small-talk/" title="Pointless small talk: 3">
-                    <span class="category-content"
-                        title="Pointless small talk" style="background-color: #D5F5E3;">Pointless small talk
-                        <span class="category-length">3</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/categories/Final-Review/" title="Final Review: 3">
-                    <span class="category-content"
-                        title="Final Review" style="background-color: #FFF;">Final Review
-                        <span class="category-length">3</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/categories/Computer-Technology/" title="Computer Technology: 6">
-                    <span class="category-content"
-                        title="Computer Technology" style="background-color: #F9E79F;">Computer Technology
-                        <span class="category-length">6</span>
-                    </span>
-                </a>
-                
-            </div>
-        </div>
-    </div>
+  <!-- 图片放大 Wrap images with fancybox support -->
+  <script src="/js/wrapImage.js"></script>
 </div>
+
+<!-- 文章详情页背景图 -->
+<div id="appBgSwiper" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -2;"
+	:style="{'background-color': bgColor ? bgColor : 'transparent'}">
+	<transition-group tag="ul" :name="names">
+		<li v-for='(image,index) in img' :key='index' v-show="index === mark" class="bg-swiper-box">
+			<img :src="image" class="bg-swiper-img no-lazy">
+		</li>
+	</transition-group>
+</div>
+<script>
+	var vm = new Vue({
+		el: '#appBgSwiper',
+		data: {
+			names: 'fade' || 'fade' || 'fade', // translate-fade fade
+			mark: 0,
+			img: [],
+			bgColor: '',
+			time: null
+		},
+		methods: {   //添加方法
+			change(i, m) {
+				if (i > m) {
+					// this.names = 'fade';
+				} else if (i < m) {
+					// this.names = 'fade';
+				} else {
+					return;
+				}
+				this.mark = i;
+			},
+			prev() {
+				// this.names = 'fade';
+				this.mark--;
+				if (this.mark === -1) {
+					this.mark = 3;
+					return
+				}
+			},
+			next() {
+				// this.names = 'fade';
+				this.mark++;
+				if (this.mark === this.img.length) {
+					this.mark = 0;
+					return
+				}
+			},
+			autoPlay() {
+				// this.names = 'fade';
+				this.mark++;
+				if (this.mark === this.img.length) {
+					this.mark = 0;
+					return
+				}
+			},
+			play() {
+				let bgImgDelay = '180000' || '180000'
+				let delay = parseInt(bgImgDelay) || 180000;
+				this.time = setInterval(this.autoPlay, delay);
+			},
+			enter() {
+				clearInterval(this.time);
+			},
+			leave() {
+				this.play();
+			}
+		},
+		created() {
+			this.play()
+		},
+		beforeDestroy() {
+			clearInterval(this.time);
+		},
+		mounted() {
+			let prop = '' || '/default/defaultbgImg.jpg';
+			let isImg = prop.includes('.bmp') || prop.includes('.jpg') || prop.includes('.png') || prop.includes('.tif') || prop.includes('.gif') || prop.includes('.pcx') || prop.includes('.tga') || prop.includes('.exif') || prop.includes('.fpx') || prop.includes('.psd') || prop.includes('.cdr') || prop.includes('.pcd') || prop.includes('.dxf') || prop.includes('.ufo') || prop.includes('.eps') || prop.includes('.ai') || prop.includes('.raw') || prop.includes('.WMF') || prop.includes('.webp') || prop.includes('.jpeg') || prop.includes('http://') || prop.includes('https://')
+			if (isImg) {
+				let img = prop.split(',');
+				let configRoot = '/'
+				let arrImg = [];
+				img.forEach(el => {
+					var Expression = /http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w- .\/?%&=]*)?/;
+					var objExp = new RegExp(Expression);
+
+					if (objExp.test(el)) {
+						// http or https
+						arrImg.push(el);
+					} else {
+						// 非http or https开头
+						// 本地文件
+						let firstStr = el.charAt(0);
+						if (firstStr == '/') {
+							el = el.substr(1); // 删除第一个字符 '/',因为 configRoot最后一个字符为 /
+						}
+						el = configRoot + el;
+						arrImg.push(el);
+					}
+				})
+				this.img = arrImg;
+			} else {
+				this.bgColor = prop;
+			}
+		}
+	})
+</script>
+
+<style>
+	.bg-swiper-box {
+		position: absolute;
+		display: block;
+		width: 100%;
+		height: 100%;
+	}
+
+	.bg-swiper-img {
+		object-fit: cover;
+		width: 100%;
+		height: 100%;
+	}
+</style>
+
+
+  <script>
+  // https://github.com/theme-next/hexo-theme-next/blob/master/layout/_third-party/math/mathjax.swig
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = 'https://unpkg.com/mathjax@3.0/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    // 文章章节标题不能为 “MathJax” ，否则会报错。
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+
+
+
+  <script>
+  function loadMermaid() {
+    if (document.getElementsByClassName('mermaid').length) {
+      if (window.mermaidJsLoad) mermaid.init()
+      else {
+        loadScript('https://unpkg.com/mermaid/dist/mermaid.min.js').then(() => {
+          window.mermaidJsLoad = true
+          mermaid.initialize({
+            theme: 'default',
+          })
+          if ('true') {
+            mermaid.init();
+          }
+        })
+      }
+    }
+  };
+  document.addEventListener("DOMContentLoaded", function () {
+    loadMermaid();
+  })
+
+  document.addEventListener('pjax:complete', function () {
+    loadMermaid();
+  })
+  
+</script>
+
 
       </main>
     </div>

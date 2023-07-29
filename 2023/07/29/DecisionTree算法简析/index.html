@@ -11,7 +11,7 @@
   <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-  <title>Categories | Orlando</title>
+  <title>DecisionTree算法简析 | Orlando</title>
 
   <link rel="icon" type="image/svg+xml" href="/main.svg">
   <link rel="stylesheet" href="https://at.alicdn.com/t/font_1911880_c1nvbyezg17.css">
@@ -559,75 +559,669 @@
 </header>
         <!-- 内容区域 -->
         
-<div class="bg-dark-floor" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -2;"></div>
-<div class="bg-light-floor-categories" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -3;"></div>
+ <!-- prismjs 代码高亮 -->
+ 
 
-<div class="categories-header" style="background-image:url('/default/categories.jpeg')">
-    <div class="categories-header-title">
-        categories
+
+<div class="bg-dark-floor" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -1;"></div>
+
+
+  <!-- 文章详情页顶部图片和标题 -->
+
+
+
+
+<div class="post-detail-header" id="thumbnail_canvas" style="background-repeat: no-repeat; background-size: cover; 
+  background-position: center center;position: relative;background-image:url('https://s1.imagehub.cc/images/2023/07/29/2023-07-29-13.35.04.png')">
+  <div class="post-detail-header-mask"></div>
+  <canvas id="header_canvas"style="position:absolute;bottom:0;pointer-events:none;"></canvas>
+  
+  <div class="post-detail-header_info-box">
+    <div class="title-box">
+      <span class="title">
+        DecisionTree算法简析
+      </span>
     </div>
-    <div class="categories-header-desc">
     
-        <span class="title" id="categories-header-desc"></span>
-    <script>
-  function typedFn() {
-    const el = '#categories-header-desc';
-    const type = 'categories';
-    let desc = '愿你如风，被人温柔以待'
-    var typed = new Typed(el, {
-      strings: [desc],
-      startDelay: 100,
-      typeSpeed: 100,
-      loop: true,
-      backSpeed: 50,
-      showCursor: true
-    });
-  }
-  typedFn();
+    
+      
+        <span class="post-detail-header_date">
+          <i class="fas fa-calendar"></i> Published in：2023-07-29 |
+        </span>
+      
+
+      
+        <span class="post-detail-header_categories">
+          <i class="iconfont iconbookmark1"></i> category：
+          
+            <a href="/categories/Computer-Technology/" class="post-detail-header_category">
+              Computer Technology
+            </a>
+          
+        </span>
+      
+
+      
+        <div class="post-detail-header_wordcount">
+          <span class="totalcount">
+            <i class="fas fa-file-text-o"></i> Words: 2.3k |
+          </span>
+  
+          <span class="min2read">
+            <i class="fas fa-clock"></i> Reading time: 9min |
+          </span>
+  
+          
+            <span class="reading">
+              <i class="fas fa-eye"></i> reading：<span id="busuanzi_value_page_pv"></span>
+            </span>
+          
+        </div>
+      
+    
+  </div>
+  
+  
+    <script src="/js/bubble/bubble.js"></script>
+  
+</div>
+
+
+
+
+
+<div class="post-detail-content post-row" 
+  style="padding-top: 0px;">
+  <div class="main-content">
+    <article class="post post-detail">
+      <div class="post-content">
+        <h1 id="DecisionTree算法简析"><a href="#DecisionTree算法简析" class="headerlink" title="DecisionTree算法简析"></a>DecisionTree算法简析</h1><p>决策树（Decision Tree）是一种常见的机器学习算法，它可用于分类和回归任务。决策树通过对数据进行一系列逻辑判断，构建一个树状结构来进行决策。在分类问题中，决策树用于预测输入数据所属的类别；在回归问题中，它用于预测连续型的输出值。</p>
+<p>决策树的构建过程基于训练数据，通过选择最佳的特征来进行节点分裂，直到达到某个停止条件。构建好的决策树能够提供清晰的决策路径，易于解释，并且可以很好地处理非线性关系。</p>
+<p>以下是决策树算法的简要分析：</p>
+<ol>
+<li><p>特征选择：决策树的核心是选择最佳的特征来进行节点的分裂。通常采用信息增益、信息增益比、基尼不纯度等指标来评估特征的重要性，选择能够最好地分隔数据的特征。</p>
+</li>
+<li><p>节点分裂：决策树根据特征的取值将数据划分为不同的子集。分裂过程持续进行，直到达到停止条件，例如达到最大树深度、子集中的样本数量过少等。</p>
+</li>
+<li><p>树的构建：决策树的构建是一个递归的过程，从根节点开始，根据特征选择和节点分裂的原则逐步构建分支，直到生成一个完整的决策树。</p>
+</li>
+<li><p>剪枝：构建好的决策树可能存在过拟合问题（对训练数据过度拟合）。剪枝是一种通过去除一些不重要的节点来减少复杂度、提高泛化能力的技术。</p>
+</li>
+<li><p>预测：用新的数据样本在决策树上进行遍历，根据叶节点的类别（分类问题）或预测值（回归问题）进行预测。</p>
+</li>
+</ol>
+<p>决策树算法的优点包括易于解释、处理非线性关系和对缺失值不敏感。然而，它也有一些缺点，如容易过拟合、对噪声敏感等。为了改进决策树算法，人们发展了一些变种，如随机森林（Random Forest）和梯度提升决策树（Gradient Boosting Decision Tree），以提高模型的性能和鲁棒性。</p>
+<p>总的来说，决策树是一种强大的算法，特别适用于解决分类和回归问题，同时也是学习机器学习算法基础的重要内容之一。</p>
+<h3 id="设计到的数学公式"><a href="#设计到的数学公式" class="headerlink" title="设计到的数学公式"></a>设计到的数学公式</h3><p>当涉及到决策树及其相关算法时，可能会使用以下公式。下面是这些公式的使用示例，使用MathJax进行表示：</p>
+<ol>
+<li><p><strong>信息熵（Entropy）</strong>：衡量数据集的混乱程度，对于分类问题的特征选择很重要。</p>
+<p> $$<br> H(X) &#x3D; -\sum_{i&#x3D;1}^{n} p(x_i) \log(p(x_i))<br> $$</p>
+<p> 其中，$H(X)$表示数据集$X$的信息熵，$p(x_i)$是数据集$X$中类别为$x_i$的样本占比。</p>
+</li>
+<li><p><strong>信息增益（Information Gain）</strong>：表示使用某个特征对数据集进行划分所获得的信息熵减少的程度，用于特征选择。</p>
+<p> $$<br> \text{Information Gain}(X, \text{feature}) &#x3D; H(X) - \sum_{v \in \text{values}(\text{feature})} \frac{|X_v|}{|X|} H(X_v)<br> $$</p>
+<p> 其中，$H(X)$表示数据集$X$的信息熵，$X_v$表示使用特征$\text{feature}$中取值为$v$的样本子集，$\text{values}(\text{feature})$表示特征$\text{feature}$的所有取值。</p>
+</li>
+<li><p><strong>基尼不纯度（Gini Impurity）</strong>：另一种衡量数据集混乱程度的方法，用于特征选择。</p>
+<p> $$<br> \text{Gini}(X) &#x3D; 1 - \sum_{i&#x3D;1}^{n} p(x_i)^2<br> $$</p>
+<p> 其中，$\text{Gini}(X)$表示数据集$X$的基尼不纯度，$p(x_i)$是数据集$X$中类别为$x_i$的样本占比。</p>
+</li>
+<li><p><strong>回归树的均方误差（Mean Squared Error，MSE）</strong>：回归树使用的损失函数，用于衡量预测值与实际值之间的差异。<br> $$<br> \text{MSE}(X) &#x3D; \frac{1}{n} \sum_{i&#x3D;1}^{n} (y_i - \bar{y})^2<br> $$</p>
+<p> 其中，$\text{MSE}(X)$表示数据集$X$的均方误差，$n$是样本数量，$y_i$是第$i$个样本的实际输出值，$\bar{y}$是样本输出值的均值。</p>
+</li>
+<li><p><strong>决策树的预测</strong>：对于回归树，预测值为叶节点上训练样本输出值的平均值；对于分类树，预测值为叶节点上出现最频繁的类别。</p>
+</li>
+</ol>
+<h3 id="构建步骤"><a href="#构建步骤" class="headerlink" title="构建步骤"></a>构建步骤</h3><ol>
+<li><p><strong>数据准备</strong>：</p>
+<ul>
+<li>收集数据集：获取用于训练和测试的数据集。</li>
+<li>数据清洗：处理缺失值、异常值等数据问题，确保数据质量。</li>
+<li>数据划分：将数据集划分为训练集和测试集，用于模型的训练和评估。</li>
+</ul>
+</li>
+<li><p><strong>特征选择</strong>：</p>
+<ul>
+<li>根据具体任务和特征的性质，选择合适的特征用于构建决策树。</li>
+<li>使用信息增益、基尼不纯度等指标评估特征的重要性，选择最佳的划分特征。</li>
+</ul>
+</li>
+<li><p><strong>构建决策树</strong>：</p>
+<ul>
+<li>从根节点开始，根据选定的特征选择标准进行节点分裂，生成子节点。</li>
+<li>递归地对子节点进行分裂，直到满足停止条件，例如达到最大深度或节点样本数量过少。</li>
+</ul>
+</li>
+<li><p><strong>剪枝</strong>（可选）：</p>
+<ul>
+<li>构建好的决策树可能对训练数据过拟合，剪枝是一种降低过拟合风险的技术。</li>
+<li>可以采用预剪枝（在构建树的过程中进行剪枝）或后剪枝（构建完整树后再进行剪枝）。</li>
+</ul>
+</li>
+<li><p><strong>预测</strong>：</p>
+<ul>
+<li>使用训练好的决策树对新数据进行预测。</li>
+<li>对于分类问题，根据决策树的分支和叶节点的类别进行分类预测。</li>
+<li>对于回归问题，根据决策树的叶节点上训练样本输出值的平均值进行回归预测。</li>
+</ul>
+</li>
+<li><p><strong>模型评估</strong>：</p>
+<ul>
+<li>使用测试集对训练好的决策树进行性能评估，可以使用准确率（分类问题）或均方误差（回归问题）等指标。</li>
+</ul>
+</li>
+<li><p><strong>优化</strong>：</p>
+<ul>
+<li>根据模型评估结果，可以调整决策树的参数，选择不同的特征，或尝试其他优化方法，以提高模型性能。</li>
+</ul>
+</li>
+<li><p><strong>应用</strong>：</p>
+<ul>
+<li>将训练好的决策树应用于实际问题中，进行分类、回归等预测任务。</li>
+</ul>
+</li>
+</ol>
+<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> operator</span><br><span class="line"><span class="keyword">from</span> math <span class="keyword">import</span> log</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> matplotlib <span class="keyword">import</span> pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> decisionTreePlot <span class="keyword">as</span> dtPlot</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">DecisionTree</span>:</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        self.myTree = <span class="literal">None</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">calcShannonEnt</span>(<span class="params">self, dataSet</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">        计算给定数据集的香农熵</span></span><br><span class="line"><span class="string">        &quot;&quot;&quot;</span></span><br><span class="line">        numEntries = <span class="built_in">len</span>(dataSet)</span><br><span class="line">        labelCounts = &#123;&#125;</span><br><span class="line">        <span class="keyword">for</span> featVec <span class="keyword">in</span> dataSet:</span><br><span class="line">            currentLabel = featVec[-<span class="number">1</span>]</span><br><span class="line">            <span class="keyword">if</span> currentLabel <span class="keyword">not</span> <span class="keyword">in</span> labelCounts.keys():</span><br><span class="line">                labelCounts[currentLabel] = <span class="number">0</span></span><br><span class="line">            labelCounts[currentLabel] += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">        shannonEnt = <span class="number">0.0</span></span><br><span class="line">        <span class="keyword">for</span> key <span class="keyword">in</span> labelCounts:</span><br><span class="line">            prob = <span class="built_in">float</span>(labelCounts[key]) / numEntries</span><br><span class="line">            shannonEnt -= prob * log(prob, <span class="number">2</span>)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> shannonEnt</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">splitDataSet</span>(<span class="params">self, dataSet, index, value</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">        划分数据集</span></span><br><span class="line"><span class="string">        &quot;&quot;&quot;</span></span><br><span class="line">        retDataSet = []</span><br><span class="line">        <span class="keyword">for</span> featVec <span class="keyword">in</span> dataSet:</span><br><span class="line">            <span class="keyword">if</span> featVec[index] == value:</span><br><span class="line">                reducedFeatVec = featVec[:index]</span><br><span class="line">                reducedFeatVec.extend(featVec[index + <span class="number">1</span>:])</span><br><span class="line">                retDataSet.append(reducedFeatVec)</span><br><span class="line">        <span class="keyword">return</span> retDataSet</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">chooseBestFeatureToSplit</span>(<span class="params">self, dataSet</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">        选择切分数据集的最佳特征</span></span><br><span class="line"><span class="string">        &quot;&quot;&quot;</span></span><br><span class="line">        numFeatures = <span class="built_in">len</span>(dataSet[<span class="number">0</span>]) - <span class="number">1</span></span><br><span class="line">        baseEntropy = self.calcShannonEnt(dataSet)</span><br><span class="line">        bestInfoGain, bestFeature = <span class="number">0.0</span>, -<span class="number">1</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(numFeatures):</span><br><span class="line">            featList = [example[i] <span class="keyword">for</span> example <span class="keyword">in</span> dataSet]</span><br><span class="line">            uniqueVals = <span class="built_in">set</span>(featList)</span><br><span class="line">            newEntropy = <span class="number">0.0</span></span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span> value <span class="keyword">in</span> uniqueVals:</span><br><span class="line">                subDataSet = self.splitDataSet(dataSet, i, value)</span><br><span class="line">                prob = <span class="built_in">len</span>(subDataSet) / <span class="built_in">float</span>(<span class="built_in">len</span>(dataSet))</span><br><span class="line">                newEntropy += prob * self.calcShannonEnt(subDataSet)</span><br><span class="line"></span><br><span class="line">            infoGain = baseEntropy - newEntropy</span><br><span class="line">            <span class="keyword">if</span> infoGain &gt; bestInfoGain:</span><br><span class="line">                bestInfoGain = infoGain</span><br><span class="line">                bestFeature = i</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> bestFeature</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">majorityCnt</span>(<span class="params">self, classList</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">        选择出现次数最多的一个结果</span></span><br><span class="line"><span class="string">        &quot;&quot;&quot;</span></span><br><span class="line">        classCount = &#123;&#125;</span><br><span class="line">        <span class="keyword">for</span> vote <span class="keyword">in</span> classList:</span><br><span class="line">            <span class="keyword">if</span> vote <span class="keyword">not</span> <span class="keyword">in</span> classCount.keys():</span><br><span class="line">                classCount[vote] = <span class="number">0</span></span><br><span class="line">            classCount[vote] += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">        sortedClassCount = <span class="built_in">sorted</span>(classCount.items(), key=operator.itemgetter(<span class="number">1</span>), reverse=<span class="literal">True</span>)</span><br><span class="line">        <span class="keyword">return</span> sortedClassCount[<span class="number">0</span>][<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">createTree</span>(<span class="params">self, dataSet, labels</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">        创建决策树</span></span><br><span class="line"><span class="string">        &quot;&quot;&quot;</span></span><br><span class="line">        classList = [example[-<span class="number">1</span>] <span class="keyword">for</span> example <span class="keyword">in</span> dataSet]</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> classList.count(classList[<span class="number">0</span>]) == <span class="built_in">len</span>(classList):</span><br><span class="line">            <span class="keyword">return</span> classList[<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">len</span>(dataSet[<span class="number">0</span>]) == <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> self.majorityCnt(classList)</span><br><span class="line"></span><br><span class="line">        bestFeat = self.chooseBestFeatureToSplit(dataSet)</span><br><span class="line">        bestFeatLabel = labels[bestFeat]</span><br><span class="line">        myTree = &#123;bestFeatLabel: &#123;&#125;&#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">del</span> (labels[bestFeat])</span><br><span class="line"></span><br><span class="line">        featValues = [example[bestFeat] <span class="keyword">for</span> example <span class="keyword">in</span> dataSet]</span><br><span class="line">        uniqueVals = <span class="built_in">set</span>(featValues)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> value <span class="keyword">in</span> uniqueVals:</span><br><span class="line">            subLabels = labels[:]</span><br><span class="line">            myTree[bestFeatLabel][value] = self.createTree(self.splitDataSet(dataSet, bestFeat, value), subLabels)</span><br><span class="line"></span><br><span class="line">        self.myTree = myTree</span><br><span class="line">        <span class="keyword">return</span> self.myTree</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">classify</span>(<span class="params">self, inputTree, featLabels, testVec</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">        对新数据进行分类</span></span><br><span class="line"><span class="string">        &quot;&quot;&quot;</span></span><br><span class="line">        firstStr = <span class="built_in">list</span>(inputTree.keys())[<span class="number">0</span>]</span><br><span class="line">        secondDict = inputTree[firstStr]</span><br><span class="line">        featIndex = featLabels.index(firstStr)</span><br><span class="line">        key = testVec[featIndex]</span><br><span class="line">        valueOfFeat = secondDict[key]</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">isinstance</span>(valueOfFeat, <span class="built_in">dict</span>):</span><br><span class="line">            classLabel = self.classify(valueOfFeat, featLabels, testVec)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            classLabel = valueOfFeat</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> classLabel</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">storeTree</span>(<span class="params">self, inputTree, filename</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">        将训练好的决策树模型存储起来，使用 pickle 模块</span></span><br><span class="line"><span class="string">        &quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">import</span> pickle</span><br><span class="line">        <span class="keyword">with</span> <span class="built_in">open</span>(filename, <span class="string">&#x27;wb&#x27;</span>) <span class="keyword">as</span> fw:</span><br><span class="line">            pickle.dump(inputTree, fw)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">grabTree</span>(<span class="params">self, filename</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">        将之前存储的决策树模型使用 pickle 模块还原出来</span></span><br><span class="line"><span class="string">        &quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">import</span> pickle</span><br><span class="line">        <span class="keyword">with</span> <span class="built_in">open</span>(filename, <span class="string">&#x27;rb&#x27;</span>) <span class="keyword">as</span> fr:</span><br><span class="line">            <span class="keyword">return</span> pickle.load(fr)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">ContactLensesTest</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">        预测隐形眼镜的测试代码，并将结果画出来</span></span><br><span class="line"><span class="string">        &quot;&quot;&quot;</span></span><br><span class="line">        <span class="built_in">print</span>(self.myTree)</span><br><span class="line">        self.createPlot()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">createPlot</span>(<span class="params">self</span>):</span><br><span class="line">        fig = plt.figure(<span class="number">1</span>, facecolor=<span class="string">&#x27;green&#x27;</span>)</span><br><span class="line">        fig.clf()</span><br><span class="line"></span><br><span class="line">        axprops = <span class="built_in">dict</span>(xticks=[], yticks=[])</span><br><span class="line">        dtPlot.createPlot.ax1 = plt.subplot(<span class="number">111</span>, frameon=<span class="literal">False</span>, **axprops)</span><br><span class="line"></span><br><span class="line">        dtPlot.plotTree.totalW = <span class="built_in">float</span>(dtPlot.getNumLeafs(self.myTree))</span><br><span class="line">        dtPlot.plotTree.totalD = <span class="built_in">float</span>(dtPlot.getTreeDepth(self.myTree))</span><br><span class="line">        dtPlot.plotTree.xOff = -<span class="number">0.5</span> / dtPlot.plotTree.totalW</span><br><span class="line">        dtPlot.plotTree.yOff = <span class="number">1.0</span></span><br><span class="line">        dtPlot.plotTree(self.myTree, (<span class="number">0.5</span>, <span class="number">1.0</span>), <span class="string">&#x27;&#x27;</span>)</span><br><span class="line">        plt.show()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    fr = <span class="built_in">open</span>(<span class="string">&#x27;3.DecisionTree/lenses.txt&#x27;</span>)</span><br><span class="line">    lenses = [inst.strip().split(<span class="string">&#x27;\t&#x27;</span>) <span class="keyword">for</span> inst <span class="keyword">in</span> fr.readlines()]</span><br><span class="line">    lensesLabels = [<span class="string">&#x27;age&#x27;</span>, <span class="string">&#x27;prescript&#x27;</span>, <span class="string">&#x27;astigmatic&#x27;</span>, <span class="string">&#x27;tearRate&#x27;</span>]</span><br><span class="line">    dt = DecisionTree()</span><br><span class="line">    dt.createTree(lenses, lensesLabels)</span><br><span class="line">    <span class="built_in">print</span>(dt.myTree)</span><br><span class="line">    dt.createPlot()</span><br></pre></td></tr></table></figure>
+
+<p>示例数据</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">young	myope	no	reduced	no lenses</span><br><span class="line">young	myope	no	normal	soft</span><br><span class="line">young	myope	yes	reduced	no lenses</span><br><span class="line">young	myope	yes	normal	hard</span><br><span class="line">young	hyper	no	reduced	no lenses</span><br><span class="line">young	hyper	no	normal	soft</span><br><span class="line">young	hyper	yes	reduced	no lenses</span><br><span class="line">young	hyper	yes	normal	hard</span><br><span class="line">pre	myope	no	reduced	no lenses</span><br><span class="line">pre	myope	no	normal	soft</span><br></pre></td></tr></table></figure>
+      </div>
+      <div class="post-tags-categories">
+        
+        <div class="tags">
+          
+            <a href="/tags/ML/" class="">
+              ML
+            </a>
+          
+            <a href="/tags/DT/" class="">
+              DT
+            </a>
+          
+        </div>
+        
+      </div>
+      
+        <div class="copyright">
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+    <strong>author:  </strong>Orlando</a>
+    </li>
+    <li class="post-copyright-link">
+    <strong>link:  </strong>
+    <a href="/2023/07/29/DecisionTree算法简析/" target="_blank" title="DecisionTree算法简析">http://example.com/2023/07/29/DecisionTree算法简析/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>Copyright notice:   </strong>
+      All articles on this website, unless otherwise stated, adopt <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">CC BY-NC-ND 4.0</a>
+      reprint policy. If reproduced, please indicate source!
+    </li>
+  </ul>
+<div>
+      
+    </article>
+    <!-- 上一篇文章和下一篇文章 -->
+    
+      <!-- 文章详情页的上一页和下一页 -->
+<div class="post-nav">
+
+
+
+
+
+  
+  <div class="post-nav-next post-nav-item">
+    <div class="post-nav-img" style="background-size: cover; 
+      background-position: center center;">
+      <img class="lazyload lazyload placeholder" src="https://s1.imagehub.cc/images/2023/07/28/2023-07-28-18.30.24.png" class="lazyload placeholder" data-srcset="https://s1.imagehub.cc/images/2023/07/28/2023-07-28-18.30.24.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" src="" alt="">
+    </div>
+    <a href="/2023/07/27/matplotlib%E7%AE%80%E6%9E%90/" class="post-nav-link">
+      <div class="title">
+        Next: <i class="fas fa-angle-right"></i>
+        <div class="title-text">matplotlib简析</div>
+      </div>
+      <!-- <div class="content">
+        matplotlib简析Matplotlib是一个用于创建静态、动态和交互式图表的Python绘图库。它提供了广泛的功能
+      </div> -->
+    </a>
+  </div>
+
+</div>
+
+    
+    
+
+    <!-- 打赏 -->
+    
+      <div id="appDonate" class="post-donate">
+  <div id="donate_board" class="donate_bar center" ref="donate">
+    <a id="btn_donate" class="btn_donate" href="javascript:;" title="打赏" @click="showDialogDrawer()"></a>
+  </div>
+  <transition name="fade">
+    <div 
+      class="donate-box-mask"
+      v-cloak 
+      v-show="visible"
+      @click="cancelDialogDrawer()"
+    >
+    </div>
+  </transition>
+  <transition name="bounce">
+    <div class="donate-box" v-cloak v-show="visible">
+      <div class="donate-box_close">
+        <i class="fas fa-times" aria-hidden="true" @click="cancelDialogDrawer" pointer></i>
+      </div>
+      <div class="donate-box_title">
+        <h4>
+          你的赏识是我前进的动力
+        </h4>
+      </div>
+      <div class="donate-box_tab">
+        <div class="Alipay" pointer :class="{'active': tabActive === 'Alipay'}" @click="changeTabActive('Alipay')">
+          支付宝
+        </div>
+        <div class="WeChatpay" pointer :class="{'active': tabActive === 'WeChatpay'}" @click="changeTabActive('WeChatpay')">
+          微信
+        </div>
+      </div>
+      <div class="donate-box_img">
+        <div class="AlipayImg" v-show="tabActive === 'Alipay'">
+          <img src="https://i.postimg.cc/mZ7DJc2p/IMG-8572.jpg" class="lazyload placeholder" data-srcset="https://i.postimg.cc/mZ7DJc2p/IMG-8572.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="支付宝打赏" />
+        </div> 
+        <div class="WeChatpayImg" v-show="tabActive === 'WeChatpay'">
+          <img src="https://i.postimg.cc/wvmv6M5v/IMG-8574.jpg" class="lazyload placeholder" data-srcset="https://i.postimg.cc/wvmv6M5v/IMG-8574.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="微信打赏" />
+        </div>
+      </div>
+    </div>
+  </transition>
+</div>
+
+<script>
+  var body = document.body || document.documentElement || window;
+  var vm = new Vue({
+    el: '#appDonate',
+    data: {
+      visible: false,
+      tabActive: 'Alipay',
+      top: 0,
+    },
+    computed: {
+    },
+    mounted() {
+    },
+    methods: {
+      showDialogDrawer() {
+        this.visible = true;
+        // 防止页面滚动，只能让弹框滚动
+        // function getScroll() {
+        //   return {
+        //     left: window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft || 0,
+        //     top: window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0
+        //   };
+        // }
+        this.top = $(document).scrollTop() // or getScroll().top
+        // console.log('aa', $('.main-content'));
+        body.style.cssText = 'overflow: hidden;';
+      },
+      cancelDialogDrawer() {
+        this.visible = false;
+        body.removeAttribute('style');
+        $(document).scrollTop(this.top)
+      },
+      changeTabActive(name) {
+        this.tabActive = name;
+      }
+    },
+    created() {}
+  })
 </script>
     
+
+    <!-- 分享 -->
+    
+      <!-- https://github.com/overtrue/share.js -->
+<!-- 文章详情页的分享 -->
+<div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+
+<script src="/js/shareJs/social-share.min.js"></script>
+</script>
+
+<style>
+  .social-share {
+    margin: 20px 0;
+  }
+</style>
+
+
+    
+    
+    <!-- 评论 -->
+    <!-- 评论 -->
+
+  <div id="myComment">
+    
+      <div id="gitment-container"></div>
+
+    
+  </div>
+
+<!-- comment script in themes\hexo-theme-bamboo\layout\_partial\scripts\index.ejs -->
+
+
+  </div>
+
+  <!-- 目录 -->
+  <aside id='l_side'>
+  
+    
+      <section class="widget side_blogger">
+  <div class='content'>
+    
+      
+        <a class='avatar flat-box rectangle' href='/about'>
+          <img src='/default/avatar.jpg'/>
+        </a>
+      
+    
+    
+      <div class='text'>
+        
+          <h2>亦珍亦随流水去</h2>
+        
+        
+          <p>打碎金鱼缸</p>
+
+        
+        
+      </div>
+    
+    
+      <div class="social-wrapper">
+        
+          
+            <a href="mailto:ljc2481534548@163.com"
+              class="social fas fa-envelope flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+          
+            <a href="https://github.com/kclx"
+              class="social fab fa-github flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+          
+            <a href="https://twitter.com/Orlando12138"
+              class="social fab fa-twitter flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+          
+            <a href="https://www.youtube.com/channel/UCabmZFmLZCFQzFp54o3rQeA"
+              class="social fab fa-youtube flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+      </div>
+    
+  </div>
+</section>
+
+    
+  
+  
+  
+
+  <div class="layout_sticky">    
+    
+      
+<section class="widget side_toc">
+  
+  <header>
+    
+      <i style="color: " class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name' style="color: ">本文目录</span>
+    
+  </header>
+
+
+  <div class='content'>
+    <div class="toc-main">
+      <div class="toc-content">
+        <!-- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#DecisionTree%E7%AE%97%E6%B3%95%E7%AE%80%E6%9E%90"><span class="toc-text">DecisionTree算法简析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BE%E8%AE%A1%E5%88%B0%E7%9A%84%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F"><span class="toc-text">设计到的数学公式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%84%E5%BB%BA%E6%AD%A5%E9%AA%A4"><span class="toc-text">构建步骤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B"><span class="toc-text">示例</span></a></li></ol></li></ol></li></ol> -->
+        <div class="toc"></div>
+      </div>
     </div>
-    <div class="mask-box"></div>
+  </div>
+</section>
+<!-- 手机端目录按钮 -->
+<div id="toc-mobile-btn">
+  <i class="fas fa-list-ul" aria-hidden="true"></i>
 </div>
 
+      
+    
+  </div>
+</aside>
 
-
-<div id="categories" class="container">
-    <div class="card">
-        <div class="card-content">
-            <div class="category-title center-align">
-                <i class="fas fa-tags"></i>&nbsp;&nbsp;Article Categories
-            </div>
-            <div class="category-chips">
-                
-                
-                <a href="/categories/Pointless-small-talk/" title="Pointless small talk: 3">
-                    <span class="category-content"
-                        title="Pointless small talk" style="background-color: #D5F5E3;">Pointless small talk
-                        <span class="category-length">3</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/categories/Final-Review/" title="Final Review: 3">
-                    <span class="category-content"
-                        title="Final Review" style="background-color: #FFF;">Final Review
-                        <span class="category-length">3</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/categories/Computer-Technology/" title="Computer Technology: 6">
-                    <span class="category-content"
-                        title="Computer Technology" style="background-color: #F9E79F;">Computer Technology
-                        <span class="category-length">6</span>
-                    </span>
-                </a>
-                
-            </div>
-        </div>
-    </div>
+  <!-- 图片放大 Wrap images with fancybox support -->
+  <script src="/js/wrapImage.js"></script>
 </div>
+
+<!-- 文章详情页背景图 -->
+<div id="appBgSwiper" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -2;"
+	:style="{'background-color': bgColor ? bgColor : 'transparent'}">
+	<transition-group tag="ul" :name="names">
+		<li v-for='(image,index) in img' :key='index' v-show="index === mark" class="bg-swiper-box">
+			<img :src="image" class="bg-swiper-img no-lazy">
+		</li>
+	</transition-group>
+</div>
+<script>
+	var vm = new Vue({
+		el: '#appBgSwiper',
+		data: {
+			names: 'fade' || 'fade' || 'fade', // translate-fade fade
+			mark: 0,
+			img: [],
+			bgColor: '',
+			time: null
+		},
+		methods: {   //添加方法
+			change(i, m) {
+				if (i > m) {
+					// this.names = 'fade';
+				} else if (i < m) {
+					// this.names = 'fade';
+				} else {
+					return;
+				}
+				this.mark = i;
+			},
+			prev() {
+				// this.names = 'fade';
+				this.mark--;
+				if (this.mark === -1) {
+					this.mark = 3;
+					return
+				}
+			},
+			next() {
+				// this.names = 'fade';
+				this.mark++;
+				if (this.mark === this.img.length) {
+					this.mark = 0;
+					return
+				}
+			},
+			autoPlay() {
+				// this.names = 'fade';
+				this.mark++;
+				if (this.mark === this.img.length) {
+					this.mark = 0;
+					return
+				}
+			},
+			play() {
+				let bgImgDelay = '180000' || '180000'
+				let delay = parseInt(bgImgDelay) || 180000;
+				this.time = setInterval(this.autoPlay, delay);
+			},
+			enter() {
+				clearInterval(this.time);
+			},
+			leave() {
+				this.play();
+			}
+		},
+		created() {
+			this.play()
+		},
+		beforeDestroy() {
+			clearInterval(this.time);
+		},
+		mounted() {
+			let prop = '' || '/default/defaultbgImg.jpg';
+			let isImg = prop.includes('.bmp') || prop.includes('.jpg') || prop.includes('.png') || prop.includes('.tif') || prop.includes('.gif') || prop.includes('.pcx') || prop.includes('.tga') || prop.includes('.exif') || prop.includes('.fpx') || prop.includes('.psd') || prop.includes('.cdr') || prop.includes('.pcd') || prop.includes('.dxf') || prop.includes('.ufo') || prop.includes('.eps') || prop.includes('.ai') || prop.includes('.raw') || prop.includes('.WMF') || prop.includes('.webp') || prop.includes('.jpeg') || prop.includes('http://') || prop.includes('https://')
+			if (isImg) {
+				let img = prop.split(',');
+				let configRoot = '/'
+				let arrImg = [];
+				img.forEach(el => {
+					var Expression = /http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w- .\/?%&=]*)?/;
+					var objExp = new RegExp(Expression);
+
+					if (objExp.test(el)) {
+						// http or https
+						arrImg.push(el);
+					} else {
+						// 非http or https开头
+						// 本地文件
+						let firstStr = el.charAt(0);
+						if (firstStr == '/') {
+							el = el.substr(1); // 删除第一个字符 '/',因为 configRoot最后一个字符为 /
+						}
+						el = configRoot + el;
+						arrImg.push(el);
+					}
+				})
+				this.img = arrImg;
+			} else {
+				this.bgColor = prop;
+			}
+		}
+	})
+</script>
+
+<style>
+	.bg-swiper-box {
+		position: absolute;
+		display: block;
+		width: 100%;
+		height: 100%;
+	}
+
+	.bg-swiper-img {
+		object-fit: cover;
+		width: 100%;
+		height: 100%;
+	}
+</style>
+
+
+  <script>
+  // https://github.com/theme-next/hexo-theme-next/blob/master/layout/_third-party/math/mathjax.swig
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = 'https://unpkg.com/mathjax@3.0/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    // 文章章节标题不能为 “MathJax” ，否则会报错。
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+
+
+
+  <script>
+  function loadMermaid() {
+    if (document.getElementsByClassName('mermaid').length) {
+      if (window.mermaidJsLoad) mermaid.init()
+      else {
+        loadScript('https://unpkg.com/mermaid/dist/mermaid.min.js').then(() => {
+          window.mermaidJsLoad = true
+          mermaid.initialize({
+            theme: 'default',
+          })
+          if ('true') {
+            mermaid.init();
+          }
+        })
+      }
+    }
+  };
+  document.addEventListener("DOMContentLoaded", function () {
+    loadMermaid();
+  })
+
+  document.addEventListener('pjax:complete', function () {
+    loadMermaid();
+  })
+  
+</script>
+
 
       </main>
     </div>
