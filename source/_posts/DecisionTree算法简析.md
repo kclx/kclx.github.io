@@ -295,3 +295,18 @@ if __name__ == "__main__":
     print(dt.myTree)
     dt.createPlot()
 ```
+
+示例数据
+
+```text
+young	myope	no	reduced	no lenses
+young	myope	no	normal	soft
+young	myope	yes	reduced	no lenses
+young	myope	yes	normal	hard
+young	hyper	no	reduced	no lenses
+young	hyper	no	normal	soft
+young	hyper	yes	reduced	no lenses
+young	hyper	yes	normal	hard
+pre	myope	no	reduced	no lenses
+pre	myope	no	normal	soft
+```
