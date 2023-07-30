@@ -1,6 +1,6 @@
 ---
 title: KNN算法简析
-tags: [ 'ML', 'KNN' ]
+tags: [ 'ML', 'K- Nearest Neighbor' ]
 categories: [ Computer Technology ]
 top: false
 comments: true
