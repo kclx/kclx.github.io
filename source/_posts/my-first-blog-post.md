@@ -1,7 +1,7 @@
 ---
 title: My first blog post
 date: 2023-07-05 14:00:27
-tags: [one]
+tags: []
 # 文章主页背景图片
 bgImg: 
 # 文章图片

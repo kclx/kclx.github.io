@@ -1,6 +1,6 @@
 ---
 title: DecisionTree算法简析
-tags: [ 'ML', 'DT']
+tags: [ 'ML', 'Decision Tree']
 categories: [ Computer Technology ]
 top: false
 comments: true
