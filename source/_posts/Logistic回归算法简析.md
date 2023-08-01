@@ -6,9 +6,9 @@ top: false
 comments: true
 lang: en
 toc: true
-excerpt: Logistic回归算法简析
+excerpt: Logistic Regression算法是一种用于解决二分类问题的线性分类算法，通过将线性模型的输出映射到概率空间并使用sigmoid函数对概率进行转换，从而进行分类预测。
 swiper: false
-swiperDesc: Logistic回归算法简析
+swiperDesc: Logistic Regression算法是一种用于解决二分类问题的线性分类算法，通过将线性模型的输出映射到概率空间并使用sigmoid函数对概率进行转换，从而进行分类预测。
 tocOpen: true
 onlyTitle: false
 share: true

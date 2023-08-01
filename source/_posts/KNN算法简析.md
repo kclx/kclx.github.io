@@ -6,9 +6,9 @@ top: false
 comments: true
 lang: en
 toc: true
-excerpt: KNN算法简析
+excerpt: KNN算法是一种基于最近邻原理的分类与回归算法，通过计算待分类样本与训练样本的距离，并选择最近的k个样本进行投票或求平均值来进行分类或回归预测。
 swiper: false
-swiperDesc: KNN算法简析
+swiperDesc: KNN算法是一种基于最近邻原理的分类与回归算法，通过计算待分类样本与训练样本的距离，并选择最近的k个样本进行投票或求平均值来进行分类或回归预测。
 tocOpen: true
 onlyTitle: false
 share: true
