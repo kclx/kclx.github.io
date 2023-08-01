@@ -6,9 +6,9 @@ top: false
 comments: true
 lang: en
 toc: true
-excerpt: DecisionTree算法简析
+excerpt: 决策树算法是一种基于树结构的分类与回归算法，通过在特征空间中逐步划分数据，并以节点的形式表示决策规则，从而构建一个树状模型来进行分类或回归预测。
 swiper: false
-swiperDesc: DecisionTree算法简析
+swiperDesc: 决策树算法是一种基于树结构的分类与回归算法，通过在特征空间中逐步划分数据，并以节点的形式表示决策规则，从而构建一个树状模型来进行分类或回归预测。
 tocOpen: true
 onlyTitle: false
 share: true
