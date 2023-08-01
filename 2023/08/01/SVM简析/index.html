@@ -11,7 +11,7 @@
   <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-  <title>图库 | Orlando</title>
+  <title>SVM简析 | Orlando</title>
 
   <link rel="icon" type="image/svg+xml" href="/main.svg">
   <link rel="stylesheet" href="https://at.alicdn.com/t/font_1911880_c1nvbyezg17.css">
@@ -572,17 +572,52 @@
 
 
 <div class="post-detail-header" id="thumbnail_canvas" style="background-repeat: no-repeat; background-size: cover; 
-  background-position: center center;position: relative;background-image:url('/gallery/index.png')">
+  background-position: center center;position: relative;background-image:url('https://s1.imagehub.cc/images/2023/08/01/FOH_Ab2aQAo8JkV.jpeg')">
   <div class="post-detail-header-mask"></div>
   <canvas id="header_canvas"style="position:absolute;bottom:0;pointer-events:none;"></canvas>
   
   <div class="post-detail-header_info-box">
     <div class="title-box">
       <span class="title">
-        图库
+        SVM简析
       </span>
     </div>
     
+    
+      
+        <span class="post-detail-header_date">
+          <i class="fas fa-calendar"></i> Published in：2023-08-01 |
+        </span>
+      
+
+      
+        <span class="post-detail-header_categories">
+          <i class="iconfont iconbookmark1"></i> category：
+          
+            <a href="/categories/Computer-Technology/" class="post-detail-header_category">
+              Computer Technology
+            </a>
+          
+        </span>
+      
+
+      
+        <div class="post-detail-header_wordcount">
+          <span class="totalcount">
+            <i class="fas fa-file-text-o"></i> Words: 4k |
+          </span>
+  
+          <span class="min2read">
+            <i class="fas fa-clock"></i> Reading time: 15min |
+          </span>
+  
+          
+            <span class="reading">
+              <i class="fas fa-eye"></i> reading：<span id="busuanzi_value_page_pv"></span>
+            </span>
+          
+        </div>
+      
     
   </div>
   
@@ -600,52 +635,234 @@
   <div class="main-content">
     <article class="post post-detail">
       <div class="post-content">
-        <div class="gallery-group-main">
-    
-  <figure class="gallery-group">
-  <img class="gallery-group-img" src='/gallery/pc/index.png' alt="Group Image Gallery">
-  <figcaption>
-  <div class="gallery-group-name">PC壁纸</div>
-  <p>9:16, 2k, 4k</p>
-  <a href='/gallery/pc'></a>
-  </figcaption>
-  </figure>
-  
-    
-  <figure class="gallery-group">
-  <img class="gallery-group-img" src='/gallery/2d/index.png' alt="Group Image Gallery">
-  <figcaption>
-  <div class="gallery-group-name">二次元</div>
-  <p>にじげん</p>
-  <a href='/gallery/2d'></a>
-  </figcaption>
-  </figure>
-  
-    
-  <figure class="gallery-group">
-  <img class="gallery-group-img" src='/gallery/3d/index.png' alt="Group Image Gallery">
-  <figcaption>
-  <div class="gallery-group-name">真实的世界</div>
-  <p>回到3次元</p>
-  <a href='/gallery/3d'></a>
-  </figcaption>
-  </figure>
-  
-    
-  <figure class="gallery-group">
-  <img class="gallery-group-img" src='/gallery/cat/index.jpg' alt="Group Image Gallery">
-  <figcaption>
-  <div class="gallery-group-name">CAT</div>
-  <p>Is cute</p>
-  <a href='/gallery/cat'></a>
-  </figcaption>
-  </figure>
-  
-</div>
+        <h1 id="SVM支持向量机"><a href="#SVM支持向量机" class="headerlink" title="SVM支持向量机"></a>SVM支持向量机</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>SVM（支持向量机）是一种常用的监督学习算法，用于分类和回归任务。其主要目标是找到一个超平面，将不同类别的数据点有效地分隔开，并使得边距最大化。在分类问题中，SVM将数据点映射到特征空间，并通过支持向量寻找最优超平面，以在未知数据上取得良好的泛化性能。</p>
+<p>SVM的核心原理包括以下几点：</p>
+<ol>
+<li><p>支持向量：在数据点中，距离超平面最近的一些数据点被称为支持向量，它们对超平面的位置和间隔起着关键作用。</p>
+</li>
+<li><p>最大边距：SVM通过最大化超平面与支持向量之间的边距来寻找最优解。最大边距可以提高模型的鲁棒性，使其对新数据更具预测能力。</p>
+</li>
+<li><p>分类器构建：SVM的目标是解决一个优化问题，通过数学方法找到最优的超平面。这个优化问题是一个凸二次规划问题，在线性可分的情况下有解。</p>
+</li>
+<li><p>核函数：对于线性不可分的数据，SVM可以通过核函数将数据映射到高维特征空间，在高维空间中找到超平面，从而实现线性分类。常用的核函数有线性核、多项式核和高斯核等。</p>
+</li>
+<li><p>正则化参数：SVM引入一个正则化参数C，用于平衡最大化边距和分类错误之间的权衡。较小的C值允许一些分类错误，而较大的C值对分类错误施加更严格的惩罚。</p>
+</li>
+</ol>
+<p>SVM具有良好的泛化能力，对于小样本数据和高维特征空间都表现出较好的性能。它在图像分类、文本分类、生物信息学等领域取得了广泛的应用。虽然SVM在处理大规模数据时存在一定的挑战，但在许多实际问题中，它仍然是一个有效且强大的分类器和回归器。</p>
+<h2 id="涉及到的数学公式"><a href="#涉及到的数学公式" class="headerlink" title="涉及到的数学公式"></a>涉及到的数学公式</h2><ol>
+<li><p>SVM分类器：</p>
+<ul>
+<li>假设超平面的方程为：$$f(x) &#x3D; w^T x + b$$</li>
+<li>其中，$f(x)$ 是输入样本 $x$ 的预测输出，$w$ 是超平面的法向量（权重），$b$ 是超平面的偏置项。</li>
+</ul>
+</li>
+<li><p>超平面到数据点的距离：</p>
+<ul>
+<li>数据点 $x$ 到超平面 $f(x)$ 的带符号距离为：$$d &#x3D; \frac{w^T x + b}{|w|}$$，其中 $|w|$ 是 $w$ 的L2范数。</li>
+</ul>
+</li>
+<li><p>分类决策规则：</p>
+<ul>
+<li>如果 $f(x) \geq 0$，则预测 $x$ 属于正类别。</li>
+<li>如果 $f(x) &lt; 0$，则预测 $x$ 属于负类别。</li>
+</ul>
+</li>
+<li><p>间隔（边距）：</p>
+<ul>
+<li>对于超平面 $(w^T x + b) &#x3D; 0$，它到最近的正类别支持向量和最近的负类别支持向量之间的距离为 $\frac{2}{|w|}$。</li>
+<li>SVM 的目标是最大化边距，即最小化 $|w|$。</li>
+</ul>
+</li>
+<li><p>优化问题：<br>   SVM的优化问题是一个凸二次规划（Quadratic Programming，QP）问题。对于线性可分和线性不可分的情况，可以使用不同的方法来解决SVM的优化问题。</p>
+<ol>
+<li><p>线性可分情况下的优化问题：<br>对于线性可分的SVM，优化问题可以表示为：<br>$$\text{Minimize:} \quad \frac{1}{2} |w|^2$$<br>$$\text{Subject to:} \quad y_i (w^T x_i + b) \geq 1, \text{for all} \ i$$<br>其中，$x_i$ 是训练样本，$y_i$ 是样本 $x_i$ 的标签（+1 或 -1），$w$ 是超平面的法向量，$b$ 是超平面的偏置项。</p>
+<p>这是一个凸二次规划问题，可以使用现有的凸优化求解器来求解。常用的凸优化求解器包括：</p>
+<ul>
+<li><a href="/2023/08/01/SVM%E7%AE%80%E6%9E%90/#%E5%BA%8F%E5%88%97%E6%9C%80%E5%B0%8F%E4%BC%98%E5%8C%96SMO">序列最小优化算法</a>（Sequential Minimal Optimization，SMO）</li>
+<li>内点法（Interior Point Method）</li>
+<li>梯度下降法（Gradient Descent）</li>
+<li>坐标下降法（Coordinate Descent）等</li>
+</ul>
+<p>这些方法可以找到拉格朗日乘子 $\alpha$ 的最优解，进而求解出超平面的参数 $w$ 和 $b$。</p>
+</li>
+<li><p>线性不可分情况下的优化问题：<br>当数据线性不可分时，SVM引入松弛变量 $\xi_i$，使得部分数据点可以位于边界区域内。优化问题变为：<br>$$\text{Minimize:} \quad \frac{1}{2} |w|^2 + C \sum \xi_i$$<br>$$\text{Subject to:} \quad y_i (w^T x_i + b) \geq 1 - \xi_i, \text{for all} \ i$$<br>$$\xi_i \geq 0, \text{for all} \ i$$<br>其中，$C$ 是一个正则化参数，控制了分类错误的惩罚。</p>
+<p>这也是一个凸二次规划问题，可以使用相同的凸优化求解器来求解。通过求解优化问题，可以得到拉格朗日乘子 $\alpha$ 和松弛变量 $\xi_i$ 的最优解，进而求解出超平面的参数 $w$ 和 $b$。</p>
+</li>
+</ol>
+<p>需要注意的是，当遇到非线性问题时，需要使用核函数来将数据映射到高维特征空间，然后再应用上述方法来求解对偶问题。这样，可以将非线性SVM转化为一个线性SVM问题来求解。</p>
+</li>
+<li><p>核函数：</p>
+<ul>
+<li>SVM通过核函数将数据映射到高维特征空间，以实现非线性分类。常用的核函数有线性核、多项式核和高斯核。</li>
+<li>线性核：$$K(x_i, x_j) &#x3D; x_i^T x_j$$</li>
+<li>多项式核：$$K(x_i, x_j) &#x3D; (\gamma x_i^T x_j + r)^d$$</li>
+<li>高斯核（径向基核）：$$K(x_i, x_j) &#x3D; \exp(-\gamma |x_i - x_j|^2)$$</li>
+</ul>
+</li>
+</ol>
+<h2 id="实现步骤"><a href="#实现步骤" class="headerlink" title="实现步骤"></a>实现步骤</h2><ol>
+<li><p>数据预处理：</p>
+<ul>
+<li>收集和准备训练数据集，确保数据是有标签的，并且特征值和标签值已经转换为数值形式。</li>
+<li>如果数据集中存在缺失值或异常值，进行数据清洗和处理。</li>
+</ul>
+</li>
+<li><p>特征缩放：</p>
+<ul>
+<li>对特征值进行缩放，确保所有特征在相同的尺度范围内。常见的缩放方法包括标准化（均值为0，方差为1）或者归一化（将特征缩放到0到1的范围内）。</li>
+</ul>
+</li>
+<li><p>训练集和测试集划分：</p>
+<ul>
+<li>将数据集划分为训练集和测试集，用于模型的训练和评估。</li>
+</ul>
+</li>
+<li><p>核函数选择（可选）：</p>
+<ul>
+<li>如果数据集是线性不可分的，需要选择合适的核函数对数据进行映射。常见的核函数有线性核、多项式核和高斯核等。</li>
+</ul>
+</li>
+<li><p>优化问题解决：</p>
+<ul>
+<li>使用优化算法（例如凸二次规划问题的求解器）来找到SVM的最优超平面。</li>
+<li>线性可分的情况下，使用硬间隔SVM；线性不可分的情况下，使用软间隔SVM。</li>
+</ul>
+</li>
+<li><p>正则化参数选择（可选）：</p>
+<ul>
+<li>对于软间隔SVM，需要选择合适的正则化参数C，该参数控制了分类错误的惩罚程度。C值较大将更严格惩罚分类错误，C值较小则更容忍分类错误。</li>
+</ul>
+</li>
+<li><p>训练模型：</p>
+<ul>
+<li>使用训练集来训练SVM模型。模型的训练过程就是优化问题求解的过程，找到最优的超平面和参数。</li>
+</ul>
+</li>
+<li><p>预测：</p>
+<ul>
+<li>使用训练好的模型对新的样本进行预测，计算预测输出的值 $f(x)$。</li>
+</ul>
+</li>
+<li><p>评估模型性能：</p>
+<ul>
+<li>使用测试集来评估模型的性能。常见的评估指标包括准确率、精确率、召回率、F1-score等。</li>
+</ul>
+</li>
+<li><p>调优（可选）：</p>
+<ul>
+<li>可以根据模型在测试集上的表现进行调优，例如尝试不同的核函数、调整正则化参数C等。</li>
+</ul>
+</li>
+<li><p>应用模型：</p>
+<ul>
+<li>在实际应用中，使用训练好的SVM模型来进行分类任务，对新的未知样本进行分类预测。</li>
+</ul>
+</li>
+</ol>
+<h2 id="SVM与Logistic-Regression"><a href="#SVM与Logistic-Regression" class="headerlink" title="SVM与Logistic Regression"></a>SVM与Logistic Regression</h2><p>SVM（支持向量机）和逻辑回归在一些方面的数学公式和算法确实有相似之处，但它们在目标函数、决策边界和优化算法等方面存在明显的区别。下面列出它们的相似之处和区别：</p>
+<p>相似之处：</p>
+<ol>
+<li><p>都是监督学习算法：SVM和逻辑回归都属于监督学习算法，都是用于解决分类问题。</p>
+</li>
+<li><p>都使用线性模型：SVM和逻辑回归在默认情况下都使用线性模型进行分类。线性模型是通过特征的线性组合来进行分类的。</p>
+</li>
+<li><p>都基于概率：逻辑回归可以输出样本属于某一类别的概率，而SVM通过决策函数的符号来判断样本的类别。</p>
+</li>
+</ol>
+<p>区别：</p>
+<ol>
+<li><p>目标函数和决策边界：</p>
+<ul>
+<li>逻辑回归的目标是最小化Logistic损失函数，并使用sigmoid函数将线性模型的输出映射到[0, 1]的概率值。决策边界是线性的。</li>
+<li>SVM的目标是找到一个能够将不同类别的数据点有效分隔开的超平面，并最大化边距。决策边界是距离支持向量最近的超平面。</li>
+</ul>
+</li>
+<li><p>损失函数：</p>
+<ul>
+<li>逻辑回归使用Logistic损失函数（也称为交叉熵损失函数），用于衡量模型预测与实际标签之间的差异。</li>
+<li>SVM使用Hinge损失函数，它对正确分类的样本施加较小的损失，对于错误分类的样本施加较大的损失。</li>
+</ul>
+</li>
+<li><p>优化算法：</p>
+<ul>
+<li>逻辑回归通常使用梯度下降等优化算法来最小化损失函数。</li>
+<li>SVM使用凸二次规划等优化算法来找到最优的超平面。</li>
+</ul>
+</li>
+<li><p>处理线性不可分数据：</p>
+<ul>
+<li>逻辑回归可以处理线性不可分的数据，但在处理非线性问题时可能需要引入特征工程或使用多项式特征。</li>
+<li>SVM通过使用核函数将数据映射到高维特征空间，从而实现处理非线性分类问题。</li>
+</ul>
+</li>
+</ol>
+<h2 id="判断线性可分"><a href="#判断线性可分" class="headerlink" title="判断线性可分"></a>判断线性可分</h2><p>在SVM中，线性可分是指数据集在特征空间中存在一个超平面，能够将不同类别的数据点完全正确地分隔开，而不会出现任何错误分类。判断数据是否线性可分可以通过以下方法：</p>
+<ol>
+<li><p>可视化数据：将数据绘制在二维或三维空间中，观察数据点的分布情况。如果数据点可以被一个直线（在二维空间）或一个平面（在三维空间）完全分开，那么数据集很可能是线性可分的。</p>
+</li>
+<li><p>线性SVM的结果：使用线性SVM对数据进行训练并绘制决策边界。如果线性SVM能够找到一个超平面，使得所有数据点都被正确分类，那么数据集是线性可分的。</p>
+</li>
+<li><p>检查线性约束条件：对于二分类问题，在SVM中，线性可分的条件是所有数据点满足以下线性约束条件：<br>$$y_i (w^T x_i + b) \geq 1, \text{for all} \ i$$<br>其中，$x_i$ 是数据点，$y_i$ 是数据点的标签（+1 或 -1），$w$ 是超平面的法向量，$b$ 是超平面的偏置项。</p>
+</li>
+<li><p>优化问题的结果：如果使用线性SVM解决优化问题，得到了一组满足上述约束条件的最优权重$w$和偏置项$b$，而且目标函数值为0（即最大化边距的结果），则说明数据是线性可分的。</p>
+</li>
+</ol>
+<p>需要注意的是，在实际应用中，数据可能并不是完全线性可分的，而是存在一些噪声或重叠情况。在这种情况下，可以使用软间隔SVM来处理部分分类错误，或者使用核函数将数据映射到高维特征空间来处理非线性可分问题。</p>
+<h2 id="序列最小优化SMO"><a href="#序列最小优化SMO" class="headerlink" title="序列最小优化SMO"></a>序列最小优化SMO</h2><p>序列最小优化（Sequential Minimal Optimization，简称SMO）是一种用于求解支持向量机（SVM）的优化算法，特别适用于处理大规模数据集的情况。SMO算法由John Platt于1998年提出，是一种迭代算法，通过不断选择两个变量进行优化，以逐步收敛到SVM的最优解。</p>
+<p>SMO算法的基本思想是将SVM的对偶问题转化为一个二次规划问题，并采用启发式的方法来解决这个二次规划问题。SMO算法的主要步骤如下：</p>
+<ol>
+<li><p>初始化：初始化拉格朗日乘子 $\alpha$ 和偏置项 $b$ 为0，选择一个迭代次数的阈值或设置最大迭代次数。</p>
+</li>
+<li><p>选择两个变量：在每一次迭代中，选择两个需要更新的拉格朗日乘子 $\alpha_i$ 和 $\alpha_j$。选择的方法可以采用启发式的方式，例如通过最大步长来选择 $\alpha_i$ 和 $\alpha_j$。</p>
+</li>
+<li><p>优化两个变量：固定其他拉格朗日乘子 $\alpha$，将问题转化为一个只有两个变量的二次规划问题，并通过解析求解或优化算法（如SMO内循环）来找到 $\alpha_i$ 和 $\alpha_j$ 的最优解。</p>
+</li>
+<li><p>更新参数：根据得到的 $\alpha_i$ 和 $\alpha_j$ 的最优解，更新拉格朗日乘子 $\alpha$ 和偏置项 $b$。</p>
+</li>
+<li><p>终止条件：检查迭代次数是否达到设定的阈值，或者拉格朗日乘子的变化是否小于设定的容差。如果满足终止条件，则算法结束；否则，返回步骤2，继续下一轮迭代。</p>
+</li>
+</ol>
+<p>SMO算法的优点在于，它每次只更新两个拉格朗日乘子，因此在每一步的计算量相对较小。同时，SMO算法还使用了一些启发式的策略，帮助在高维空间中搜索更快地收敛到SVM的最优解。这使得SMO算法在大规模数据集下表现出了较好的计算效率。</p>
+<p>值得注意的是，SMO算法用于求解线性SVM，当遇到非线性问题时，需要使用核函数来将数据映射到高维特征空间，然后再应用SMO算法来求解对偶问题。这样，SMO算法也可以用于求解非线性SVM。</p>
+<h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><h3 id="数据集"><a href="#数据集" class="headerlink" title="数据集"></a>数据集</h3><div class="link-group"><div class="tagLink"><a class="link-card" no-pjax target="_blank" title="testSet.txt" href="/citation/svm/testSet.txt"><span class="link-card-backdrop" style="background-image: url(https://cdn.pixabay.com/photo/2018/12/05/13/41/panda-3857754__340.jpg)"></span><div class="left"><img src="https://img.51miz.com/Element/00/37/79/59/10df0417_E377959_b7bb9dfa.png" class="lazyload placeholder" data-srcset="https://img.51miz.com/Element/00/37/79/59/10df0417_E377959_b7bb9dfa.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp"/></div><div class="right"><p class="text">testSet.txt</p><p class="url">/citation/svm/testSet.txt</p></div></a></div></div>
+
+<h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> numpy <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">loadDataSet</span>(<span class="params">fileName</span>):</span><br><span class="line">    dataMat = []</span><br><span class="line">    labelMat = []</span><br><span class="line">    fr = <span class="built_in">open</span>(fileName)</span><br><span class="line">    <span class="keyword">for</span> line <span class="keyword">in</span> fr.readlines():</span><br><span class="line">        lineArr = line.strip().split(<span class="string">&#x27;\t&#x27;</span>)</span><br><span class="line">        dataMat.append([<span class="built_in">float</span>(lineArr[<span class="number">0</span>]), <span class="built_in">float</span>(lineArr[<span class="number">1</span>])])</span><br><span class="line">        labelMat.append(<span class="built_in">float</span>(lineArr[<span class="number">2</span>]))</span><br><span class="line">    <span class="keyword">return</span> dataMat, labelMat</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">selectJrand</span>(<span class="params">i, m</span>):</span><br><span class="line">    j = i</span><br><span class="line">    <span class="keyword">while</span> j == i:</span><br><span class="line">        j = <span class="built_in">int</span>(random.uniform(<span class="number">0</span>, m))</span><br><span class="line">    <span class="keyword">return</span> j</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">clipAlpha</span>(<span class="params">aj, H, L</span>):</span><br><span class="line">    <span class="keyword">if</span> aj &gt; H:</span><br><span class="line">        aj = H</span><br><span class="line">    <span class="keyword">if</span> L &gt; aj:</span><br><span class="line">        aj = L</span><br><span class="line">    <span class="keyword">return</span> aj</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">smoSimple</span>(<span class="params">dataMatIn, classLabels, C, toler, maxIter</span>):</span><br><span class="line">    dataMatrix = mat(dataMatIn)</span><br><span class="line">    labelMat = mat(classLabels).transpose()</span><br><span class="line">    m, n = shape(dataMatrix)</span><br><span class="line">    b = <span class="number">0</span></span><br><span class="line">    alphas = mat(zeros((m, <span class="number">1</span>)))</span><br><span class="line">    <span class="built_in">iter</span> = <span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> (<span class="built_in">iter</span> &lt; maxIter):</span><br><span class="line">        alphaPairsChanged = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(m):</span><br><span class="line">            fXi = <span class="built_in">float</span>(multiply(alphas, labelMat).T * (dataMatrix * dataMatrix[i, :].T)) + b</span><br><span class="line">            Ei = fXi - <span class="built_in">float</span>(labelMat[i])</span><br><span class="line">            <span class="keyword">if</span> ((labelMat[i] * Ei &lt; -toler) <span class="keyword">and</span> (alphas[i] &lt; C)) <span class="keyword">or</span> ((labelMat[i] * Ei &gt; toler) <span class="keyword">and</span> (alphas[i] &gt; <span class="number">0</span>)):</span><br><span class="line">                j = selectJrand(i, m)</span><br><span class="line">                fXj = <span class="built_in">float</span>(multiply(alphas, labelMat).T * (dataMatrix * dataMatrix[j, :].T)) + b</span><br><span class="line">                Ej = fXj - <span class="built_in">float</span>(labelMat[j])</span><br><span class="line">                alphaIold = alphas[i].copy()</span><br><span class="line">                alphaJold = alphas[j].copy()</span><br><span class="line">                <span class="keyword">if</span> (labelMat[i] != labelMat[j]):</span><br><span class="line">                    L = <span class="built_in">max</span>(<span class="number">0</span>, alphas[j] - alphas[i])</span><br><span class="line">                    H = <span class="built_in">min</span>(C, C + alphas[j] - alphas[i])</span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    L = <span class="built_in">max</span>(<span class="number">0</span>, alphas[j] + alphas[i] - C)</span><br><span class="line">                    H = <span class="built_in">min</span>(C, alphas[j] + alphas[i])</span><br><span class="line">                <span class="keyword">if</span> L == H:</span><br><span class="line">                    <span class="keyword">continue</span></span><br><span class="line">                eta = <span class="number">2.0</span> * dataMatrix[i, :] * dataMatrix[j, :].T - dataMatrix[i, :] * dataMatrix[i, :].T - dataMatrix[j, :] * dataMatrix[j, :].T</span><br><span class="line">                <span class="keyword">if</span> eta &gt;= <span class="number">0</span>:</span><br><span class="line">                    <span class="keyword">continue</span></span><br><span class="line">                alphas[j] -= labelMat[j] * (Ei - Ej) / eta</span><br><span class="line">                alphas[j] = clipAlpha(alphas[j], H, L)</span><br><span class="line">                <span class="keyword">if</span> (<span class="built_in">abs</span>(alphas[j] - alphaJold) &lt; <span class="number">0.00001</span>):</span><br><span class="line">                    <span class="keyword">continue</span></span><br><span class="line">                alphas[i] += labelMat[j] * labelMat[i] * (alphaJold - alphas[j])</span><br><span class="line">                b1 = b - Ei - labelMat[i] * (alphas[i] - alphaIold) * dataMatrix[i, :] * dataMatrix[i, :].T - labelMat[j] * (alphas[j] - alphaJold) * dataMatrix[i, :] * dataMatrix[j, :].T</span><br><span class="line">                b2 = b - Ej - labelMat[i] * (alphas[i] - alphaIold) * dataMatrix[i, :] * dataMatrix[j, :].T - labelMat[j] * (alphas[j] - alphaJold) * dataMatrix[j, :] * dataMatrix[j, :].T</span><br><span class="line">                <span class="keyword">if</span> (<span class="number">0</span> &lt; alphas[i]) <span class="keyword">and</span> (C &gt; alphas[i]):</span><br><span class="line">                    b = b1</span><br><span class="line">                <span class="keyword">elif</span> (<span class="number">0</span> &lt; alphas[j]) <span class="keyword">and</span> (C &gt; alphas[j]):</span><br><span class="line">                    b = b2</span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    b = (b1 + b2) / <span class="number">2.0</span></span><br><span class="line">                alphaPairsChanged += <span class="number">1</span></span><br><span class="line">        <span class="keyword">if</span> (alphaPairsChanged == <span class="number">0</span>):</span><br><span class="line">            <span class="built_in">iter</span> += <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="built_in">iter</span> = <span class="number">0</span></span><br><span class="line">    <span class="keyword">return</span> b, alphas</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">calcWs</span>(<span class="params">alphas, dataArr, classLabels</span>):</span><br><span class="line">    X = mat(dataArr)</span><br><span class="line">    labelMat = mat(classLabels).transpose()</span><br><span class="line">    m, n = shape(X)</span><br><span class="line">    w = zeros((n, <span class="number">1</span>))</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(m):</span><br><span class="line">        w += multiply(alphas[i] * labelMat[i], X[i, :].T)</span><br><span class="line">    <span class="keyword">return</span> w</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">plotfig_SVM</span>(<span class="params">xMat, yMat, ws, b, alphas</span>):</span><br><span class="line">    xMat = mat(xMat)</span><br><span class="line">    yMat = mat(yMat)</span><br><span class="line">    b = array(b)[<span class="number">0</span>]</span><br><span class="line">    fig = plt.figure()</span><br><span class="line">    ax = fig.add_subplot(<span class="number">111</span>)</span><br><span class="line">    ax.scatter(xMat[:, <span class="number">0</span>].flatten().A[<span class="number">0</span>], xMat[:, <span class="number">1</span>].flatten().A[<span class="number">0</span>])</span><br><span class="line">    x = arange(-<span class="number">1.0</span>, <span class="number">10.0</span>, <span class="number">0.1</span>)</span><br><span class="line">    y = (-b - ws[<span class="number">0</span>, <span class="number">0</span>] * x) / ws[<span class="number">1</span>, <span class="number">0</span>]</span><br><span class="line">    ax.plot(x, y)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(shape(yMat[<span class="number">0</span>, :])[<span class="number">1</span>]):</span><br><span class="line">        <span class="keyword">if</span> yMat[<span class="number">0</span>, i] &gt; <span class="number">0</span>:</span><br><span class="line">            ax.plot(xMat[i, <span class="number">0</span>], xMat[i, <span class="number">1</span>], <span class="string">&#x27;cx&#x27;</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            ax.plot(xMat[i, <span class="number">0</span>], xMat[i, <span class="number">1</span>], <span class="string">&#x27;kp&#x27;</span>)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">100</span>):</span><br><span class="line">        <span class="keyword">if</span> alphas[i] &gt; <span class="number">0.0</span>:</span><br><span class="line">            ax.plot(xMat[i, <span class="number">0</span>], xMat[i, <span class="number">1</span>], <span class="string">&#x27;ro&#x27;</span>)</span><br><span class="line">    plt.show()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    dataArr, labelArr = loadDataSet(<span class="string">&#x27;6.SVM/testSet.txt&#x27;</span>)</span><br><span class="line">    b, alphas = smoSimple(dataArr, labelArr, <span class="number">0.6</span>, <span class="number">0.001</span>, <span class="number">40</span>)</span><br><span class="line">    ws = calcWs(alphas, dataArr, labelArr)</span><br><span class="line">    plotfig_SVM(dataArr, labelArr, ws, b, alphas)</span><br></pre></td></tr></table></figure>
+
+<div class="note info"><p>来源于 <a target="_blank" rel="noopener" href="https://www.apachecn.org/">ApacheCN</a></p></div>
       </div>
       <div class="post-tags-categories">
         
+        <div class="tags">
+          
+            <a href="/tags/ML/" class="">
+              ML
+            </a>
+          
+            <a href="/tags/SVM/" class="">
+              SVM
+            </a>
+          
+        </div>
+        
       </div>
+      
+        <div class="copyright">
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+    <strong>author:  </strong>Orlando</a>
+    </li>
+    <li class="post-copyright-link">
+    <strong>link:  </strong>
+    <a href="/2023/08/01/SVM简析/" target="_blank" title="SVM简析">http://example.com/2023/08/01/SVM简析/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>Copyright notice:   </strong>
+      All articles on this website, unless otherwise stated, adopt <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">CC BY-NC-ND 4.0</a>
+      reprint policy. If reproduced, please indicate source!
+    </li>
+  </ul>
+<div>
       
     </article>
     <!-- 上一篇文章和下一篇文章 -->
@@ -657,6 +874,23 @@
 
 
 
+  
+  <div class="post-nav-next post-nav-item">
+    <div class="post-nav-img" style="background-size: cover; 
+      background-position: center center;">
+      <img class="lazyload lazyload placeholder" src="https://s1.imagehub.cc/images/2023/07/31/FOH-7wHaIAYlGGo.jpeg" class="lazyload placeholder" data-srcset="https://s1.imagehub.cc/images/2023/07/31/FOH-7wHaIAYlGGo.jpeg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" src="" alt="">
+    </div>
+    <a href="/2023/07/31/Logistic%E5%9B%9E%E5%BD%92%E7%AE%97%E6%B3%95%E7%AE%80%E6%9E%90/" class="post-nav-link">
+      <div class="title">
+        Next: <i class="fas fa-angle-right"></i>
+        <div class="title-text">Logistic Regression算法简析</div>
+      </div>
+      <!-- <div class="content">
+        Logistic Regression算法简析原理Logistic Regression是一种广义线性模型，用于处理二分
+      </div> -->
+    </a>
+  </div>
+
 </div>
 
     
@@ -664,8 +898,106 @@
 
     <!-- 打赏 -->
     
+      <div id="appDonate" class="post-donate">
+  <div id="donate_board" class="donate_bar center" ref="donate">
+    <a id="btn_donate" class="btn_donate" href="javascript:;" title="打赏" @click="showDialogDrawer()"></a>
+  </div>
+  <transition name="fade">
+    <div 
+      class="donate-box-mask"
+      v-cloak 
+      v-show="visible"
+      @click="cancelDialogDrawer()"
+    >
+    </div>
+  </transition>
+  <transition name="bounce">
+    <div class="donate-box" v-cloak v-show="visible">
+      <div class="donate-box_close">
+        <i class="fas fa-times" aria-hidden="true" @click="cancelDialogDrawer" pointer></i>
+      </div>
+      <div class="donate-box_title">
+        <h4>
+          你的赏识是我前进的动力
+        </h4>
+      </div>
+      <div class="donate-box_tab">
+        <div class="Alipay" pointer :class="{'active': tabActive === 'Alipay'}" @click="changeTabActive('Alipay')">
+          支付宝
+        </div>
+        <div class="WeChatpay" pointer :class="{'active': tabActive === 'WeChatpay'}" @click="changeTabActive('WeChatpay')">
+          微信
+        </div>
+      </div>
+      <div class="donate-box_img">
+        <div class="AlipayImg" v-show="tabActive === 'Alipay'">
+          <img src="https://i.postimg.cc/mZ7DJc2p/IMG-8572.jpg" class="lazyload placeholder" data-srcset="https://i.postimg.cc/mZ7DJc2p/IMG-8572.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="支付宝打赏" />
+        </div> 
+        <div class="WeChatpayImg" v-show="tabActive === 'WeChatpay'">
+          <img src="https://i.postimg.cc/wvmv6M5v/IMG-8574.jpg" class="lazyload placeholder" data-srcset="https://i.postimg.cc/wvmv6M5v/IMG-8574.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="微信打赏" />
+        </div>
+      </div>
+    </div>
+  </transition>
+</div>
+
+<script>
+  var body = document.body || document.documentElement || window;
+  var vm = new Vue({
+    el: '#appDonate',
+    data: {
+      visible: false,
+      tabActive: 'Alipay',
+      top: 0,
+    },
+    computed: {
+    },
+    mounted() {
+    },
+    methods: {
+      showDialogDrawer() {
+        this.visible = true;
+        // 防止页面滚动，只能让弹框滚动
+        // function getScroll() {
+        //   return {
+        //     left: window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft || 0,
+        //     top: window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0
+        //   };
+        // }
+        this.top = $(document).scrollTop() // or getScroll().top
+        // console.log('aa', $('.main-content'));
+        body.style.cssText = 'overflow: hidden;';
+      },
+      cancelDialogDrawer() {
+        this.visible = false;
+        body.removeAttribute('style');
+        $(document).scrollTop(this.top)
+      },
+      changeTabActive(name) {
+        this.tabActive = name;
+      }
+    },
+    created() {}
+  })
+</script>
+    
 
     <!-- 分享 -->
+    
+      <!-- https://github.com/overtrue/share.js -->
+<!-- 文章详情页的分享 -->
+<div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+
+<script src="/js/shareJs/social-share.min.js"></script>
+</script>
+
+<style>
+  .social-share {
+    margin: 20px 0;
+  }
+</style>
+
+
     
     
     <!-- 评论 -->
@@ -760,186 +1092,29 @@
   <div class="layout_sticky">    
     
       
-        
-    <section class="widget side_category">
-      
-  <header>
-    
-      <a style="color: " href='/categories'><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i><span class='name'>文章分类</span></a>
-    
-  </header>
-
-
-      <div class='content'>
-        <ul class="entry navigation">
-          
-            <li><a class="flat-box"
-              title="/categories/Computer-Technology/" href="/categories/Computer-Technology/"
-              id="categoriesComputer-Technology"
-              ><div class='name'>Computer Technology</div><div class='badge'>(9)</div></a></li>
-          
-            <li><a class="flat-box"
-              title="/categories/Final-Review/" href="/categories/Final-Review/"
-              id="categoriesFinal-Review"
-              ><div class='name'>Final Review</div><div class='badge'>(3)</div></a></li>
-          
-            <li><a class="flat-box"
-              title="/categories/Pointless-small-talk/" href="/categories/Pointless-small-talk/"
-              id="categoriesPointless-small-talk"
-              ><div class='name'>Pointless small talk</div><div class='badge'>(3)</div></a></li>
-          
-        </ul>
-      </div>
-    </section>
-  
-  
-      
-      
-        
-<section class="widget side_tagcloud">
-    
-  <header>
-    
-      <a style="color: " href='/tags/'><i class="fas fa-tags fa-fw" aria-hidden="true"></i><span class='name'>热门标签</span></a>
-    
-  </header>
-
-
-    <div class='content'>
-    <a href="/tags/Database/" style="font-size: 14px; color: #999">Database</a> <a href="/tags/Decision-Tree/" style="font-size: 14px; color: #999">Decision Tree</a> <a href="/tags/GPT/" style="font-size: 19px; color: #777">GPT</a> <a href="/tags/Hadoop/" style="font-size: 19px; color: #777">Hadoop</a> <a href="/tags/Hive/" style="font-size: 14px; color: #999">Hive</a> <a href="/tags/Java/" style="font-size: 14px; color: #999">Java</a> <a href="/tags/K-Nearest-Neighbor/" style="font-size: 14px; color: #999">K- Nearest Neighbor</a> <a href="/tags/Logistic-Regression/" style="font-size: 14px; color: #999">Logistic Regression</a> <a href="/tags/ML/" style="font-size: 24px; color: #555">ML</a> <a href="/tags/Matplotlib/" style="font-size: 14px; color: #999">Matplotlib</a> <a href="/tags/Naive-Bayes/" style="font-size: 14px; color: #999">Naive Bayes</a> <a href="/tags/Politics/" style="font-size: 14px; color: #999">Politics</a> <a href="/tags/Python/" style="font-size: 14px; color: #999">Python</a> <a href="/tags/SVM/" style="font-size: 14px; color: #999">SVM</a> <a href="/tags/Scala/" style="font-size: 19px; color: #777">Scala</a> <a href="/tags/Spark/" style="font-size: 19px; color: #777">Spark</a> <a href="/tags/Tree/" style="font-size: 14px; color: #999">Tree</a>
-    </div>
-</section>
-
-  
-      
-      
-      
-  <section class="widget side_archives">
-    
-    <header><a style="color: red" href='/archives/'><i class="fas fa-archive fa-fw" aria-hidden="true"></i><span class='name'>归档</span></a></header><div class="content"><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/08/"><span class="card-archive-list-date">August 2023</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/07/"><span class="card-archive-list-date">July 2023</span><span class="card-archive-list-count">14</span></a></li></ul></div>
-  </section>
-
-      <section class="widget side_webinfo">
+<section class="widget side_toc">
   
   <header>
     
-      <i style="color: " class="fas fa-chart-line fa-fw" aria-hidden="true"></i><span class='name' style="color: ">站点信息</span>
+      <i style="color: " class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name' style="color: ">本文目录</span>
     
   </header>
 
 
   <div class='content'>
-    <div class="webinfo">
-      
-        <div class="webinfo-item">
-          <div>文章数目：</div>
-          <div>15 篇</div>
-        </div>
-      
-
-      
-        <div class="webinfo-item">
-          <div>已运行时间：</div>
-          <div id="webinfo-runtime-count" publish_date="03/24/2020 21:34:09"></div>
-        </div>
-        <script>
-          var BirthDay = new Date(new Date('2023/07/05'));
-          var today = new Date();
-          var timeold = (today.getTime() - BirthDay.getTime());
-          var daysold = Math.floor(timeold / (24 * 60 * 60 * 1000));
-          document.getElementById('webinfo-runtime-count').innerHTML = daysold + ' 天';
-        </script>
-      
-
-
-      
-        <div class="webinfo-item">
-          <div>本站总字数：</div>
-          <div>79.4k 字</div>
-        </div>
-      
-
-      
-        <div class="webinfo-item">
-          <div>本站访客数：</div>
-          
-          <div><span id="busuanzi_value_site_uv"><i class="fas fa-fan fa-spin fa-fw" aria-hidden="true"></i></span> 人</div>
-          
-        </div>
-      
-
-      
-        <div class="webinfo-item">
-          <div>本站总访问量：</div>
-          
-          <div><span id="busuanzi_value_site_pv"><i class="fas fa-fan fa-spin fa-fw" aria-hidden="true"></i></span> 次</div>
-          
-        </div>
-      
-
-      
-        <div class="webinfo-item">
-          <div>最后活动时间：</div>
-          
-            <div id="last-update" style="display: none;">Tue Aug 01 2023 04:16:23 GMT+0000 (Coordinated Universal Time)</div>
-            <div id="last-update-show">2023-08-01 日</div>
-          
-        </div>
-        
-        <script>
-          function timeago(dateTimeStamp) {
-              var minute = 1000 * 60; //把分，时，天，周，半个月，一个月用毫秒表示
-              var hour = minute * 60;
-              var day = hour * 24;
-              var week = day * 7;
-              var month = day * 30;
-              var now = new Date().getTime(); //获取当前时间毫秒
-              var diffValue = now - dateTimeStamp; //时间差
-              if (diffValue < 0) {
-                  return;
-              }
-              var minC = diffValue / minute; //计算时间差的分，时，天，周，月
-              var hourC = diffValue / hour;
-              var dayC = diffValue / day;
-              var weekC = diffValue / week;
-              var monthC = diffValue / month;
-              if (monthC >= 1 && monthC <= 3) {
-                  result = " " + parseInt(monthC) + " 月前"
-              } else if (weekC >= 1 && weekC <= 3) {
-                  result = " " + parseInt(weekC) + " 周前"
-              } else if (dayC >= 1 && dayC <= 6) {
-                  result = " " + parseInt(dayC) + " 天前"
-              } else if (hourC >= 1 && hourC <= 23) {
-                  result = " " + parseInt(hourC) + " 小时前"
-              } else if (minC >= 1 && minC <= 59) {
-                  result = " " + parseInt(minC) + " 分钟前"
-              } else if (diffValue >= 0 && diffValue <= minute) {
-                  result = "刚刚"
-              } else {
-                  var datetime = new Date();
-                  datetime.setTime(dateTimeStamp);
-                  var Nyear = datetime.getFullYear();
-                  var Nmonth = datetime.getMonth() + 1 < 10 ? "0" + (datetime.getMonth() + 1) : datetime.getMonth() + 1;
-                  var Ndate = datetime.getDate() < 10 ? "0" + datetime.getDate() : datetime.getDate();
-                  var Nhour = datetime.getHours() < 10 ? "0" + datetime.getHours() : datetime.getHours();
-                  var Nminute = datetime.getMinutes() < 10 ? "0" + datetime.getMinutes() : datetime.getMinutes();
-                  var Nsecond = datetime.getSeconds() < 10 ? "0" + datetime.getSeconds() : datetime.getSeconds();
-                  result = Nyear + "-" + Nmonth + "-" + Ndate
-              }
-              return result;
-          }
-          var lastUpDate = document.getElementById('last-update').innerHTML;
-          try {
-            document.getElementById('last-update-show').innerHTML = timeago(new Date(lastUpDate));
-          } catch (error) {
-            document.getElementById('last-update-show').innerHTML = '2023-08-01 日';
-          }
-        </script>
-        
-      
+    <div class="toc-main">
+      <div class="toc-content">
+        <!-- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#SVM%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA"><span class="toc-text">SVM支持向量机</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0"><span class="toc-text">概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B6%89%E5%8F%8A%E5%88%B0%E7%9A%84%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F"><span class="toc-text">涉及到的数学公式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E6%AD%A5%E9%AA%A4"><span class="toc-text">实现步骤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SVM%E4%B8%8ELogistic-Regression"><span class="toc-text">SVM与Logistic Regression</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%A4%E6%96%AD%E7%BA%BF%E6%80%A7%E5%8F%AF%E5%88%86"><span class="toc-text">判断线性可分</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BA%8F%E5%88%97%E6%9C%80%E5%B0%8F%E4%BC%98%E5%8C%96SMO"><span class="toc-text">序列最小优化SMO</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A1%88%E4%BE%8B"><span class="toc-text">案例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E9%9B%86"><span class="toc-text">数据集</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0"><span class="toc-text">实现</span></a></li></ol></li></ol></li></ol> -->
+        <div class="toc"></div>
+      </div>
     </div>
   </div>
 </section>
+<!-- 手机端目录按钮 -->
+<div id="toc-mobile-btn">
+  <i class="fas fa-list-ul" aria-hidden="true"></i>
+</div>
+
       
     
   </div>
@@ -962,7 +1137,7 @@
 	var vm = new Vue({
 		el: '#appBgSwiper',
 		data: {
-			names: '' || 'fade' || 'fade', // translate-fade fade
+			names: 'fade' || 'fade' || 'fade', // translate-fade fade
 			mark: 0,
 			img: [],
 			bgColor: '',
@@ -1004,7 +1179,7 @@
 				}
 			},
 			play() {
-				let bgImgDelay = '' || '180000'
+				let bgImgDelay = '180000' || '180000'
 				let delay = parseInt(bgImgDelay) || 180000;
 				this.time = setInterval(this.autoPlay, delay);
 			},
@@ -1068,6 +1243,59 @@
 		height: 100%;
 	}
 </style>
+
+
+  <script>
+  // https://github.com/theme-next/hexo-theme-next/blob/master/layout/_third-party/math/mathjax.swig
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = 'https://unpkg.com/mathjax@3.0/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    // 文章章节标题不能为 “MathJax” ，否则会报错。
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
 
 
 
