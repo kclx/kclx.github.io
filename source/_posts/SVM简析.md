@@ -1,6 +1,6 @@
 ---
 title: SVM简析
-tags: [ 'ML', 'SVM' ]
+tags: [ 'ML', 'SVM', 'Lagrange Multiplier Method' ]
 categories: [ Computer Technology ]
 top: false
 comments: true
