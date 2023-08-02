@@ -11,7 +11,7 @@
   <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-  <title>SVM简析 | Orlando</title>
+  <title>RandomForest算法简析 | Orlando</title>
 
   <link rel="icon" type="image/svg+xml" href="/main.svg">
   <link rel="stylesheet" href="https://at.alicdn.com/t/font_1911880_c1nvbyezg17.css">
@@ -572,21 +572,21 @@
 
 
 <div class="post-detail-header" id="thumbnail_canvas" style="background-repeat: no-repeat; background-size: cover; 
-  background-position: center center;position: relative;background-image:url('https://s1.imagehub.cc/images/2023/08/01/FOH_Ab2aQAo8JkV.jpeg')">
+  background-position: center center;position: relative;background-image:url('https://s1.imagehub.cc/images/2023/08/02/8_2023615.jpeg')">
   <div class="post-detail-header-mask"></div>
   <canvas id="header_canvas"style="position:absolute;bottom:0;pointer-events:none;"></canvas>
   
   <div class="post-detail-header_info-box">
     <div class="title-box">
       <span class="title">
-        SVM简析
+        RandomForest算法简析
       </span>
     </div>
     
     
       
         <span class="post-detail-header_date">
-          <i class="fas fa-calendar"></i> Published in：2023-08-01 |
+          <i class="fas fa-calendar"></i> Published in：2023-08-02 |
         </span>
       
 
@@ -604,11 +604,11 @@
       
         <div class="post-detail-header_wordcount">
           <span class="totalcount">
-            <i class="fas fa-file-text-o"></i> Words: 4k |
+            <i class="fas fa-file-text-o"></i> Words: 2.9k |
           </span>
   
           <span class="min2read">
-            <i class="fas fa-clock"></i> Reading time: 15min |
+            <i class="fas fa-clock"></i> Reading time: 12min |
           </span>
   
           
@@ -635,201 +635,71 @@
   <div class="main-content">
     <article class="post post-detail">
       <div class="post-content">
-        <h1 id="SVM支持向量机"><a href="#SVM支持向量机" class="headerlink" title="SVM支持向量机"></a>SVM支持向量机</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>SVM（支持向量机）是一种常用的监督学习算法，用于分类和回归任务。其主要目标是找到一个超平面，将不同类别的数据点有效地分隔开，并使得边距最大化。在分类问题中，SVM将数据点映射到特征空间，并通过支持向量寻找最优超平面，以在未知数据上取得良好的泛化性能。</p>
-<p>SVM的核心原理包括以下几点：</p>
+        <h1 id="RandomForest算法简析"><a href="#RandomForest算法简析" class="headerlink" title="RandomForest算法简析"></a>RandomForest算法简析</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>随机森林（Random Forest）是一种强大且流行的机器学习算法，用于解决分类和回归问题。它是集成学习（Ensemble Learning）方法的一种，通过组合多个决策树来形成一个更强大的模型。随机森林由贝叶斯学者Leo Breiman于2001年提出，并在实践中被广泛应用。</p>
+<p>以下是随机森林的概述：</p>
 <ol>
-<li><p>支持向量：在数据点中，距离超平面最近的一些数据点被称为支持向量，它们对超平面的位置和间隔起着关键作用。</p>
+<li><p>决策树基本原理：首先需要了解决策树的基本原理。决策树是一种非参数化的监督学习方法，通过在输入特征上逐步进行二分划分，将数据集分割成不同的区域，从而构建一个树形的分类模型。</p>
 </li>
-<li><p>最大边距：SVM通过最大化超平面与支持向量之间的边距来寻找最优解。最大边距可以提高模型的鲁棒性，使其对新数据更具预测能力。</p>
+<li><p>随机森林组成：随机森林由多个决策树组成。在构建每个决策树时，采用的数据是从原始训练集中有放回地随机抽取的（有放回采样，即Bootstrap采样），同时每个决策树使用的特征子集也是随机选择的。</p>
 </li>
-<li><p>分类器构建：SVM的目标是解决一个优化问题，通过数学方法找到最优的超平面。这个优化问题是一个凸二次规划问题，在线性可分的情况下有解。</p>
+<li><p>随机性：随机森林的随机性体现在两个方面：首先，通过随机抽取数据和特征子集，使得每个决策树都有所不同；其次，当进行树节点划分时，不再搜索所有可能的特征，而是随机选择特征子集中的一个特征进行划分。这种随机性有助于降低模型的方差，提高泛化性能。</p>
 </li>
-<li><p>核函数：对于线性不可分的数据，SVM可以通过核函数将数据映射到高维特征空间，在高维空间中找到超平面，从而实现线性分类。常用的核函数有线性核、多项式核和高斯核等。</p>
+<li><p>投票集成：在分类问题中，每个决策树会给出一个预测结果，最终的分类结果是通过投票机制来确定，即采用多数投票的结果作为最终输出。在回归问题中，随机森林的预测结果是多个决策树预测结果的平均值。</p>
 </li>
-<li><p>正则化参数：SVM引入一个正则化参数C，用于平衡最大化边距和分类错误之间的权衡。较小的C值允许一些分类错误，而较大的C值对分类错误施加更严格的惩罚。</p>
+<li><p>随机森林的优点：随机森林在处理高维数据和大规模数据时表现出色，具有很强的泛化能力，不容易过拟合，且对于异常值和噪声相对稳健。此外，随机森林能够评估特征的重要性，对于特征选择和可视化数据具有一定帮助。</p>
+</li>
+<li><p>参数调节：随机森林中的主要参数包括决策树的数量、每个决策树的最大深度、特征子集大小等。在实践中，可以通过交叉验证等技术来选择合适的参数值，从而优化模型的性能。</p>
 </li>
 </ol>
-<p>SVM具有良好的泛化能力，对于小样本数据和高维特征空间都表现出较好的性能。它在图像分类、文本分类、生物信息学等领域取得了广泛的应用。虽然SVM在处理大规模数据时存在一定的挑战，但在许多实际问题中，它仍然是一个有效且强大的分类器和回归器。</p>
+<p>总结来说，随机森林是一种强大且易于使用的机器学习算法，适用于分类和回归问题，并在许多现实世界的应用中取得了很好的效果。</p>
+<h2 id="集成方法"><a href="#集成方法" class="headerlink" title="集成方法"></a>集成方法</h2><p>集成方法（Ensemble Methods）是一种机器学习技术，通过组合多个基本模型来构建一个更强大、更稳健的预测模型。这些基本模型可以是同质的（相同类型的算法）或异质的（不同类型的算法），它们通常被称为”弱学习器”（Weak Learners）或”基学习器”（Base Learners）。</p>
+<p>集成方法通过将多个弱学习器的预测结果进行加权平均或投票等方式，从而得到更准确、泛化能力更强的综合预测结果。相比单一的基本模型，集成方法能够降低过拟合风险，提高模型的鲁棒性和稳定性。</p>
+<p>集成方法的主要优势在于它能够在不同的数据集和问题上产生出色的表现。这是因为集成方法利用了多个模型的优势，而不受单个模型的局限性。在实践中，集成方法通常比单个模型更容易调整和优化，尤其在处理复杂任务和大规模数据时具有很大的优势。</p>
+<p>常见的集成方法包括：</p>
+<ol>
+<li><p><strong>Bagging（Bootstrap Aggregating）</strong>: Bagging使用有放回抽样（Bootstrap采样）从原始训练数据中生成多个不同的训练集，然后在每个训练集上构建独立的弱学习器。最终的预测结果是这些弱学习器预测结果的平均值（回归问题）或多数投票结果（分类问题）。</p>
+</li>
+<li><p><strong>Boosting</strong>: Boosting是一种迭代的集成方法，通过顺序构建多个弱学习器，每个学习器都试图纠正前一个学习器的错误。Boosting方法根据预测错误的样本给予其更高的权重，以便下一个学习器更关注这些难以分类的样本。常见的Boosting算法有AdaBoost和Gradient Boosting Machine (GBM)。</p>
+</li>
+<li><p><strong>Stacking</strong>: Stacking是一种更复杂的集成方法，它不仅仅简单地将多个模型的结果进行加权平均，而是将不同模型的预测结果作为新的特征，然后再训练一个元学习器来产生最终的预测结果。</p>
+</li>
+<li><p><strong>Random Forest</strong>: 此前已经提到过，随机森林是一种基于Bagging思想的集成学习方法，由多个决策树组成。</p>
+</li>
+</ol>
+<p>集成方法在机器学习领域得到广泛应用，特别是在数据挖掘、分类和回归任务中。通过将多个模型的优势相结合，集成方法能够显著提高预测性能，成为了许多机器学习竞赛和实际应用中的重要技术。</p>
+<h2 id="构建步骤"><a href="#构建步骤" class="headerlink" title="构建步骤"></a>构建步骤</h2><p>随机森林（Random Forest）算法的构建过程如下：</p>
+<ol>
+<li><p>数据准备：首先，将原始数据集拆分成训练集和测试集。训练集用于构建随机森林模型，测试集用于评估模型的性能。</p>
+</li>
+<li><p>随机抽样：对于每棵决策树，从训练集中进行有放回地随机抽样（Bootstrap采样），得到一个新的训练子集。这意味着每个子集可能包含一部分重复样本，而其他样本可能会被省略。这种随机抽样可以确保每棵决策树之间有差异，增加模型的多样性。</p>
+</li>
+<li><p>特征随机选择：在每个节点处，决策树的构建不会考虑所有的特征，而是随机选择一个特征子集来进行节点划分。这样做的目的是增加模型的随机性，防止过度拟合，并鼓励不同决策树使用不同的特征来构建树。</p>
+</li>
+<li><p>构建决策树：根据上述随机抽样和特征选择的训练子集，在每个节点上使用某种决策树算法（通常是CART算法，即分类与回归树）来划分数据。决策树会根据选择的特征和划分准则将数据集划分为更小的子集，直到满足某个停止条件（例如：节点样本数小于某个阈值、树的深度达到一定值等）为止。</p>
+</li>
+<li><p>集成决策：对于分类问题，每棵决策树投票选择它们认为的最终类别，并以多数票决定最终的分类结果。对于回归问题，每棵决策树给出一个预测值，最终的预测结果是这些预测值的平均值。</p>
+</li>
+<li><p>模型评估：使用测试集评估随机森林的性能，可以使用各种指标如准确率、精确度、召回率、F1分数等。</p>
+</li>
+<li><p>特征重要性评估：随机森林可以输出每个特征的重要性分数，用于衡量每个特征对模型预测性能的贡献程度。</p>
+</li>
+</ol>
 <h2 id="涉及到的数学公式"><a href="#涉及到的数学公式" class="headerlink" title="涉及到的数学公式"></a>涉及到的数学公式</h2><ol>
-<li><p>SVM分类器：</p>
-<ul>
-<li>假设超平面的方程为：$$f(x) &#x3D; w^T x + b$$</li>
-<li>其中，$f(x)$ 是输入样本 $x$ 的预测输出，$w$ 是超平面的法向量（权重），$b$ 是超平面的偏置项。</li>
-</ul>
+<li><p>基尼不纯度（Gini Impurity）：用于衡量节点的不纯度，对于分类问题，基尼不纯度定义如下：<br>$$ \text{Gini}(p) &#x3D; 1 - \sum_{i&#x3D;1}^{K} p_i^2 $$<br>其中，$K$ 是类别的数量，$p_i$ 是类别$i$在节点中的样本比例。</p>
 </li>
-<li><p>超平面到数据点的距离：</p>
-<ul>
-<li>数据点 $x$ 到超平面 $f(x)$ 的带符号距离为：$$d &#x3D; \frac{w^T x + b}{|w|}$$，其中 $|w|$ 是 $w$ 的L2范数。</li>
-</ul>
+<li><p>信息增益（Information Gain）：用于在决策树节点划分时选择最优特征。对于分类问题，信息增益定义如下：<br>$$ \text{IG}(D, f) &#x3D; \text{Gini}(D) - \sum_{v \in \text{Values}(f)} \frac{|D_v|}{|D|} \text{Gini}(D_v) $$<br>其中，$D$ 是当前节点的数据集，$f$ 是特征，$\text{Values}(f)$ 是特征$f$的取值集合，$D_v$ 是特征$f$取值为$v$时对应的数据子集。</p>
 </li>
-<li><p>分类决策规则：</p>
-<ul>
-<li>如果 $f(x) \geq 0$，则预测 $x$ 属于正类别。</li>
-<li>如果 $f(x) &lt; 0$，则预测 $x$ 属于负类别。</li>
-</ul>
+<li><p>均方误差（Mean Squared Error，MSE）：用于回归问题中衡量节点的纯度，定义如下：<br>$$ \text{MSE}(D) &#x3D; \frac{1}{|D|} \sum_{i&#x3D;1}^{|D|} (y_i - \bar{y})^2 $$<br>其中，$D$ 是当前节点的数据集，$y_i$ 是样本$i$的真实输出值，$\bar{y}$ 是节点中所有样本输出值的均值。</p>
 </li>
-<li><p>间隔（边距）：</p>
-<ul>
-<li>对于超平面 $(w^T x + b) &#x3D; 0$，它到最近的正类别支持向量和最近的负类别支持向量之间的距离为 $\frac{2}{|w|}$。</li>
-<li>SVM 的目标是最大化边距，即最小化 $|w|$。</li>
-</ul>
-</li>
-<li><p>优化问题：<br>   SVM的优化问题是一个凸二次规划（Quadratic Programming，QP）问题。对于线性可分和线性不可分的情况，可以使用不同的方法来解决SVM的优化问题。</p>
-<ol>
-<li><p>线性可分情况下的优化问题：<br>对于线性可分的SVM，优化问题可以表示为：<br>$$\text{Minimize:} \quad \frac{1}{2} |w|^2$$<br>$$\text{Subject to:} \quad y_i (w^T x_i + b) \geq 1, \text{for all} \ i$$<br>其中，$x_i$ 是训练样本，$y_i$ 是样本 $x_i$ 的标签（+1 或 -1），$w$ 是超平面的法向量，$b$ 是超平面的偏置项。</p>
-<p>这是一个凸二次规划问题，可以使用现有的凸优化求解器来求解。常用的凸优化求解器包括：</p>
-<ul>
-<li><a href="/2023/08/01/SVM%E7%AE%80%E6%9E%90/#%E5%BA%8F%E5%88%97%E6%9C%80%E5%B0%8F%E4%BC%98%E5%8C%96SMO">序列最小优化算法</a>（Sequential Minimal Optimization，SMO）</li>
-<li>内点法（Interior Point Method）</li>
-<li>梯度下降法（Gradient Descent）</li>
-<li>坐标下降法（Coordinate Descent）等</li>
-</ul>
-<p>这些方法可以找到拉格朗日乘子 $\alpha$ 的最优解，进而求解出超平面的参数 $w$ 和 $b$。</p>
-</li>
-<li><p>线性不可分情况下的优化问题：<br>当数据线性不可分时，SVM引入松弛变量 $\xi_i$，使得部分数据点可以位于边界区域内。优化问题变为：<br>$$\text{Minimize:} \quad \frac{1}{2} |w|^2 + C \sum \xi_i$$<br>$$\text{Subject to:} \quad y_i (w^T x_i + b) \geq 1 - \xi_i, \text{for all} \ i$$<br>$$\xi_i \geq 0, \text{for all} \ i$$<br>其中，$C$ 是一个正则化参数，控制了分类错误的惩罚。</p>
-<p>这也是一个凸二次规划问题，可以使用相同的凸优化求解器来求解。通过求解优化问题，可以得到拉格朗日乘子 $\alpha$ 和松弛变量 $\xi_i$ 的最优解，进而求解出超平面的参数 $w$ 和 $b$。</p>
+<li><p>随机森林中的投票或平均：对于分类问题，随机森林使用投票机制，即多个决策树的预测结果中取多数票作为最终结果。对于回归问题，随机森林使用平均值，即多个决策树的预测值取平均作为最终结果。</p>
 </li>
 </ol>
-<p>需要注意的是，当遇到非线性问题时，需要使用核函数来将数据映射到高维特征空间，然后再应用上述方法来求解对偶问题。这样，可以将非线性SVM转化为一个线性SVM问题来求解。</p>
-</li>
-<li><p>核函数：</p>
-<ul>
-<li>SVM通过核函数将数据映射到高维特征空间，以实现非线性分类。常用的核函数有线性核、多项式核和高斯核。</li>
-<li>线性核：$$K(x_i, x_j) &#x3D; x_i^T x_j$$</li>
-<li>多项式核：$$K(x_i, x_j) &#x3D; (\gamma x_i^T x_j + r)^d$$</li>
-<li>高斯核（径向基核）：$$K(x_i, x_j) &#x3D; \exp(-\gamma |x_i - x_j|^2)$$</li>
-</ul>
-</li>
-</ol>
-<h2 id="实现步骤"><a href="#实现步骤" class="headerlink" title="实现步骤"></a>实现步骤</h2><ol>
-<li><p>数据预处理：</p>
-<ul>
-<li>收集和准备训练数据集，确保数据是有标签的，并且特征值和标签值已经转换为数值形式。</li>
-<li>如果数据集中存在缺失值或异常值，进行数据清洗和处理。</li>
-</ul>
-</li>
-<li><p>特征缩放：</p>
-<ul>
-<li>对特征值进行缩放，确保所有特征在相同的尺度范围内。常见的缩放方法包括标准化（均值为0，方差为1）或者归一化（将特征缩放到0到1的范围内）。</li>
-</ul>
-</li>
-<li><p>训练集和测试集划分：</p>
-<ul>
-<li>将数据集划分为训练集和测试集，用于模型的训练和评估。</li>
-</ul>
-</li>
-<li><p>核函数选择（可选）：</p>
-<ul>
-<li>如果数据集是线性不可分的，需要选择合适的核函数对数据进行映射。常见的核函数有线性核、多项式核和高斯核等。</li>
-</ul>
-</li>
-<li><p>优化问题解决：</p>
-<ul>
-<li>使用优化算法（例如凸二次规划问题的求解器）来找到SVM的最优超平面。</li>
-<li>线性可分的情况下，使用硬间隔SVM；线性不可分的情况下，使用软间隔SVM。</li>
-</ul>
-</li>
-<li><p>正则化参数选择（可选）：</p>
-<ul>
-<li>对于软间隔SVM，需要选择合适的正则化参数C，该参数控制了分类错误的惩罚程度。C值较大将更严格惩罚分类错误，C值较小则更容忍分类错误。</li>
-</ul>
-</li>
-<li><p>训练模型：</p>
-<ul>
-<li>使用训练集来训练SVM模型。模型的训练过程就是优化问题求解的过程，找到最优的超平面和参数。</li>
-</ul>
-</li>
-<li><p>预测：</p>
-<ul>
-<li>使用训练好的模型对新的样本进行预测，计算预测输出的值 $f(x)$。</li>
-</ul>
-</li>
-<li><p>评估模型性能：</p>
-<ul>
-<li>使用测试集来评估模型的性能。常见的评估指标包括准确率、精确率、召回率、F1-score等。</li>
-</ul>
-</li>
-<li><p>调优（可选）：</p>
-<ul>
-<li>可以根据模型在测试集上的表现进行调优，例如尝试不同的核函数、调整正则化参数C等。</li>
-</ul>
-</li>
-<li><p>应用模型：</p>
-<ul>
-<li>在实际应用中，使用训练好的SVM模型来进行分类任务，对新的未知样本进行分类预测。</li>
-</ul>
-</li>
-</ol>
-<h2 id="SVM与Logistic-Regression"><a href="#SVM与Logistic-Regression" class="headerlink" title="SVM与Logistic Regression"></a>SVM与Logistic Regression</h2><p>SVM（支持向量机）和逻辑回归在一些方面的数学公式和算法确实有相似之处，但它们在目标函数、决策边界和优化算法等方面存在明显的区别。下面列出它们的相似之处和区别：</p>
-<p>相似之处：</p>
-<ol>
-<li><p>都是监督学习算法：SVM和逻辑回归都属于监督学习算法，都是用于解决分类问题。</p>
-</li>
-<li><p>都使用线性模型：SVM和逻辑回归在默认情况下都使用线性模型进行分类。线性模型是通过特征的线性组合来进行分类的。</p>
-</li>
-<li><p>都基于概率：逻辑回归可以输出样本属于某一类别的概率，而SVM通过决策函数的符号来判断样本的类别。</p>
-</li>
-</ol>
-<p>区别：</p>
-<ol>
-<li><p>目标函数和决策边界：</p>
-<ul>
-<li>逻辑回归的目标是最小化Logistic损失函数，并使用sigmoid函数将线性模型的输出映射到[0, 1]的概率值。决策边界是线性的。</li>
-<li>SVM的目标是找到一个能够将不同类别的数据点有效分隔开的超平面，并最大化边距。决策边界是距离支持向量最近的超平面。</li>
-</ul>
-</li>
-<li><p>损失函数：</p>
-<ul>
-<li>逻辑回归使用Logistic损失函数（也称为交叉熵损失函数），用于衡量模型预测与实际标签之间的差异。</li>
-<li>SVM使用Hinge损失函数，它对正确分类的样本施加较小的损失，对于错误分类的样本施加较大的损失。</li>
-</ul>
-</li>
-<li><p>优化算法：</p>
-<ul>
-<li>逻辑回归通常使用梯度下降等优化算法来最小化损失函数。</li>
-<li>SVM使用凸二次规划等优化算法来找到最优的超平面。</li>
-</ul>
-</li>
-<li><p>处理线性不可分数据：</p>
-<ul>
-<li>逻辑回归可以处理线性不可分的数据，但在处理非线性问题时可能需要引入特征工程或使用多项式特征。</li>
-<li>SVM通过使用核函数将数据映射到高维特征空间，从而实现处理非线性分类问题。</li>
-</ul>
-</li>
-</ol>
-<h2 id="判断线性可分"><a href="#判断线性可分" class="headerlink" title="判断线性可分"></a>判断线性可分</h2><p>在SVM中，线性可分是指数据集在特征空间中存在一个超平面，能够将不同类别的数据点完全正确地分隔开，而不会出现任何错误分类。判断数据是否线性可分可以通过以下方法：</p>
-<ol>
-<li><p>可视化数据：将数据绘制在二维或三维空间中，观察数据点的分布情况。如果数据点可以被一个直线（在二维空间）或一个平面（在三维空间）完全分开，那么数据集很可能是线性可分的。</p>
-</li>
-<li><p>线性SVM的结果：使用线性SVM对数据进行训练并绘制决策边界。如果线性SVM能够找到一个超平面，使得所有数据点都被正确分类，那么数据集是线性可分的。</p>
-</li>
-<li><p>检查线性约束条件：对于二分类问题，在SVM中，线性可分的条件是所有数据点满足以下线性约束条件：<br>$$y_i (w^T x_i + b) \geq 1, \text{for all} \ i$$<br>其中，$x_i$ 是数据点，$y_i$ 是数据点的标签（+1 或 -1），$w$ 是超平面的法向量，$b$ 是超平面的偏置项。</p>
-</li>
-<li><p>优化问题的结果：如果使用线性SVM解决优化问题，得到了一组满足上述约束条件的最优权重$w$和偏置项$b$，而且目标函数值为0（即最大化边距的结果），则说明数据是线性可分的。</p>
-</li>
-</ol>
-<p>需要注意的是，在实际应用中，数据可能并不是完全线性可分的，而是存在一些噪声或重叠情况。在这种情况下，可以使用软间隔SVM来处理部分分类错误，或者使用核函数将数据映射到高维特征空间来处理非线性可分问题。</p>
-<h2 id="序列最小优化SMO"><a href="#序列最小优化SMO" class="headerlink" title="序列最小优化SMO"></a>序列最小优化SMO</h2><p>序列最小优化（Sequential Minimal Optimization，简称SMO）是一种用于求解支持向量机（SVM）的优化算法，特别适用于处理大规模数据集的情况。SMO算法由John Platt于1998年提出，是一种迭代算法，通过不断选择两个变量进行优化，以逐步收敛到SVM的最优解。</p>
-<p>SMO算法的基本思想是将SVM的对偶问题转化为一个二次规划问题，并采用启发式的方法来解决这个二次规划问题。SMO算法的主要步骤如下：</p>
-<ol>
-<li><p>初始化：初始化拉格朗日乘子 $\alpha$ 和偏置项 $b$ 为0，选择一个迭代次数的阈值或设置最大迭代次数。</p>
-</li>
-<li><p>选择两个变量：在每一次迭代中，选择两个需要更新的拉格朗日乘子 $\alpha_i$ 和 $\alpha_j$。选择的方法可以采用启发式的方式，例如通过最大步长来选择 $\alpha_i$ 和 $\alpha_j$。</p>
-</li>
-<li><p>优化两个变量：固定其他拉格朗日乘子 $\alpha$，将问题转化为一个只有两个变量的二次规划问题，并通过解析求解或优化算法（如SMO内循环）来找到 $\alpha_i$ 和 $\alpha_j$ 的最优解。</p>
-</li>
-<li><p>更新参数：根据得到的 $\alpha_i$ 和 $\alpha_j$ 的最优解，更新拉格朗日乘子 $\alpha$ 和偏置项 $b$。</p>
-</li>
-<li><p>终止条件：检查迭代次数是否达到设定的阈值，或者拉格朗日乘子的变化是否小于设定的容差。如果满足终止条件，则算法结束；否则，返回步骤2，继续下一轮迭代。</p>
-</li>
-</ol>
-<p>SMO算法的优点在于，它每次只更新两个拉格朗日乘子，因此在每一步的计算量相对较小。同时，SMO算法还使用了一些启发式的策略，帮助在高维空间中搜索更快地收敛到SVM的最优解。这使得SMO算法在大规模数据集下表现出了较好的计算效率。</p>
-<p>值得注意的是，SMO算法用于求解线性SVM，当遇到非线性问题时，需要使用核函数来将数据映射到高维特征空间，然后再应用SMO算法来求解对偶问题。这样，SMO算法也可以用于求解非线性SVM。</p>
-<h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><h3 id="数据集"><a href="#数据集" class="headerlink" title="数据集"></a>数据集</h3><div class="link-group"><div class="tagLink"><a class="link-card" no-pjax target="_blank" title="testSet.txt" href="/citation/svm/testSet.txt"><span class="link-card-backdrop" style="background-image: url(https://cdn.pixabay.com/photo/2018/12/05/13/41/panda-3857754__340.jpg)"></span><div class="left"><img src="https://img.51miz.com/Element/00/37/79/59/10df0417_E377959_b7bb9dfa.png" class="lazyload placeholder" data-srcset="https://img.51miz.com/Element/00/37/79/59/10df0417_E377959_b7bb9dfa.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp"/></div><div class="right"><p class="text">testSet.txt</p><p class="url">/citation/svm/testSet.txt</p></div></a></div></div>
+<h2 id="案例：声纳信号分类"><a href="#案例：声纳信号分类" class="headerlink" title="案例：声纳信号分类"></a>案例：声纳信号分类</h2><h3 id="数据集"><a href="#数据集" class="headerlink" title="数据集"></a>数据集</h3><div class="link-group"><div class="tagLink"><a class="link-card" no-pjax target="_blank" title="sonar-all-data.txt" href="/citation/RandomForest/sonar-all-data.txt"><span class="link-card-backdrop" style="background-image: url(https://cdn.pixabay.com/photo/2018/12/05/13/41/panda-3857754__340.jpg)"></span><div class="left"><img src="https://img.51miz.com/Element/00/37/79/59/10df0417_E377959_b7bb9dfa.png" class="lazyload placeholder" data-srcset="https://img.51miz.com/Element/00/37/79/59/10df0417_E377959_b7bb9dfa.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp"/></div><div class="right"><p class="text">sonar-all-data.txt</p><p class="url">/citation/RandomForest/sonar-all-data.txt</p></div></a></div></div>
 
-<h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> numpy <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">loadDataSet</span>(<span class="params">fileName</span>):</span><br><span class="line">    dataMat = []</span><br><span class="line">    labelMat = []</span><br><span class="line">    fr = <span class="built_in">open</span>(fileName)</span><br><span class="line">    <span class="keyword">for</span> line <span class="keyword">in</span> fr.readlines():</span><br><span class="line">        lineArr = line.strip().split(<span class="string">&#x27;\t&#x27;</span>)</span><br><span class="line">        dataMat.append([<span class="built_in">float</span>(lineArr[<span class="number">0</span>]), <span class="built_in">float</span>(lineArr[<span class="number">1</span>])])</span><br><span class="line">        labelMat.append(<span class="built_in">float</span>(lineArr[<span class="number">2</span>]))</span><br><span class="line">    <span class="keyword">return</span> dataMat, labelMat</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">selectJrand</span>(<span class="params">i, m</span>):</span><br><span class="line">    j = i</span><br><span class="line">    <span class="keyword">while</span> j == i:</span><br><span class="line">        j = <span class="built_in">int</span>(random.uniform(<span class="number">0</span>, m))</span><br><span class="line">    <span class="keyword">return</span> j</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">clipAlpha</span>(<span class="params">aj, H, L</span>):</span><br><span class="line">    <span class="keyword">if</span> aj &gt; H:</span><br><span class="line">        aj = H</span><br><span class="line">    <span class="keyword">if</span> L &gt; aj:</span><br><span class="line">        aj = L</span><br><span class="line">    <span class="keyword">return</span> aj</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">smoSimple</span>(<span class="params">dataMatIn, classLabels, C, toler, maxIter</span>):</span><br><span class="line">    dataMatrix = mat(dataMatIn)</span><br><span class="line">    labelMat = mat(classLabels).transpose()</span><br><span class="line">    m, n = shape(dataMatrix)</span><br><span class="line">    b = <span class="number">0</span></span><br><span class="line">    alphas = mat(zeros((m, <span class="number">1</span>)))</span><br><span class="line">    <span class="built_in">iter</span> = <span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> (<span class="built_in">iter</span> &lt; maxIter):</span><br><span class="line">        alphaPairsChanged = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(m):</span><br><span class="line">            fXi = <span class="built_in">float</span>(multiply(alphas, labelMat).T * (dataMatrix * dataMatrix[i, :].T)) + b</span><br><span class="line">            Ei = fXi - <span class="built_in">float</span>(labelMat[i])</span><br><span class="line">            <span class="keyword">if</span> ((labelMat[i] * Ei &lt; -toler) <span class="keyword">and</span> (alphas[i] &lt; C)) <span class="keyword">or</span> ((labelMat[i] * Ei &gt; toler) <span class="keyword">and</span> (alphas[i] &gt; <span class="number">0</span>)):</span><br><span class="line">                j = selectJrand(i, m)</span><br><span class="line">                fXj = <span class="built_in">float</span>(multiply(alphas, labelMat).T * (dataMatrix * dataMatrix[j, :].T)) + b</span><br><span class="line">                Ej = fXj - <span class="built_in">float</span>(labelMat[j])</span><br><span class="line">                alphaIold = alphas[i].copy()</span><br><span class="line">                alphaJold = alphas[j].copy()</span><br><span class="line">                <span class="keyword">if</span> (labelMat[i] != labelMat[j]):</span><br><span class="line">                    L = <span class="built_in">max</span>(<span class="number">0</span>, alphas[j] - alphas[i])</span><br><span class="line">                    H = <span class="built_in">min</span>(C, C + alphas[j] - alphas[i])</span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    L = <span class="built_in">max</span>(<span class="number">0</span>, alphas[j] + alphas[i] - C)</span><br><span class="line">                    H = <span class="built_in">min</span>(C, alphas[j] + alphas[i])</span><br><span class="line">                <span class="keyword">if</span> L == H:</span><br><span class="line">                    <span class="keyword">continue</span></span><br><span class="line">                eta = <span class="number">2.0</span> * dataMatrix[i, :] * dataMatrix[j, :].T - dataMatrix[i, :] * dataMatrix[i, :].T - dataMatrix[j, :] * dataMatrix[j, :].T</span><br><span class="line">                <span class="keyword">if</span> eta &gt;= <span class="number">0</span>:</span><br><span class="line">                    <span class="keyword">continue</span></span><br><span class="line">                alphas[j] -= labelMat[j] * (Ei - Ej) / eta</span><br><span class="line">                alphas[j] = clipAlpha(alphas[j], H, L)</span><br><span class="line">                <span class="keyword">if</span> (<span class="built_in">abs</span>(alphas[j] - alphaJold) &lt; <span class="number">0.00001</span>):</span><br><span class="line">                    <span class="keyword">continue</span></span><br><span class="line">                alphas[i] += labelMat[j] * labelMat[i] * (alphaJold - alphas[j])</span><br><span class="line">                b1 = b - Ei - labelMat[i] * (alphas[i] - alphaIold) * dataMatrix[i, :] * dataMatrix[i, :].T - labelMat[j] * (alphas[j] - alphaJold) * dataMatrix[i, :] * dataMatrix[j, :].T</span><br><span class="line">                b2 = b - Ej - labelMat[i] * (alphas[i] - alphaIold) * dataMatrix[i, :] * dataMatrix[j, :].T - labelMat[j] * (alphas[j] - alphaJold) * dataMatrix[j, :] * dataMatrix[j, :].T</span><br><span class="line">                <span class="keyword">if</span> (<span class="number">0</span> &lt; alphas[i]) <span class="keyword">and</span> (C &gt; alphas[i]):</span><br><span class="line">                    b = b1</span><br><span class="line">                <span class="keyword">elif</span> (<span class="number">0</span> &lt; alphas[j]) <span class="keyword">and</span> (C &gt; alphas[j]):</span><br><span class="line">                    b = b2</span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    b = (b1 + b2) / <span class="number">2.0</span></span><br><span class="line">                alphaPairsChanged += <span class="number">1</span></span><br><span class="line">        <span class="keyword">if</span> (alphaPairsChanged == <span class="number">0</span>):</span><br><span class="line">            <span class="built_in">iter</span> += <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="built_in">iter</span> = <span class="number">0</span></span><br><span class="line">    <span class="keyword">return</span> b, alphas</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">calcWs</span>(<span class="params">alphas, dataArr, classLabels</span>):</span><br><span class="line">    X = mat(dataArr)</span><br><span class="line">    labelMat = mat(classLabels).transpose()</span><br><span class="line">    m, n = shape(X)</span><br><span class="line">    w = zeros((n, <span class="number">1</span>))</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(m):</span><br><span class="line">        w += multiply(alphas[i] * labelMat[i], X[i, :].T)</span><br><span class="line">    <span class="keyword">return</span> w</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">plotfig_SVM</span>(<span class="params">xMat, yMat, ws, b, alphas</span>):</span><br><span class="line">    xMat = mat(xMat)</span><br><span class="line">    yMat = mat(yMat)</span><br><span class="line">    b = array(b)[<span class="number">0</span>]</span><br><span class="line">    fig = plt.figure()</span><br><span class="line">    ax = fig.add_subplot(<span class="number">111</span>)</span><br><span class="line">    ax.scatter(xMat[:, <span class="number">0</span>].flatten().A[<span class="number">0</span>], xMat[:, <span class="number">1</span>].flatten().A[<span class="number">0</span>])</span><br><span class="line">    x = arange(-<span class="number">1.0</span>, <span class="number">10.0</span>, <span class="number">0.1</span>)</span><br><span class="line">    y = (-b - ws[<span class="number">0</span>, <span class="number">0</span>] * x) / ws[<span class="number">1</span>, <span class="number">0</span>]</span><br><span class="line">    ax.plot(x, y)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(shape(yMat[<span class="number">0</span>, :])[<span class="number">1</span>]):</span><br><span class="line">        <span class="keyword">if</span> yMat[<span class="number">0</span>, i] &gt; <span class="number">0</span>:</span><br><span class="line">            ax.plot(xMat[i, <span class="number">0</span>], xMat[i, <span class="number">1</span>], <span class="string">&#x27;cx&#x27;</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            ax.plot(xMat[i, <span class="number">0</span>], xMat[i, <span class="number">1</span>], <span class="string">&#x27;kp&#x27;</span>)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">100</span>):</span><br><span class="line">        <span class="keyword">if</span> alphas[i] &gt; <span class="number">0.0</span>:</span><br><span class="line">            ax.plot(xMat[i, <span class="number">0</span>], xMat[i, <span class="number">1</span>], <span class="string">&#x27;ro&#x27;</span>)</span><br><span class="line">    plt.show()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    dataArr, labelArr = loadDataSet(<span class="string">&#x27;6.SVM/testSet.txt&#x27;</span>)</span><br><span class="line">    b, alphas = smoSimple(dataArr, labelArr, <span class="number">0.6</span>, <span class="number">0.001</span>, <span class="number">40</span>)</span><br><span class="line">    ws = calcWs(alphas, dataArr, labelArr)</span><br><span class="line">    plotfig_SVM(dataArr, labelArr, ws, b, alphas)</span><br></pre></td></tr></table></figure>
+<h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> random <span class="keyword">import</span> seed, randrange, random</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">loadDataSet</span>(<span class="params">filename</span>):</span><br><span class="line">    dataset = []</span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(filename, <span class="string">&#x27;r&#x27;</span>) <span class="keyword">as</span> fr:</span><br><span class="line">        <span class="keyword">for</span> line <span class="keyword">in</span> fr.readlines():</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> line:</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            lineArr = []</span><br><span class="line">            <span class="keyword">for</span> featrue <span class="keyword">in</span> line.split(<span class="string">&#x27;,&#x27;</span>):</span><br><span class="line">                str_f = featrue.strip()</span><br><span class="line">                <span class="keyword">if</span> str_f.isdigit():</span><br><span class="line">                    lineArr.append(<span class="built_in">float</span>(str_f))</span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    lineArr.append(str_f)</span><br><span class="line">            dataset.append(lineArr)</span><br><span class="line">    <span class="keyword">return</span> dataset</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">cross_validation_split</span>(<span class="params">dataset, n_folds</span>):</span><br><span class="line">    dataset_split = <span class="built_in">list</span>()</span><br><span class="line">    dataset_copy = <span class="built_in">list</span>(dataset)</span><br><span class="line">    fold_size = <span class="built_in">len</span>(dataset) / n_folds</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n_folds):</span><br><span class="line">        fold = <span class="built_in">list</span>()</span><br><span class="line">        <span class="keyword">while</span> <span class="built_in">len</span>(fold) &lt; fold_size:</span><br><span class="line">            index = randrange(<span class="built_in">len</span>(dataset_copy))</span><br><span class="line">            fold.append(dataset_copy[index])</span><br><span class="line">        dataset_split.append(fold)</span><br><span class="line">    <span class="keyword">return</span> dataset_split</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">test_split</span>(<span class="params">index, value, dataset</span>):</span><br><span class="line">    left, right = <span class="built_in">list</span>(), <span class="built_in">list</span>()</span><br><span class="line">    <span class="keyword">for</span> row <span class="keyword">in</span> dataset:</span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">str</span>(row[index]) &lt; <span class="built_in">str</span>(value):</span><br><span class="line">            left.append(row)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            right.append(row)</span><br><span class="line">    <span class="keyword">return</span> left, right</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">gini_index</span>(<span class="params">groups, class_values</span>):</span><br><span class="line">    gini = <span class="number">0.0</span></span><br><span class="line">    <span class="keyword">for</span> class_value <span class="keyword">in</span> class_values:</span><br><span class="line">        <span class="keyword">for</span> group <span class="keyword">in</span> groups:</span><br><span class="line">            size = <span class="built_in">len</span>(group)</span><br><span class="line">            <span class="keyword">if</span> size == <span class="number">0</span>:</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            proportion = [row[-<span class="number">1</span>] <span class="keyword">for</span> row <span class="keyword">in</span> group].count(class_value) / <span class="built_in">float</span>(size)</span><br><span class="line">            gini += (proportion * (<span class="number">1.0</span> - proportion))</span><br><span class="line">    <span class="keyword">return</span> gini</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_split</span>(<span class="params">dataset, n_features</span>):</span><br><span class="line">    class_values = <span class="built_in">list</span>(<span class="built_in">set</span>(row[-<span class="number">1</span>] <span class="keyword">for</span> row <span class="keyword">in</span> dataset))</span><br><span class="line">    b_index, b_value, b_score, b_groups = <span class="number">999</span>, <span class="number">999</span>, <span class="number">999</span>, <span class="literal">None</span></span><br><span class="line">    features = <span class="built_in">list</span>()</span><br><span class="line">    <span class="keyword">while</span> <span class="built_in">len</span>(features) &lt; n_features:</span><br><span class="line">        index = randrange(<span class="built_in">len</span>(dataset[<span class="number">0</span>]) - <span class="number">1</span>)</span><br><span class="line">        <span class="keyword">if</span> index <span class="keyword">not</span> <span class="keyword">in</span> features:</span><br><span class="line">            features.append(index)</span><br><span class="line">    <span class="keyword">for</span> index <span class="keyword">in</span> features:</span><br><span class="line">        <span class="keyword">for</span> row <span class="keyword">in</span> dataset:</span><br><span class="line">            groups = test_split(index, row[index], dataset)</span><br><span class="line">            gini = gini_index(groups, class_values)</span><br><span class="line">            <span class="keyword">if</span> gini &lt; b_score:</span><br><span class="line">                b_index, b_value, b_score, b_groups = index, row[index], gini, groups</span><br><span class="line">    <span class="keyword">return</span> &#123;<span class="string">&#x27;index&#x27;</span>: b_index, <span class="string">&#x27;value&#x27;</span>: b_value, <span class="string">&#x27;groups&#x27;</span>: b_groups&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">to_terminal</span>(<span class="params">group</span>):</span><br><span class="line">    outcomes = [row[-<span class="number">1</span>] <span class="keyword">for</span> row <span class="keyword">in</span> group]</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">max</span>(<span class="built_in">set</span>(outcomes), key=outcomes.count)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">split</span>(<span class="params">node, max_depth, min_size, n_features, depth</span>):</span><br><span class="line">    left, right = node[<span class="string">&#x27;groups&#x27;</span>]</span><br><span class="line">    <span class="keyword">del</span> (node[<span class="string">&#x27;groups&#x27;</span>])</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> left <span class="keyword">or</span> <span class="keyword">not</span> right:</span><br><span class="line">        node[<span class="string">&#x27;left&#x27;</span>] = node[<span class="string">&#x27;right&#x27;</span>] = to_terminal(left + right)</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    <span class="keyword">if</span> depth &gt;= max_depth:</span><br><span class="line">        node[<span class="string">&#x27;left&#x27;</span>], node[<span class="string">&#x27;right&#x27;</span>] = to_terminal(left), to_terminal(right)</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(left) &lt;= min_size:</span><br><span class="line">        node[<span class="string">&#x27;left&#x27;</span>] = to_terminal(left)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        node[<span class="string">&#x27;left&#x27;</span>] = get_split(left, n_features)</span><br><span class="line">        split(node[<span class="string">&#x27;left&#x27;</span>], max_depth, min_size, n_features, depth + <span class="number">1</span>)</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(right) &lt;= min_size:</span><br><span class="line">        node[<span class="string">&#x27;right&#x27;</span>] = to_terminal(right)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        node[<span class="string">&#x27;right&#x27;</span>] = get_split(right, n_features)</span><br><span class="line">        split(node[<span class="string">&#x27;right&#x27;</span>], max_depth, min_size, n_features, depth + <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">build_tree</span>(<span class="params">train, max_depth, min_size, n_features</span>):</span><br><span class="line">    root = get_split(train, n_features)</span><br><span class="line">    split(root, max_depth, min_size, n_features, <span class="number">1</span>)</span><br><span class="line">    <span class="keyword">return</span> root</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">predict</span>(<span class="params">node, row</span>):</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">str</span>(row[node[<span class="string">&#x27;index&#x27;</span>]]) &lt; <span class="built_in">str</span>(node[<span class="string">&#x27;value&#x27;</span>]):</span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">isinstance</span>(node[<span class="string">&#x27;left&#x27;</span>], <span class="built_in">dict</span>):</span><br><span class="line">            <span class="keyword">return</span> predict(node[<span class="string">&#x27;left&#x27;</span>], row)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> node[<span class="string">&#x27;left&#x27;</span>]</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">isinstance</span>(node[<span class="string">&#x27;right&#x27;</span>], <span class="built_in">dict</span>):</span><br><span class="line">            <span class="keyword">return</span> predict(node[<span class="string">&#x27;right&#x27;</span>], row)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> node[<span class="string">&#x27;right&#x27;</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">bagging_predict</span>(<span class="params">trees, row</span>):</span><br><span class="line">    predictions = [predict(tree, row) <span class="keyword">for</span> tree <span class="keyword">in</span> trees]</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">max</span>(<span class="built_in">set</span>(predictions), key=predictions.count)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">subsample</span>(<span class="params">dataset, ratio</span>):</span><br><span class="line">    sample = <span class="built_in">list</span>()</span><br><span class="line">    n_sample = <span class="built_in">round</span>(<span class="built_in">len</span>(dataset) * ratio)</span><br><span class="line">    <span class="keyword">while</span> <span class="built_in">len</span>(sample) &lt; n_sample:</span><br><span class="line">        index = randrange(<span class="built_in">len</span>(dataset))</span><br><span class="line">        sample.append(dataset[index])</span><br><span class="line">    <span class="keyword">return</span> sample</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">random_forest</span>(<span class="params">train, test, max_depth, min_size, sample_size, n_trees, n_features</span>):</span><br><span class="line">    trees = <span class="built_in">list</span>()</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n_trees):</span><br><span class="line">        sample = subsample(train, sample_size)</span><br><span class="line">        tree = build_tree(sample, max_depth, min_size, n_features)</span><br><span class="line">        trees.append(tree)</span><br><span class="line">    predictions = [bagging_predict(trees, row) <span class="keyword">for</span> row <span class="keyword">in</span> test]</span><br><span class="line">    <span class="keyword">return</span> predictions</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">accuracy_metric</span>(<span class="params">actual, predicted</span>):</span><br><span class="line">    correct = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(actual)):</span><br><span class="line">        <span class="keyword">if</span> actual[i] == predicted[i]:</span><br><span class="line">            correct += <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> correct / <span class="built_in">float</span>(<span class="built_in">len</span>(actual)) * <span class="number">100.0</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">evaluate_algorithm</span>(<span class="params">dataset, algorithm, n_folds, *args</span>):</span><br><span class="line">    folds = cross_validation_split(dataset, n_folds)</span><br><span class="line">    scores = <span class="built_in">list</span>()</span><br><span class="line">    <span class="keyword">for</span> fold <span class="keyword">in</span> folds:</span><br><span class="line">        train_set = <span class="built_in">list</span>(folds)</span><br><span class="line">        train_set.remove(fold)</span><br><span class="line">        train_set = <span class="built_in">sum</span>(train_set, [])</span><br><span class="line">        test_set = <span class="built_in">list</span>()</span><br><span class="line">        <span class="keyword">for</span> row <span class="keyword">in</span> fold:</span><br><span class="line">            row_copy = <span class="built_in">list</span>(row)</span><br><span class="line">            row_copy[-<span class="number">1</span>] = <span class="literal">None</span></span><br><span class="line">            test_set.append(row_copy)</span><br><span class="line">        predicted = algorithm(train_set, test_set, *args)</span><br><span class="line">        actual = [row[-<span class="number">1</span>] <span class="keyword">for</span> row <span class="keyword">in</span> fold]</span><br><span class="line">        accuracy = accuracy_metric(actual, predicted)</span><br><span class="line">        scores.append(accuracy)</span><br><span class="line">    <span class="keyword">return</span> scores</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    dataset = loadDataSet(<span class="string">&#x27;7.RandomForest/sonar-all-data.txt&#x27;</span>)</span><br><span class="line">    n_folds = <span class="number">5</span></span><br><span class="line">    max_depth = <span class="number">20</span></span><br><span class="line">    min_size = <span class="number">1</span></span><br><span class="line">    sample_size = <span class="number">1.0</span></span><br><span class="line">    n_features = <span class="number">15</span></span><br><span class="line">    <span class="keyword">for</span> n_trees <span class="keyword">in</span> [<span class="number">1</span>, <span class="number">10</span>, <span class="number">20</span>]:</span><br><span class="line">        scores = evaluate_algorithm(dataset, random_forest, n_folds, max_depth, min_size, sample_size, n_trees, n_features)</span><br><span class="line">        seed(<span class="number">1</span>)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;random=&#x27;</span>, random())</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;Trees: %d&#x27;</span> % n_trees)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;Scores: %s&#x27;</span> % scores)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;Mean Accuracy: %.3f%%&#x27;</span> % (<span class="built_in">sum</span>(scores) / <span class="built_in">float</span>(<span class="built_in">len</span>(scores))))</span><br></pre></td></tr></table></figure>
 
 <div class="note info"><p>来源于 <a target="_blank" rel="noopener" href="https://www.apachecn.org/">ApacheCN</a></p></div>
+
       </div>
       <div class="post-tags-categories">
         
@@ -839,8 +709,8 @@
               ML
             </a>
           
-            <a href="/tags/SVM/" class="">
-              SVM
+            <a href="/tags/Random-Forest/" class="">
+              Random Forest
             </a>
           
         </div>
@@ -854,7 +724,7 @@
     </li>
     <li class="post-copyright-link">
     <strong>link:  </strong>
-    <a href="/2023/08/01/SVM简析/" target="_blank" title="SVM简析">http://example.com/2023/08/01/SVM简析/</a>
+    <a href="/2023/08/02/RandomForest算法简析/" target="_blank" title="RandomForest算法简析">http://example.com/2023/08/02/RandomForest算法简析/</a>
     </li>
     <li class="post-copyright-license">
       <strong>Copyright notice:   </strong>
@@ -876,16 +746,16 @@
   <div class="post-nav-prev post-nav-item">
     <div class="post-nav-img" style="background-size: cover; 
       background-position: center center;">
-      <img class="lazyload lazyload placeholder" src="https://s1.imagehub.cc/images/2023/08/02/8_2023615.jpeg" class="lazyload placeholder" data-srcset="https://s1.imagehub.cc/images/2023/08/02/8_2023615.jpeg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+      <img class="lazyload lazyload placeholder" src="https://s1.imagehub.cc/images/2023/08/02/2_2023615.jpeg" class="lazyload placeholder" data-srcset="https://s1.imagehub.cc/images/2023/08/02/2_2023615.jpeg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
     </div>
-    <a href="/2023/08/02/RandomForest%E7%AE%97%E6%B3%95%E7%AE%80%E6%9E%90/" class="post-nav-link">
+    <a href="/2023/08/02/AdaBoost%E7%AE%97%E6%B3%95%E7%AE%80%E6%9E%90/" class="post-nav-link">
       <div class="title">
         <i class="fas fa-angle-left"></i> Prev:
-        <div class="title-text">RandomForest算法简析</div>
+        <div class="title-text">AdaBoost算法简析</div>
       </div>
       
       <!-- <div class="content">
-        RandomForest算法简析概述随机森林（Random Forest）是一种强大且流行的机器学习算法，用于解决分类和
+        AdaBoost算法简析概述AdaBoost（Adaptive Boosting）是一种集成学习（Ensemble Le
       </div> -->
     </a>
   </div>
@@ -896,15 +766,15 @@
   <div class="post-nav-next post-nav-item">
     <div class="post-nav-img" style="background-size: cover; 
       background-position: center center;">
-      <img class="lazyload lazyload placeholder" src="https://s1.imagehub.cc/images/2023/07/31/FOH-7wHaIAYlGGo.jpeg" class="lazyload placeholder" data-srcset="https://s1.imagehub.cc/images/2023/07/31/FOH-7wHaIAYlGGo.jpeg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" src="" alt="">
+      <img class="lazyload lazyload placeholder" src="https://s1.imagehub.cc/images/2023/08/01/FOH_Ab2aQAo8JkV.jpeg" class="lazyload placeholder" data-srcset="https://s1.imagehub.cc/images/2023/08/01/FOH_Ab2aQAo8JkV.jpeg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" src="" alt="">
     </div>
-    <a href="/2023/07/31/Logistic%E5%9B%9E%E5%BD%92%E7%AE%97%E6%B3%95%E7%AE%80%E6%9E%90/" class="post-nav-link">
+    <a href="/2023/08/01/SVM%E7%AE%80%E6%9E%90/" class="post-nav-link">
       <div class="title">
         Next: <i class="fas fa-angle-right"></i>
-        <div class="title-text">Logistic Regression算法简析</div>
+        <div class="title-text">SVM简析</div>
       </div>
       <!-- <div class="content">
-        Logistic Regression算法简析原理Logistic Regression是一种广义线性模型，用于处理二分
+        SVM支持向量机概述SVM（支持向量机）是一种常用的监督学习算法，用于分类和回归任务。其主要目标是找到一个超平面，将不同
       </div> -->
     </a>
   </div>
@@ -1122,7 +992,7 @@
   <div class='content'>
     <div class="toc-main">
       <div class="toc-content">
-        <!-- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#SVM%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA"><span class="toc-text">SVM支持向量机</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0"><span class="toc-text">概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B6%89%E5%8F%8A%E5%88%B0%E7%9A%84%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F"><span class="toc-text">涉及到的数学公式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E6%AD%A5%E9%AA%A4"><span class="toc-text">实现步骤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SVM%E4%B8%8ELogistic-Regression"><span class="toc-text">SVM与Logistic Regression</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%A4%E6%96%AD%E7%BA%BF%E6%80%A7%E5%8F%AF%E5%88%86"><span class="toc-text">判断线性可分</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BA%8F%E5%88%97%E6%9C%80%E5%B0%8F%E4%BC%98%E5%8C%96SMO"><span class="toc-text">序列最小优化SMO</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A1%88%E4%BE%8B"><span class="toc-text">案例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E9%9B%86"><span class="toc-text">数据集</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0"><span class="toc-text">实现</span></a></li></ol></li></ol></li></ol> -->
+        <!-- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#RandomForest%E7%AE%97%E6%B3%95%E7%AE%80%E6%9E%90"><span class="toc-text">RandomForest算法简析</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0"><span class="toc-text">概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9B%86%E6%88%90%E6%96%B9%E6%B3%95"><span class="toc-text">集成方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9E%84%E5%BB%BA%E6%AD%A5%E9%AA%A4"><span class="toc-text">构建步骤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B6%89%E5%8F%8A%E5%88%B0%E7%9A%84%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F"><span class="toc-text">涉及到的数学公式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A1%88%E4%BE%8B%EF%BC%9A%E5%A3%B0%E7%BA%B3%E4%BF%A1%E5%8F%B7%E5%88%86%E7%B1%BB"><span class="toc-text">案例：声纳信号分类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E9%9B%86"><span class="toc-text">数据集</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0"><span class="toc-text">实现</span></a></li></ol></li></ol></li></ol> -->
         <div class="toc"></div>
       </div>
     </div>
