@@ -11,7 +11,7 @@
   <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-  <title>Cat | Orlando</title>
+  <title>拉格朗日乘子法简述 | Orlando</title>
 
   <link rel="icon" type="image/svg+xml" href="/main.svg">
   <link rel="stylesheet" href="https://at.alicdn.com/t/font_1911880_c1nvbyezg17.css">
@@ -572,17 +572,52 @@
 
 
 <div class="post-detail-header" id="thumbnail_canvas" style="background-repeat: no-repeat; background-size: cover; 
-  background-position: center center;position: relative;background-image:url('/gallery/cat/index.jpg')">
+  background-position: center center;position: relative;background-image:url('https://s1.imagehub.cc/images/2023/08/02/0-6.jpeg')">
   <div class="post-detail-header-mask"></div>
   <canvas id="header_canvas"style="position:absolute;bottom:0;pointer-events:none;"></canvas>
   
   <div class="post-detail-header_info-box">
     <div class="title-box">
       <span class="title">
-        Cat
+        拉格朗日乘子法简述
       </span>
     </div>
     
+    
+      
+        <span class="post-detail-header_date">
+          <i class="fas fa-calendar"></i> Published in：2023-08-02 |
+        </span>
+      
+
+      
+        <span class="post-detail-header_categories">
+          <i class="iconfont iconbookmark1"></i> category：
+          
+            <a href="/categories/Math/" class="post-detail-header_category">
+              Math
+            </a>
+          
+        </span>
+      
+
+      
+        <div class="post-detail-header_wordcount">
+          <span class="totalcount">
+            <i class="fas fa-file-text-o"></i> Words: 1.5k |
+          </span>
+  
+          <span class="min2read">
+            <i class="fas fa-clock"></i> Reading time: 6min |
+          </span>
+  
+          
+            <span class="reading">
+              <i class="fas fa-eye"></i> reading：<span id="busuanzi_value_page_pv"></span>
+            </span>
+          
+        </div>
+      
     
   </div>
   
@@ -600,10 +635,65 @@
   <div class="main-content">
     <article class="post post-detail">
       <div class="post-content">
-        <div class="getJsonPhoto-api" api="/gallery/cat/index.json" isRegular=""></div>
+        <h1 id="拉格朗日乘子法"><a href="#拉格朗日乘子法" class="headerlink" title="拉格朗日乘子法"></a>拉格朗日乘子法</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>拉格朗日乘子法（Lagrange Multiplier Method）是一种数学工具，用于在约束条件下优化多元函数。它由意大利数学家约瑟夫·路易·拉格朗日（Joseph Louis Lagrange）在18世纪提出，用于解决具有约束条件的极值问题。该方法在经济学、工程学、物理学等领域中有广泛的应用。</p>
+<p>拉格朗日乘子法主要用于求解这样一个问题：在一个多元函数的定义域内，寻找函数取得最大值或最小值的点，同时满足一组约束条件。一般情况下，这个问题可以表示为如下的优化问题：</p>
+<p>最大化（或最小化）函数 $f(x1, x2, …, xn)$<br>在约束条件下：$g1(x1, x2, …, xn) &#x3D; 0, g2(x1, x2, …, xn) &#x3D; 0, …, gm(x1, x2, …, xn) &#x3D; 0$</p>
+<p>其中，$f$是目标函数，$g1, g2, …, gm$是约束条件函数。</p>
+<p>拉格朗日乘子法的基本思想是，为了在满足约束条件的情况下优化目标函数，引入一组称为拉格朗日乘子（Lagrange multipliers）的变量，构造一个新的函数，称为拉格朗日函数（Lagrange function），通过对这个函数进行求导，可以得到一组关于原函数和约束条件的方程，通过求解这些方程，可以找到满足约束条件的极值点。</p>
+<p>需要注意的是，拉格朗日乘子法仅适用于满足一定条件的情况，如可微分性和约束条件的线性独立性。在某些情况下，可能存在局部最优解或无解的情况。</p>
+<p>总之，拉格朗日乘子法是一种强大的工具，用于处理带有约束条件的优化问题，它通过引入拉格朗日乘子，将约束条件与目标函数结合起来，使得求解复杂的优化问题变得更加可行。</p>
+<h2 id="求解过程"><a href="#求解过程" class="headerlink" title="求解过程"></a>求解过程</h2><ol>
+<li><p><strong>建立拉格朗日函数：</strong> 首先，构建拉格朗日函数$$L(x_1, … , x_n, \lambda_1, … , \lambda_m) &#x3D; f(x_1, … , x_n) + \lambda_1 g_1(x_1, … , x_n) + … + \lambda_m g_m(x_1, … , x_n)$$，其中，$f$是目标函数，$g_1, g_2, \ldots, g_m$是约束条件函数，$\lambda_1, \lambda_2, \ldots, \lambda_m$是拉格朗日乘子。</p>
+</li>
+<li><p><strong>对拉格朗日函数求偏导数：</strong> 对拉格朗日函数分别对变量 $x_i$ 和 $\lambda_j$ 进行求偏导数，得到一组方程：</p>
+<p>$\frac{\partial L}{\partial x_i} &#x3D; 0$，其中 $i &#x3D; 1, 2, \ldots, n$<br>$\frac{\partial L}{\partial \lambda_j} &#x3D; 0$，其中 $j &#x3D; 1, 2, \ldots, m$</p>
+<p>这些方程的解代表了在满足约束条件的情况下，目标函数的极值点以及对应的拉格朗日乘子值。</p>
+</li>
+<li><p><strong>解方程组：</strong> 解上述方程组，得到变量 $x_i$ 和 $\lambda_j$ 的值。这些值可以用来确定原问题的极值点，以及满足约束条件的最优解。</p>
+</li>
+<li><p><strong>检验结果：</strong> 将求得的极值点代入原目标函数和约束条件中，验证是否满足约束条件并找到了目标函数的最优解。</p>
+</li>
+</ol>
+<h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>找到函数 $f(x, y) &#x3D; x^2 + y^2$ 在约束条件 $g(x, y) &#x3D; x + y - 1 &#x3D; 0$ 下的最大值。</p>
+<h3 id="解决步骤"><a href="#解决步骤" class="headerlink" title="解决步骤"></a>解决步骤</h3><ol>
+<li><p><strong>建立拉格朗日函数：</strong> 构建拉格朗日函数 $L(x, y, \lambda) &#x3D; f(x, y) + \lambda g(x, y) &#x3D; x^2 + y^2 + \lambda(x + y - 1)$，其中 $\lambda$ 是拉格朗日乘子。</p>
+</li>
+<li><p><strong>对拉格朗日函数求偏导数：</strong> 对拉格朗日函数 $L$ 分别对 $x, y$ 和 $\lambda$ 求偏导数并令其为零：</p>
+<p>$\frac{\partial L}{\partial x} &#x3D; 2x + \lambda &#x3D; 0$<br>$\frac{\partial L}{\partial y} &#x3D; 2y + \lambda &#x3D; 0$<br>$\frac{\partial L}{\partial \lambda} &#x3D; x + y - 1 &#x3D; 0$</p>
+<p>从第一和第二个方程可得出 $x &#x3D; -\lambda&#x2F;2$ 和 $y &#x3D; -\lambda&#x2F;2$。将这些值代入第三个方程可以解出 $\lambda &#x3D; -2$。</p>
+</li>
+<li><p><strong>解方程组：</strong> 将 $\lambda &#x3D; -2$ 代入 $x &#x3D; -\lambda&#x2F;2$ 和 $y &#x3D; -\lambda&#x2F;2$ 中，得到 $x &#x3D; 1$ 和 $y &#x3D; 1$。</p>
+</li>
+<li><p><strong>检验结果：</strong> 检验求得的极值点 $(x, y) &#x3D; (1, 1)$ 是否满足约束条件 $g(x, y) &#x3D; x + y - 1 &#x3D; 0$。在这个例子中，满足条件。然后将 $(1, 1)$ 代入目标函数 $f(x, y) &#x3D; x^2 + y^2$ 中，得到最大值 $f(1, 1) &#x3D; 2$。</p>
+</li>
+</ol>
+<p>因此，在给定约束条件 $g(x, y) &#x3D; x + y - 1 &#x3D; 0$ 下，函数 $f(x, y) &#x3D; x^2 + y^2$ 的最大值为 $2$，在点 $(1, 1)$ 处取得。</p>
+<h3 id="问题-1"><a href="#问题-1" class="headerlink" title="问题"></a>问题</h3><p>考虑一个二分类问题，我们有一组数据点 ${ (x_1, y_1), (x_2, y_2), \ldots, (x_n, y_n) }$，其中 $x_i$ 是数据特征，$y_i \in {-1, 1}$ 是对应的标签。我们希望找到一个超平面 $w \cdot x + b &#x3D; 0$，使得间隔最大化，同时允许一些数据点出现在超平面错误的一侧。这可以表示为以下优化问题：</p>
+<p>最大化 $\frac{2}{|w|}$<br>在约束条件下：$y_i (w \cdot x_i + b) \geq 1$，对所有的 $i$</p>
+<p>这里，$w$ 是超平面的法向量，$b$ 是偏移量，$y_i$ 是标签，$x_i$ 是数据特征。</p>
+<h3 id="解决步骤-1"><a href="#解决步骤-1" class="headerlink" title="解决步骤"></a>解决步骤</h3><ol>
+<li><p><strong>建立拉格朗日函数：</strong> 构建拉格朗日函数 $L(w, b, \alpha) &#x3D; \frac{1}{2}|w|^2 - \sum_{i&#x3D;1}^{n} \alpha_i [y_i (w \cdot x_i + b) - 1]$，其中 $\alpha_i$ 是拉格朗日乘子。</p>
+</li>
+<li><p><strong>对拉格朗日函数求偏导数：</strong> 对拉格朗日函数 $L$ 分别对 $w, b$ 和 $\alpha_i$ 求偏导数并令其为零：</p>
+<p>$\frac{\partial L}{\partial w} &#x3D; w - \sum_{i&#x3D;1}^{n} \alpha_i y_i x_i &#x3D; 0$<br>$\frac{\partial L}{\partial b} &#x3D; -\sum_{i&#x3D;1}^{n} \alpha_i y_i &#x3D; 0$<br>$\frac{\partial L}{\partial \alpha_i} &#x3D; y_i (w \cdot x_i + b) - 1 &#x3D; 0$</p>
+</li>
+<li><p><strong>解方程组：</strong> 将上述方程组代入拉格朗日函数，解出 $\alpha_i$。然后，使用求得的 $\alpha_i$ 计算 $w$ 和 $b$。</p>
+</li>
+<li><p><strong>得到最终超平面：</strong> 计算得到的 $w$ 和 $b$ 描述了最终的超平面，可以用于分类。</p>
+</li>
+</ol>
+<p>这个例子涉及了SVM中的软间隔最大化问题，通过拉格朗日乘子法可以求解得到支持向量机的模型参数。这是一个在机器学习中非常有用的例子，展示了拉格朗日乘子法在优化问题中的应用。</p>
 
       </div>
       <div class="post-tags-categories">
+        
+        <div class="tags">
+          
+            <a href="/tags/Lagrange-Multiplier-Method/" class="">
+              Lagrange Multiplier Method
+            </a>
+          
+        </div>
         
       </div>
       
@@ -614,7 +704,7 @@
     </li>
     <li class="post-copyright-link">
     <strong>link:  </strong>
-    <a href="/gallery/cat/index.html" target="_blank" title="Cat">http://example.com/gallery/cat/index.html</a>
+    <a href="/2023/08/02/拉格朗日乘子法简述/" target="_blank" title="拉格朗日乘子法简述">http://example.com/2023/08/02/拉格朗日乘子法简述/</a>
     </li>
     <li class="post-copyright-license">
       <strong>Copyright notice:   </strong>
@@ -633,6 +723,23 @@
 
 
 
+
+  
+  <div class="post-nav-next post-nav-item">
+    <div class="post-nav-img" style="background-size: cover; 
+      background-position: center center;">
+      <img class="lazyload lazyload placeholder" src="https://s1.imagehub.cc/images/2023/08/02/2_2023615.jpeg" class="lazyload placeholder" data-srcset="https://s1.imagehub.cc/images/2023/08/02/2_2023615.jpeg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" src="" alt="">
+    </div>
+    <a href="/2023/08/02/AdaBoost%E7%AE%97%E6%B3%95%E7%AE%80%E6%9E%90/" class="post-nav-link">
+      <div class="title">
+        Next: <i class="fas fa-angle-right"></i>
+        <div class="title-text">AdaBoost算法简析</div>
+      </div>
+      <!-- <div class="content">
+        AdaBoost算法简析概述AdaBoost（Adaptive Boosting）是一种集成学习（Ensemble Le
+      </div> -->
+    </a>
+  </div>
 
 </div>
 
@@ -835,191 +942,29 @@
   <div class="layout_sticky">    
     
       
-        
-    <section class="widget side_category">
-      
-  <header>
-    
-      <a style="color: " href='/categories'><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i><span class='name'>文章分类</span></a>
-    
-  </header>
-
-
-      <div class='content'>
-        <ul class="entry navigation">
-          
-            <li><a class="flat-box"
-              title="/categories/Computer-Technology/" href="/categories/Computer-Technology/"
-              id="categoriesComputer-Technology"
-              ><div class='name'>Computer Technology</div><div class='badge'>(11)</div></a></li>
-          
-            <li><a class="flat-box"
-              title="/categories/Final-Review/" href="/categories/Final-Review/"
-              id="categoriesFinal-Review"
-              ><div class='name'>Final Review</div><div class='badge'>(3)</div></a></li>
-          
-            <li><a class="flat-box"
-              title="/categories/Math/" href="/categories/Math/"
-              id="categoriesMath"
-              ><div class='name'>Math</div><div class='badge'>(1)</div></a></li>
-          
-            <li><a class="flat-box"
-              title="/categories/Pointless-small-talk/" href="/categories/Pointless-small-talk/"
-              id="categoriesPointless-small-talk"
-              ><div class='name'>Pointless small talk</div><div class='badge'>(3)</div></a></li>
-          
-        </ul>
-      </div>
-    </section>
-  
-  
-      
-      
-        
-<section class="widget side_tagcloud">
-    
-  <header>
-    
-      <a style="color: " href='/tags/'><i class="fas fa-tags fa-fw" aria-hidden="true"></i><span class='name'>热门标签</span></a>
-    
-  </header>
-
-
-    <div class='content'>
-    <a href="/tags/AdaBoost/" style="font-size: 14px; color: #999">AdaBoost</a> <a href="/tags/Database/" style="font-size: 14px; color: #999">Database</a> <a href="/tags/Decision-Tree/" style="font-size: 14px; color: #999">Decision Tree</a> <a href="/tags/GPT/" style="font-size: 19px; color: #777">GPT</a> <a href="/tags/Hadoop/" style="font-size: 19px; color: #777">Hadoop</a> <a href="/tags/Hive/" style="font-size: 14px; color: #999">Hive</a> <a href="/tags/Java/" style="font-size: 14px; color: #999">Java</a> <a href="/tags/K-Nearest-Neighbor/" style="font-size: 14px; color: #999">K- Nearest Neighbor</a> <a href="/tags/Lagrange-Multiplier-Method/" style="font-size: 19px; color: #777">Lagrange Multiplier Method</a> <a href="/tags/Logistic-Regression/" style="font-size: 14px; color: #999">Logistic Regression</a> <a href="/tags/ML/" style="font-size: 24px; color: #555">ML</a> <a href="/tags/Matplotlib/" style="font-size: 14px; color: #999">Matplotlib</a> <a href="/tags/Naive-Bayes/" style="font-size: 14px; color: #999">Naive Bayes</a> <a href="/tags/Politics/" style="font-size: 14px; color: #999">Politics</a> <a href="/tags/Python/" style="font-size: 14px; color: #999">Python</a> <a href="/tags/Random-Forest/" style="font-size: 14px; color: #999">Random Forest</a> <a href="/tags/SVM/" style="font-size: 14px; color: #999">SVM</a> <a href="/tags/Scala/" style="font-size: 19px; color: #777">Scala</a> <a href="/tags/Spark/" style="font-size: 19px; color: #777">Spark</a> <a href="/tags/Tree/" style="font-size: 14px; color: #999">Tree</a>
-    </div>
-</section>
-
-  
-      
-      
-      
-  <section class="widget side_archives">
-    
-    <header><a style="color: red" href='/archives/'><i class="fas fa-archive fa-fw" aria-hidden="true"></i><span class='name'>归档</span></a></header><div class="content"><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/08/"><span class="card-archive-list-date">August 2023</span><span class="card-archive-list-count">4</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/07/"><span class="card-archive-list-date">July 2023</span><span class="card-archive-list-count">14</span></a></li></ul></div>
-  </section>
-
-      <section class="widget side_webinfo">
+<section class="widget side_toc">
   
   <header>
     
-      <i style="color: " class="fas fa-chart-line fa-fw" aria-hidden="true"></i><span class='name' style="color: ">站点信息</span>
+      <i style="color: " class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name' style="color: ">本文目录</span>
     
   </header>
 
 
   <div class='content'>
-    <div class="webinfo">
-      
-        <div class="webinfo-item">
-          <div>文章数目：</div>
-          <div>18 篇</div>
-        </div>
-      
-
-      
-        <div class="webinfo-item">
-          <div>已运行时间：</div>
-          <div id="webinfo-runtime-count" publish_date="03/24/2020 21:34:09"></div>
-        </div>
-        <script>
-          var BirthDay = new Date(new Date('2023/07/05'));
-          var today = new Date();
-          var timeold = (today.getTime() - BirthDay.getTime());
-          var daysold = Math.floor(timeold / (24 * 60 * 60 * 1000));
-          document.getElementById('webinfo-runtime-count').innerHTML = daysold + ' 天';
-        </script>
-      
-
-
-      
-        <div class="webinfo-item">
-          <div>本站总字数：</div>
-          <div>86.3k 字</div>
-        </div>
-      
-
-      
-        <div class="webinfo-item">
-          <div>本站访客数：</div>
-          
-          <div><span id="busuanzi_value_site_uv"><i class="fas fa-fan fa-spin fa-fw" aria-hidden="true"></i></span> 人</div>
-          
-        </div>
-      
-
-      
-        <div class="webinfo-item">
-          <div>本站总访问量：</div>
-          
-          <div><span id="busuanzi_value_site_pv"><i class="fas fa-fan fa-spin fa-fw" aria-hidden="true"></i></span> 次</div>
-          
-        </div>
-      
-
-      
-        <div class="webinfo-item">
-          <div>最后活动时间：</div>
-          
-            <div id="last-update" style="display: none;">Wed Aug 02 2023 04:56:31 GMT+0000 (Coordinated Universal Time)</div>
-            <div id="last-update-show">2023-08-02 日</div>
-          
-        </div>
-        
-        <script>
-          function timeago(dateTimeStamp) {
-              var minute = 1000 * 60; //把分，时，天，周，半个月，一个月用毫秒表示
-              var hour = minute * 60;
-              var day = hour * 24;
-              var week = day * 7;
-              var month = day * 30;
-              var now = new Date().getTime(); //获取当前时间毫秒
-              var diffValue = now - dateTimeStamp; //时间差
-              if (diffValue < 0) {
-                  return;
-              }
-              var minC = diffValue / minute; //计算时间差的分，时，天，周，月
-              var hourC = diffValue / hour;
-              var dayC = diffValue / day;
-              var weekC = diffValue / week;
-              var monthC = diffValue / month;
-              if (monthC >= 1 && monthC <= 3) {
-                  result = " " + parseInt(monthC) + " 月前"
-              } else if (weekC >= 1 && weekC <= 3) {
-                  result = " " + parseInt(weekC) + " 周前"
-              } else if (dayC >= 1 && dayC <= 6) {
-                  result = " " + parseInt(dayC) + " 天前"
-              } else if (hourC >= 1 && hourC <= 23) {
-                  result = " " + parseInt(hourC) + " 小时前"
-              } else if (minC >= 1 && minC <= 59) {
-                  result = " " + parseInt(minC) + " 分钟前"
-              } else if (diffValue >= 0 && diffValue <= minute) {
-                  result = "刚刚"
-              } else {
-                  var datetime = new Date();
-                  datetime.setTime(dateTimeStamp);
-                  var Nyear = datetime.getFullYear();
-                  var Nmonth = datetime.getMonth() + 1 < 10 ? "0" + (datetime.getMonth() + 1) : datetime.getMonth() + 1;
-                  var Ndate = datetime.getDate() < 10 ? "0" + datetime.getDate() : datetime.getDate();
-                  var Nhour = datetime.getHours() < 10 ? "0" + datetime.getHours() : datetime.getHours();
-                  var Nminute = datetime.getMinutes() < 10 ? "0" + datetime.getMinutes() : datetime.getMinutes();
-                  var Nsecond = datetime.getSeconds() < 10 ? "0" + datetime.getSeconds() : datetime.getSeconds();
-                  result = Nyear + "-" + Nmonth + "-" + Ndate
-              }
-              return result;
-          }
-          var lastUpDate = document.getElementById('last-update').innerHTML;
-          try {
-            document.getElementById('last-update-show').innerHTML = timeago(new Date(lastUpDate));
-          } catch (error) {
-            document.getElementById('last-update-show').innerHTML = '2023-08-02 日';
-          }
-        </script>
-        
-      
+    <div class="toc-main">
+      <div class="toc-content">
+        <!-- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8B%89%E6%A0%BC%E6%9C%97%E6%97%A5%E4%B9%98%E5%AD%90%E6%B3%95"><span class="toc-text">拉格朗日乘子法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0"><span class="toc-text">概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B1%82%E8%A7%A3%E8%BF%87%E7%A8%8B"><span class="toc-text">求解过程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A1%88%E4%BE%8B"><span class="toc-text">案例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%E9%A2%98"><span class="toc-text">问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3%E6%AD%A5%E9%AA%A4"><span class="toc-text">解决步骤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%E9%A2%98-1"><span class="toc-text">问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3%E6%AD%A5%E9%AA%A4-1"><span class="toc-text">解决步骤</span></a></li></ol></li></ol></li></ol> -->
+        <div class="toc"></div>
+      </div>
     </div>
   </div>
 </section>
+<!-- 手机端目录按钮 -->
+<div id="toc-mobile-btn">
+  <i class="fas fa-list-ul" aria-hidden="true"></i>
+</div>
+
       
     
   </div>
@@ -1148,6 +1093,59 @@
 		height: 100%;
 	}
 </style>
+
+
+  <script>
+  // https://github.com/theme-next/hexo-theme-next/blob/master/layout/_third-party/math/mathjax.swig
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = 'https://unpkg.com/mathjax@3.0/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    // 文章章节标题不能为 “MathJax” ，否则会报错。
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
 
 
 
