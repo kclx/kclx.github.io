@@ -23,7 +23,7 @@ date: 2023-08-03 13:43:27
 updated: 2023-08-03 13:43:27
 swiperImg:
 bgImg:
-img:
+img: https://s1.imagehub.cc/images/2023/09/02/26f1099e7c84b0905.png
 ---
 
 # Regression算法简析
