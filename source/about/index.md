@@ -79,14 +79,18 @@ bgImg: /about/index.jpg
 
 <div style="display: flex;">
 {% btn center cool-2, Github, https://github.com/kclx, fa-brands fa-github-alt %}
-<span style="width:5px;"></span>
-{% btn center cool-2, Twitter, https://twitter.com/Orlando12138, fa-brands fa-twitter %}
+
+[//]: # (<span style="width:5px;"></span>)
+
+[//]: # ({% btn center cool-2, Twitter, https://twitter.com/Orlando12138, fa-brands fa-twitter %})
 <span style="width:5px;"></span>
 {% btn center cool-2, YouTube, https://www.youtube.com/channel/UCabmZFmLZCFQzFp54o3rQeA, fa-brands fa-youtube %}
 <span style="width:5px;"></span>
 {% btn center cool-2, QQ , https://qm.qq.com/cgi-bin/qm/qr?k=PLBGQKx7jrlNbxEANzFijKsmR-9rpaAx&noverify=0&personal_qrcode_source=4#, fa-brands fa-qq %}
-<span style="width:5px;"></span>
-{% btn center cool-2, Facebook , https://www.facebook.com/profile.php?id=100076544790406, fa-brands fa-facebook %}
+
+[//]: # (<span style="width:5px;"></span>)
+
+[//]: # ({% btn center cool-2, Facebook , https://www.facebook.com/profile.php?id=100076544790406, fa-brands fa-facebook %})
 </div>
 
 ## 我的技能
