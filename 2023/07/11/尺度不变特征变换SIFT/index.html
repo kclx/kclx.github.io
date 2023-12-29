@@ -11,7 +11,7 @@
   <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-  <title>图库 | Orlando</title>
+  <title>尺度不变特征变换SIFT | Orlando</title>
 
   <link rel="icon" type="image/svg+xml" href="/main.svg">
   <link rel="stylesheet" href="https://at.alicdn.com/t/font_1911880_c1nvbyezg17.css">
@@ -572,17 +572,52 @@
 
 
 <div class="post-detail-header" id="thumbnail_canvas" style="background-repeat: no-repeat; background-size: cover; 
-  background-position: center center;position: relative;background-image:url('/gallery/index.png')">
+  background-position: center center;position: relative;background-image:url('https://s1.imagehub.cc/images/2023/07/11/2023-07-11-13.18.20.png')">
   <div class="post-detail-header-mask"></div>
   <canvas id="header_canvas"style="position:absolute;bottom:0;pointer-events:none;"></canvas>
   
   <div class="post-detail-header_info-box">
     <div class="title-box">
       <span class="title">
-        图库
+        尺度不变特征变换SIFT
       </span>
     </div>
     
+    
+      
+        <span class="post-detail-header_date">
+          <i class="fas fa-calendar"></i> Published in：2023-07-11 |
+        </span>
+      
+
+      
+        <span class="post-detail-header_categories">
+          <i class="iconfont iconbookmark1"></i> category：
+          
+            <a href="/categories/Computer-Technology/" class="post-detail-header_category">
+              Computer Technology
+            </a>
+          
+        </span>
+      
+
+      
+        <div class="post-detail-header_wordcount">
+          <span class="totalcount">
+            <i class="fas fa-file-text-o"></i> Words: 6k |
+          </span>
+  
+          <span class="min2read">
+            <i class="fas fa-clock"></i> Reading time: 21min |
+          </span>
+  
+          
+            <span class="reading">
+              <i class="fas fa-eye"></i> reading：<span id="busuanzi_value_page_pv"></span>
+            </span>
+          
+        </div>
+      
     
   </div>
   
@@ -600,52 +635,174 @@
   <div class="main-content">
     <article class="post post-detail">
       <div class="post-content">
-        <div class="gallery-group-main">
-    
-  <figure class="gallery-group">
-  <img class="gallery-group-img" src='/gallery/pc/index.png' alt="Group Image Gallery">
-  <figcaption>
-  <div class="gallery-group-name">PC壁纸</div>
-  <p>9:16, 2k, 4k</p>
-  <a href='/gallery/pc'></a>
-  </figcaption>
-  </figure>
-  
-    
-  <figure class="gallery-group">
-  <img class="gallery-group-img" src='/gallery/2d/index.png' alt="Group Image Gallery">
-  <figcaption>
-  <div class="gallery-group-name">二次元</div>
-  <p>にじげん</p>
-  <a href='/gallery/2d'></a>
-  </figcaption>
-  </figure>
-  
-    
-  <figure class="gallery-group">
-  <img class="gallery-group-img" src='/gallery/3d/index.png' alt="Group Image Gallery">
-  <figcaption>
-  <div class="gallery-group-name">真实的世界</div>
-  <p>回到3次元</p>
-  <a href='/gallery/3d'></a>
-  </figcaption>
-  </figure>
-  
-    
-  <figure class="gallery-group">
-  <img class="gallery-group-img" src='/gallery/cat/index.jpg' alt="Group Image Gallery">
-  <figcaption>
-  <div class="gallery-group-name">CAT</div>
-  <p>Is cute</p>
-  <a href='/gallery/cat'></a>
-  </figcaption>
-  </figure>
-  
-</div>
+        <h1 id="SIFT"><a href="#SIFT" class="headerlink" title="SIFT"></a>SIFT</h1><p>尺度不变特征变换（Scale-Invariant Feature Transform，SIFT）是一种用于计算机视觉和图像处理的算法。它是由David Lowe在1999年提出的，并成为一种广泛应用的特征提取和匹配方法。</p>
+<p>SIFT算法的主要目标是从图像中提取出具有尺度不变性的特征点，并能够在不同尺度、旋转和亮度条件下进行匹配。它在计算机视觉领域被广泛用于图像识别、目标检测和图像拼接等任务。</p>
+<p>SIFT算法的主要步骤包括：</p>
+<ol>
+<li><p>尺度空间极值检测：通过构建高斯金字塔，检测图像在不同尺度上的局部极值点，这些点往往对应于具有不同尺度的特征。</p>
+</li>
+<li><p>关键点定位：在尺度空间的极值点上，通过利用图像的梯度信息和曲率来选择稳定的关键点。这些关键点通常位于图像中的角点、边缘等显著的位置。</p>
+</li>
+<li><p>方向分配：为每个关键点分配一个主导方向，使得特征具有旋转不变性。这通常通过计算关键点周围区域的梯度方向直方图来实现。</p>
+</li>
+<li><p>特征描述：在关键点附近的局部区域内，构建描述子，用来表示关键点周围的图像特征。描述子通常基于局部图像梯度的方向和强度信息，具有尺度和旋转不变性。</p>
+</li>
+<li><p>特征匹配：通过比较不同图像的特征描述子，利用特征间的相似度进行匹配。常用的方法是计算特征向量之间的欧氏距离或相似性度量，选择最佳的匹配对。</p>
+</li>
+</ol>
+<p>SIFT算法的关键在于其对尺度和旋转的不变性，使得它能够在不同视角和条件下进行可靠的特征匹配。这使得SIFT成为许多计算机视觉应用中的重要工具。</p>
+<h2 id="尺度空间极值检测"><a href="#尺度空间极值检测" class="headerlink" title="尺度空间极值检测"></a>尺度空间极值检测</h2><p>尺度空间极值检测（Scale-space extrema detection）是一种在不同尺度上检测图像中的极值点的方法，用于寻找具有尺度不变性的特征点。该方法通常与尺度不变特征变换（SIFT）算法相关联。</p>
+<p>尺度空间极值检测的基本思想是通过在图像的不同尺度上应用高斯滤波器，来寻找在不同尺度上的局部极值点。具体步骤如下：</p>
+<ol>
+<li><p>构建尺度空间金字塔：从原始图像开始，应用一系列的高斯滤波器，每个滤波器具有不同的尺度参数（标准差），生成一组具有不同模糊程度的图像。这些图像构成了尺度空间金字塔，其中较高层次的图像尺度比较小，具有更高的模糊程度。</p>
+</li>
+<li><p>在尺度空间的每一层上，比较每个像素的值与其邻域像素的值，找到局部极值点。极值点是指在一个局部邻域内，像素的值在该邻域中最大或最小。</p>
+</li>
+<li><p>对于找到的极值点，根据其响应值（如像素值或梯度大小）进行阈值处理和边界消除。通常，会设置一个阈值来筛选出具有较大响应值的极值点，同时通过非极大值抑制（non-maximum suppression）来消除邻域内的重复极值点。</p>
+</li>
+</ol>
+<p>通过尺度空间极值检测，可以在不同尺度上发现具有尺度不变性的特征点，例如角点、边缘和斑点等。这些特征点可以在不同的尺度、旋转和光照条件下保持稳定，成为计算机视觉中许多任务（如目标检测、图像匹配和三维重建）的重要基础。</p>
+<h3 id="构建尺度空间金字塔"><a href="#构建尺度空间金字塔" class="headerlink" title="构建尺度空间金字塔"></a>构建尺度空间金字塔</h3><p>构建尺度空间金字塔（Scale Space Pyramid）是指通过一系列图像处理操作，在不同尺度上构建一组具有不同模糊程度的图像集合，用于分析和处理图像。</p>
+<p>构建尺度空间金字塔的一般步骤如下：</p>
+<ol>
+<li><p>初始层：将原始图像作为尺度空间金字塔的第一层。这是金字塔的最底层，也是原始图像的未经处理的版本。</p>
+</li>
+<li><p>下采样：对当前层次的图像进行下采样（如降采样），即减小图像的尺寸。下采样可以通过丢弃一些像素或使用插值等方法实现。这样可以生成一个比原始图像尺寸更小的图像。</p>
+</li>
+<li><p>高斯滤波：对下采样后的图像应用高斯滤波器。高斯滤波器通过在图像上进行卷积操作，对图像进行平滑处理。高斯滤波器的模糊程度由标准差参数决定。</p>
+</li>
+<li><p>重复步骤2和步骤3：依次对每个层次的图像进行下采样和高斯滤波的操作，直到达到所需的尺度或图像大小。</p>
+</li>
+</ol>
+<p>通过重复执行下采样和高斯滤波操作，我们可以在不同尺度上构建一系列图像，形成尺度空间金字塔。每个层次的图像都对应于原始图像在不同尺度上的模糊版本。较高层次的图像具有更小的尺度和更高的模糊程度。</p>
+<p>构建尺度空间金字塔的目的是为了在不同尺度上分析和处理图像，以提取尺度不变的特征，并在不同尺度上实现鲁棒的图像处理操作。尺度空间金字塔在计算机视觉领域的许多任务中都具有重要的应用，例如特征检测、目标识别和图像金字塔等。</p>
+<details ><summary pointer> 示例 </summary>
+              <div class='content'>
+              <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">generate_scale_space_pyramid</span>(<span class="params">image, num_octaves, num_scales</span>):</span><br><span class="line">    pyramid = []</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 生成图像金字塔的初始层</span></span><br><span class="line">    pyramid.append(image)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 设置每个八度的尺度数量</span></span><br><span class="line">    scales_per_octave = num_scales - <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> octave <span class="keyword">in</span> <span class="built_in">range</span>(num_octaves):</span><br><span class="line">        octave_images = []</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 获取当前八度的第一张图像</span></span><br><span class="line">        base_image = pyramid[octave * scales_per_octave]</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 生成当前八度的尺度空间</span></span><br><span class="line">        <span class="keyword">for</span> scale <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, num_scales):</span><br><span class="line">            sigma = <span class="number">2</span> ** (octave + (scale / scales_per_octave))  <span class="comment"># 计算当前尺度的标准差</span></span><br><span class="line">            scaled_image = cv2.GaussianBlur(base_image, (<span class="number">0</span>, <span class="number">0</span>), sigmaX=sigma, sigmaY=sigma)</span><br><span class="line">            octave_images.append(scaled_image)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 将当前八度的图像加入到金字塔中</span></span><br><span class="line">        pyramid.extend(octave_images)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 缩小基础图像作为下一个八度的起始图像</span></span><br><span class="line">        base_image = cv2.resize(base_image, (<span class="number">0</span>, <span class="number">0</span>), fx=<span class="number">0.5</span>, fy=<span class="number">0.5</span>)</span><br><span class="line">        pyramid.append(base_image)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> pyramid</span><br></pre></td></tr></table></figure><img src="https://s1.imagehub.cc/images/2023/07/11/2023-07-11-15.20.12.png" class="lazyload placeholder" data-srcset="https://s1.imagehub.cc/images/2023/07/11/2023-07-11-15.20.12.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="示例"><p>在尺度空间金字塔中，”octave”（八度）和 “scale”（尺度）是用来描述金字塔的层级结构和尺度级别的参数。</p><ul><li>八度（octave）：尺度空间金字塔按照一种对数尺度进行组织，每个八度对应着一个特定的尺度范围。每个八度中，金字塔的每一层图像都是在基础图像上进行下采样得到的。八度的数量决定了金字塔的层级结构和尺度的覆盖范围。</li><li>尺度（scale）：每个八度中，金字塔的每一层都对应着一个特定的尺度级别。尺度是通过应用不同程度的高斯滤波器来实现的，而高斯滤波器的标准差（sigma）用于控制图像的模糊程度。每个尺度级别的图像都是基于前一个尺度级别的图像进行高斯模糊得到的。</li></ul><p>在尺度空间金字塔中，八度和尺度共同确定了金字塔的层级结构和图像的模糊程度。不同的八度和尺度组合产生不同程度的图像模糊，并在尺度上覆盖了不同的细节和结构。</p><p>在代码示例中，<code>octave</code> 表示当前图像所在的八度，<code>scale</code> 表示当前图像所在的尺度。这些参数用于生成尺度空间金字塔，并在保存图像时作为命名的一部分，以方便识别图像所属的八度和尺度级别。</p><table><thead><tr><th>八度（Octave）</th><th>尺度（Scale）</th><th>图像文件名</th></tr></thead><tbody><tr><td>0</td><td>0</td><td>octave_0_scale_0.jpg</td></tr><tr><td>0</td><td>1</td><td>octave_0_scale_1.jpg</td></tr><tr><td>0</td><td>2</td><td>octave_0_scale_2.jpg</td></tr><tr><td>0</td><td>3</td><td>octave_0_scale_3.jpg</td></tr><tr><td>1</td><td>0</td><td>octave_1_scale_0.jpg</td></tr><tr><td>1</td><td>1</td><td>octave_1_scale_1.jpg</td></tr><tr><td>1</td><td>2</td><td>octave_1_scale_2.jpg</td></tr><tr><td>1</td><td>3</td><td>octave_1_scale_3.jpg</td></tr><tr><td>2</td><td>0</td><td>octave_2_scale_0.jpg</td></tr><tr><td>2</td><td>1</td><td>octave_2_scale_1.jpg</td></tr><tr><td>2</td><td>2</td><td>octave_2_scale_2.jpg</td></tr><tr><td>2</td><td>3</td><td>octave_2_scale_3.jpg</td></tr><tr><td>3</td><td>0</td><td>octave_3_scale_0.jpg</td></tr><tr><td>3</td><td>1</td><td>octave_3_scale_1.jpg</td></tr><tr><td>3</td><td>2</td><td>octave_3_scale_2.jpg</td></tr><tr><td>3</td><td>3</td><td>octave_3_scale_3.jpg</td></tr><tr><td>4</td><td>0</td><td>octave_4_scale_0.jpg</td></tr><tr><td>4</td><td>1</td><td>octave_4_scale_1.jpg</td></tr><tr><td>4</td><td>2</td><td>octave_4_scale_2.jpg</td></tr><tr><td>4</td><td>3</td><td>octave_4_scale_3.jpg</td></tr><tr><td>5</td><td>0</td><td>octave_5_scale_0.jpg</td></tr></tbody></table>
+              </div>
+            </details>
+
+<h4 id="图像尺度空间"><a href="#图像尺度空间" class="headerlink" title="图像尺度空间"></a>图像尺度空间</h4><p>图像尺度空间（Scale Space）是在不同尺度上对图像进行模糊处理，以便在不同尺度上分析和检测图像中的特征和结构。尺度空间理论在计算机视觉和图像处理中起着重要的作用，它允许我们在不同的尺度上对图像进行分析，并提取出尺度不变的特征。</p>
+<p>在尺度空间中，通过应用一系列不同程度的高斯滤波器对图像进行模糊处理，从而得到一组具有不同模糊程度的图像。每个模糊图像表示了原始图像在不同尺度上的平滑版本。高斯滤波器的尺度参数决定了图像的模糊程度，较小的尺度对应于较细的细节，较大的尺度对应于较粗的结构。</p>
+<p>图像尺度空间的构建可以通过以下步骤实现：</p>
+<ol>
+<li><p>选择一个初始尺度空间：在初始尺度上对图像应用高斯滤波器，得到第一层模糊图像。</p>
+</li>
+<li><p>生成尺度空间金字塔：对初始尺度图像进行下采样（如降采样），并在每个下采样层次上应用高斯滤波器，得到一组不同尺度的模糊图像。这形成了一个尺度空间金字塔，其中较高层次的图像尺度比较小，具有更高的模糊程度。</p>
+</li>
+<li><p>图像插值：由于下采样会导致图像信息的丢失，为了在不同尺度之间进行精确的插值，可以使用插值技术（如双线性插值）来恢复图像的分辨率。</p>
+</li>
+</ol>
+<p>通过构建尺度空间，我们可以在不同尺度上检测和分析图像中的特征，例如边缘、角点和斑点等。这种尺度不变性对于许多计算机视觉任务（如目标检测、特征匹配和图像拼接）非常重要，因为它允许我们在不同的尺度上对图像进行鲁棒的处理和分析。</p>
+<h4 id="高斯滤波器"><a href="#高斯滤波器" class="headerlink" title="高斯滤波器"></a>高斯滤波器</h4><p>高斯滤波器（Gaussian filter）是一种常用的线性平滑滤波器，用于对图像进行平滑处理和去除噪声。它基于高斯函数的数学模型，通过对图像进行卷积运算来实现。</p>
+<p>高斯函数是一种钟形曲线，具有以下的形式：</p>
+<p>$G(x, y) &#x3D; \frac{1}{2\pi\sigma^2} \cdot e^{-\frac{x^2 + y^2}{2\sigma^2}}$</p>
+<p>其中，G(x, y)是高斯函数的值，x和y是平面上的坐标，σ是高斯函数的标准差。高斯函数的标准差决定了函数的形状和宽度，较大的标准差会导致更宽的函数曲线。</p>
+<p>在图像处理中，高斯滤波器将高斯函数应用于图像的每个像素点，并以该像素点为中心计算一个加权平均值。这个加权平均值是通过对滤波器内的邻域像素进行加权平均来计算的，权重由高斯函数确定，距离中心像素越远的像素具有更小的权重。</p>
+<p>通过对图像应用高斯滤波器，可以实现以下效果：</p>
+<ol>
+<li><p>平滑图像：高斯滤波器可以模糊图像，减少图像中的噪声和细节，从而得到一个平滑的版本。</p>
+</li>
+<li><p>去除噪声：由于高斯滤波器对噪声具有平滑作用，它可以在图像中降低噪声的影响，提高图像的质量。</p>
+</li>
+<li><p>缩小细节：较大的高斯滤波器会导致图像的细节被模糊，从而可以用于图像的降采样和特征提取。</p>
+</li>
+</ol>
+<p>选择适当的高斯滤波器的标准差是很重要的，它决定了滤波器的模糊程度。较小的标准差对应于较细的模糊效果，较大的标准差对应于较强的模糊效果。通常根据应用的需求和图像的特点来选择合适的标准差。</p>
+<details ><summary pointer> 示例 </summary>
+              <div class='content'>
+              <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">apply_gaussian_blur</span>(<span class="params">image_path, kernel_size, sigma, output_path</span>):</span><br><span class="line">    <span class="comment"># 读取图像</span></span><br><span class="line">    image = cv2.imread(image_path)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 将图像转换为灰度图</span></span><br><span class="line">    gray_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 应用高斯滤波器</span></span><br><span class="line">    blurred_image = cv2.GaussianBlur(gray_image, kernel_size, sigma)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 保存滤波后的图像</span></span><br><span class="line">    cv2.imwrite(output_path, blurred_image)</span><br></pre></td></tr></table></figure><div class="gallery ">              <table><thead><tr><th></th><th>kernel_size</th><th>3</th><th>45</th></tr></thead><tbody><tr><td>sigma</td><td><img src="https://s1.imagehub.cc/images/2023/07/11/1_2023710.png" class="lazyload placeholder" data-srcset="https://s1.imagehub.cc/images/2023/07/11/1_2023710.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="原图" ></td><td></td><td></td></tr><tr><td>1.0</td><td></td><td><img src="https://s1.imagehub.cc/images/2023/07/11/blurred_image_kernel_size3.jpeg" class="lazyload placeholder" data-srcset="https://s1.imagehub.cc/images/2023/07/11/blurred_image_kernel_size3.jpeg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="kernel_size=3&sigma=1.0" ></td><td><img src="https://s1.imagehub.cc/images/2023/07/11/blurred_image_kernel_size45.jpeg" class="lazyload placeholder" data-srcset="https://s1.imagehub.cc/images/2023/07/11/blurred_image_kernel_size45.jpeg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="kernel_size=45&sigma=1.0" ></td></tr><tr><td>2.0</td><td></td><td><img src="https://s1.imagehub.cc/images/2023/07/11/blurred_image_kernel_size3sigma2.0.jpeg" class="lazyload placeholder" data-srcset="https://s1.imagehub.cc/images/2023/07/11/blurred_image_kernel_size3sigma2.0.jpeg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="kernel_size=45&sigma=2.0" ></td><td><img src="https://s1.imagehub.cc/images/2023/07/11/blurred_image_kernel_size45sigma2.0.jpeg" class="lazyload placeholder" data-srcset="https://s1.imagehub.cc/images/2023/07/11/blurred_image_kernel_size45sigma2.0.jpeg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="kernel_size=45&sigma=2.0" ></td></tr><tr><td>3.0</td><td></td><td><img src="https://s1.imagehub.cc/images/2023/07/11/blurred_image_kernel_size3sigma3.0.jpeg" class="lazyload placeholder" data-srcset="https://s1.imagehub.cc/images/2023/07/11/blurred_image_kernel_size3sigma3.0.jpeg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="kernel_size=45&sigma=3.0" ></td><td><img src="https://s1.imagehub.cc/images/2023/07/11/blurred_image_kernel_size45sigma3.0.jpeg" class="lazyload placeholder" data-srcset="https://s1.imagehub.cc/images/2023/07/11/blurred_image_kernel_size45sigma3.0.jpeg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="kernel_size=45&sigma=3.0" ></td></tr></tbody></table>            </div>
+              </div>
+            </details>
+
+<blockquote>
+<p>高斯函数（Gaussian function）是一种常见的数学函数，它以德国数学家卡尔·弗里德里希·高斯（Carl Friedrich Gauss）命名，具有以下的数学表达式：<br>$G(x) &#x3D; \frac{1}{\sqrt{2\pi\sigma^2}} \cdot e^{-\frac{x^2}{2\sigma^2}}$<br>其中，( G(x) ) 是高斯函数的值，( x ) 是自变量，( \sigma ) 是标准差（standard deviation）。<br>高斯函数的图像呈现出典型的钟形曲线形状，其峰值位于均值（mean）处，曲线两侧逐渐衰减。标准差决定了曲线的宽度，较大的标准差会使曲线更宽，较小的标准差会使曲线更尖锐。<br>高斯函数在许多领域中具有重要的应用，尤其在统计学和信号处理中。它具有许多优良的数学性质，例如：</p>
+<ul>
+<li>高斯函数是连续函数，定义域为负无穷到正无穷的实数集。</li>
+<li>高斯函数在整个实轴上的积分为1，即满足归一性。</li>
+<li>高斯函数是平移不变的，即对于任何常数 ( a )，当自变量 ( x ) 替换为 ( x-a ) 时，函数值保持不变。</li>
+</ul>
+<p>高斯函数在图像处理和模式识别中也经常被用作滤波器的基础，通过在空域或频域上应用高斯函数，可以实现图像平滑、噪声抑制和特征提取等操作。</p>
+</blockquote>
+<h3 id="找到局部极值点"><a href="#找到局部极值点" class="headerlink" title="找到局部极值点"></a>找到局部极值点</h3><h4 id="构建高斯差分金字塔"><a href="#构建高斯差分金字塔" class="headerlink" title="构建高斯差分金字塔"></a>构建高斯差分金字塔</h4><p>在尺度空间的每一层上，比较每个像素的值与其邻域像素的值，是一种常见的操作用于寻找局部极值点。极值点是指在一个局部邻域内，像素的值在该邻域中最大或最小。</p>
+<p>具体步骤如下：</p>
+<ol>
+<li><p>对于尺度空间金字塔的每一层图像，遍历每个像素。</p>
+</li>
+<li><p>对于每个像素，将其与其相邻像素进行比较。通常采用3x3或5x5大小的邻域。</p>
+</li>
+<li><p>如果像素的值在邻域内是最大或最小的，那么它被认为是一个局部极值点。</p>
+</li>
+</ol>
+<p>通过比较像素与其邻域像素的值，可以确定局部极值点，即在一个局部邻域内像素值最大或最小的点。这些极值点具有一定的稳定性和重要性，常用于计算机视觉中的特征提取和特征匹配任务。</p>
+<p>在尺度不变特征变换（SIFT）算法中，这一步是尺度空间极值检测的关键步骤。通过在不同尺度上比较像素与邻域像素的值，可以找到具有尺度不变性的特征点，这些特征点对于图像匹配、目标识别等任务非常有用。</p>
+<blockquote>
+<p>DoG（Difference of Gaussians）是通过计算尺度空间金字塔中相邻层级之间的差分得到的一种图像增强技术。它可以用于边缘检测、纹理分析等计算机视觉任务。<br>DoG的定义公式为：<br>$$\text{DoG}(x, y, \sigma) &#x3D; G(x, y, k\sigma) - G(x, y, \sigma)$$<br>其中，$(x, y)$ 是图像中的像素坐标，$\sigma$ 是高斯滤波器的标准差，$k$ 是尺度因子（通常为较大的值，例如 $k &#x3D; 1.6$），$G(x, y, \sigma)$ 是高斯滤波器函数。<br>通过将不同尺度空间金字塔层级的高斯滤波结果相减，DoG可以突出图像中的边缘和纹理信息。边缘和纹理通常在不同尺度上具有不同的空间特征尺度，因此通过计算不同尺度层级之间的差分，可以增强这些特征并提取出来。<br>在实际应用中，DoG通常用于图像金字塔的构建和尺度空间极值点检测，是一种常用的特征提取方法之一。</p>
+</blockquote>
+<h4 id="精确定位极值点"><a href="#精确定位极值点" class="headerlink" title="精确定位极值点"></a>精确定位极值点</h4><p>使用泰勒级数展开的目的是为了精确定位尺度空间金字塔中的极值点，即找到极值点的精确位置和尺度。</p>
+<p>在尺度空间金字塔中，极值点通常是通过比较每个像素的值与其邻域像素的值来找到的。然而，通过简单比较像素值可能只能得到粗略的位置估计，并不能精确定位极值点。</p>
+<p>为了更精确地定位极值点，可以使用泰勒级数展开来近似极值点的位置和尺度。泰勒级数展开是一种将函数在某个点处进行多项式逼近的方法。</p>
+<p>对于极值点的位置 $(x, y)$，我们可以使用二维泰勒级数展开来近似其精确位置：</p>
+<p>$$f(x + \Delta x, y + \Delta y) \approx f(x, y) + \frac{\partial f}{\partial x}\Delta x + \frac{\partial f}{\partial y}\Delta y + \frac{1}{2}\left(\frac{\partial^2 f}{\partial x^2}\Delta x^2 + \frac{\partial^2 f}{\partial y^2}\Delta y^2\right)$$</p>
+<p>其中，$\Delta x$ 和 $\Delta y$ 是相对于极值点位置 $(x, y)$ 的偏移量。通过对函数 $f(x, y)$ 进行一阶和二阶偏导数计算，我们可以获得这些导数值。通过求解泰勒级数展开的偏导数为零的方程组，可以解得 $\Delta x$ 和 $\Delta y$，从而得到更精确的极值点位置。</p>
+<p>对于极值点的尺度，我们可以使用一维泰勒级数展开来近似其精确尺度：</p>
+<p>$$f(x, y, \sigma + \Delta\sigma) \approx f(x, y, \sigma) + \frac{\partial f}{\partial \sigma}\Delta\sigma + \frac{1}{2}\frac{\partial^2 f}{\partial \sigma^2}\Delta\sigma^2$$</p>
+<p>其中，$\Delta\sigma$ 是相对于极值点尺度 $\sigma$ 的偏移量。通过对函数 $f(x, y, \sigma)$ 进行一阶和二阶偏导数计算，我们可以获得这些导数值。通过求解泰勒级数展开的偏导数为零的方程，可以解得 $\Delta\sigma$，从而得到更精确的极值点尺度。</p>
+<p>通过使用泰勒级数展开，我们可以对极值点的位置和尺度进行更精确的估计，从而实现对尺度空间金字塔中极值点的精确定位。</p>
+<h3 id="阈值处理和边界消除"><a href="#阈值处理和边界消除" class="headerlink" title="阈值处理和边界消除"></a>阈值处理和边界消除</h3><p>阈值处理和边界消除是在找到尺度空间金字塔中的极值点后对这些极值点进行进一步处理的步骤。</p>
+<p>阈值处理是通过设置一个阈值来筛选具有较大响应值的极值点。阈值可以根据任务需求进行设定，通常选择一个合适的响应值阈值，以保留具有足够显著特征的极值点，而剔除那些响应值较低的不太重要的极值点。</p>
+<p>边界消除是为了消除在邻域内出现的重复极值点。在尺度空间金字塔中，由于不同尺度层级之间的重叠区域，可能存在邻域内的极值点重复出现的情况。为了保留唯一的极值点，需要应用边界消除技术，通常使用非极大值抑制（non-maximum suppression）来实现。</p>
+<p>非极大值抑制是一种常用的边界消除方法，用于消除邻域内的重复极值点。对于每个局部极值点，非极大值抑制会比较其响应值与邻域内的其他点的响应值，并保留具有最大响应值的极值点，而抑制其他点。这样可以确保在同一局部区域内只保留一个最显著的极值点。</p>
+<p>阈值处理和边界消除是在极值点检测后对极值点进行筛选和优化的重要步骤。它们可以帮助我们提取出具有足够显著特征的稳定极值点，用于后续的计算机视觉任务，如特征提取、特征匹配等。</p>
+<h4 id="阈值处理"><a href="#阈值处理" class="headerlink" title="阈值处理"></a>阈值处理</h4><p>阈值处理是一种简单的图像处理操作，用于将图像中的像素值与设定的阈值进行比较，并根据比较结果对像素进行分类或处理。</p>
+<p>以下是一种基本的阈值处理方法：</p>
+<ol>
+<li><p>确定阈值：首先需要确定阈值的数值，可以根据具体应用场景和需求进行设定。阈值可以是一个固定值，也可以根据图像的特性和统计信息进行自适应调整。</p>
+</li>
+<li><p>进行比较：将图像中的每个像素与阈值进行比较。通常，如果像素值大于阈值，则被归类为一类（例如，被认为是前景像素）；如果像素值小于阈值，则被归类为另一类（例如，被认为是背景像素）。</p>
+</li>
+<li><p>分类或处理：根据比较的结果，对图像像素进行分类或处理。可以根据实际需求将像素分为不同的类别，如二值图像（只有两个像素值，通常是0和255）、灰度图像（多个像素值，表示不同的灰度级别）或进行其他特定的处理操作，如目标检测、边缘提取等。</p>
+</li>
+</ol>
+<p>在具体实现阈值处理时，可以使用图像处理库或工具来简化操作。例如，在Python中，可以使用OpenCV库的函数cv2.threshold()来实现阈值处理。该函数接受输入图像和设定的阈值，并返回处理后的图像。</p>
+<p>阈值处理是图像处理中的基础操作，常用于图像分割、二值化、目标检测等应用中。根据具体的应用需求，可以根据不同的阈值处理方法和策略来实现所需的图像处理效果。</p>
+<h4 id="消除边界响应"><a href="#消除边界响应" class="headerlink" title="消除边界响应"></a>消除边界响应</h4><p><strong>Hessian矩阵</strong></p>
+<p>Hessian矩阵是一个二阶偏导数矩阵，用于描述多元函数的局部曲率和形状信息。它由函数的所有二阶偏导数构成的方阵。</p>
+<p>对于一个具有多个自变量的函数，Hessian矩阵的元素表示该函数在不同自变量方向上的曲率。具体而言，Hessian矩阵的第 $(i, j)$ 元素表示函数关于第 $i$ 个自变量和第 $j$ 个自变量的二阶偏导数。</p>
+<p>Hessian矩阵可以用来分析函数的驻点（即梯度为零的点）和极值点。根据Hessian矩阵的特征值和特征向量，可以判断一个驻点的类型，例如判断其是否为极大值、极小值或鞍点。具体而言，如果Hessian矩阵的所有特征值均为正，则该点为极小值；如果所有特征值均为负，则为极大值；如果特征值既有正又有负，则为鞍点。</p>
+<p>在计算机视觉和图像处理领域，Hessian矩阵常用于特征检测和图像处理算法中。例如，在尺度不变特征变换（SIFT）算法中，通过计算图像中的Hessian矩阵的特征值和特征向量，可以检测出具有稳定尺度和方向的关键点。Hessian矩阵的分析可以帮助提取图像中的关键特征，并用于特征匹配和目标识别等任务。</p>
+<p>$$<br>\text{Hessian}(f) &#x3D;<br>\begin{bmatrix}<br>\frac{\partial^2 f}{\partial x_1^2} &amp; \frac{\partial^2 f}{\partial x_1 \partial x_2} &amp; \ldots &amp; \frac{\partial^2 f}{\partial x_1 \partial x_n} \<br>\frac{\partial^2 f}{\partial x_2 \partial x_1} &amp; \frac{\partial^2 f}{\partial x_2^2} &amp; \ldots &amp; \frac{\partial^2 f}{\partial x_2 \partial x_n} \<br>\vdots &amp; \vdots &amp; \ddots &amp; \vdots \<br>\frac{\partial^2 f}{\partial x_n \partial x_1} &amp; \frac{\partial^2 f}{\partial x_n \partial x_2} &amp; \ldots &amp; \frac{\partial^2 f}{\partial x_n^2}<br>\end{bmatrix}<br>$$</p>
+<p>其中，$\frac{\partial^2 f}{\partial x_i \partial x_j}$ 表示函数 $f$ 对第 $i$ 个自变量和第 $j$ 个自变量的二阶偏导数。</p>
+
       </div>
       <div class="post-tags-categories">
         
+        <div class="tags">
+          
+            <a href="/tags/CV/" class="">
+              CV
+            </a>
+          
+        </div>
+        
       </div>
+      
+        <div class="copyright">
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+    <strong>author:  </strong>Orlando</a>
+    </li>
+    <li class="post-copyright-link">
+    <strong>link:  </strong>
+    <a href="/2023/07/11/尺度不变特征变换SIFT/" target="_blank" title="尺度不变特征变换SIFT">http://example.com/2023/07/11/尺度不变特征变换SIFT/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>Copyright notice:   </strong>
+      All articles on this website, unless otherwise stated, adopt <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">CC BY-NC-ND 4.0</a>
+      reprint policy. If reproduced, please indicate source!
+    </li>
+  </ul>
+<div>
       
     </article>
     <!-- 上一篇文章和下一篇文章 -->
@@ -655,7 +812,44 @@
 
 
 
+  
+  <div class="post-nav-prev post-nav-item">
+    <div class="post-nav-img" style="background-size: cover; 
+      background-position: center center;">
+      <img class="lazyload lazyload placeholder" src="https://s1.imagehub.cc/images/2023/07/12/2023-07-12-14.31.22.png" class="lazyload placeholder" data-srcset="https://s1.imagehub.cc/images/2023/07/12/2023-07-12-14.31.22.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="">
+    </div>
+    <a href="/2023/07/12/7-13-7-16%E6%8A%80%E6%9C%AF%E5%9F%B9%E8%AE%AD%E5%AE%9E%E8%AE%B0/" class="post-nav-link">
+      <div class="title">
+        <i class="fas fa-angle-left"></i> Prev:
+        <div class="title-text">7.13-7.16技术培训实记</div>
+      </div>
+      
+      <!-- <div class="content">
+        培训报告[学院组织]
+[7.13-7.16]
+培训目的本次技术培训的目的是提升参与人员在特定技术领域的知识和技能，以应对
+      </div> -->
+    </a>
+  </div>
 
+
+
+  
+  <div class="post-nav-next post-nav-item">
+    <div class="post-nav-img" style="background-size: cover; 
+      background-position: center center;">
+      <img class="lazyload lazyload placeholder" src="https://s1.imagehub.cc/images/2023/07/10/2023-07-10-16.56.03.png" class="lazyload placeholder" data-srcset="https://s1.imagehub.cc/images/2023/07/10/2023-07-10-16.56.03.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" src="" alt="">
+    </div>
+    <a href="/2023/07/10/%E6%88%91%E7%9A%84%E6%A0%91/" class="post-nav-link">
+      <div class="title">
+        Next: <i class="fas fa-angle-right"></i>
+        <div class="title-text">我的树</div>
+      </div>
+      <!-- <div class="content">
+        我的树在一个春日的清晨，我亲手种下了一颗八重樱树。这三个月的时光里，我目睹着山泉逐渐成长，一片片嫩绿的叶子在枝条上舒展开
+      </div> -->
+    </a>
+  </div>
 
 </div>
 
@@ -664,8 +858,106 @@
 
     <!-- 打赏 -->
     
+      <div id="appDonate" class="post-donate">
+  <div id="donate_board" class="donate_bar center" ref="donate">
+    <a id="btn_donate" class="btn_donate" href="javascript:;" title="打赏" @click="showDialogDrawer()"></a>
+  </div>
+  <transition name="fade">
+    <div 
+      class="donate-box-mask"
+      v-cloak 
+      v-show="visible"
+      @click="cancelDialogDrawer()"
+    >
+    </div>
+  </transition>
+  <transition name="bounce">
+    <div class="donate-box" v-cloak v-show="visible">
+      <div class="donate-box_close">
+        <i class="fas fa-times" aria-hidden="true" @click="cancelDialogDrawer" pointer></i>
+      </div>
+      <div class="donate-box_title">
+        <h4>
+          你的赏识是我前进的动力
+        </h4>
+      </div>
+      <div class="donate-box_tab">
+        <div class="Alipay" pointer :class="{'active': tabActive === 'Alipay'}" @click="changeTabActive('Alipay')">
+          支付宝
+        </div>
+        <div class="WeChatpay" pointer :class="{'active': tabActive === 'WeChatpay'}" @click="changeTabActive('WeChatpay')">
+          微信
+        </div>
+      </div>
+      <div class="donate-box_img">
+        <div class="AlipayImg" v-show="tabActive === 'Alipay'">
+          <img src="https://i.postimg.cc/mZ7DJc2p/IMG-8572.jpg" class="lazyload placeholder" data-srcset="https://i.postimg.cc/mZ7DJc2p/IMG-8572.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="支付宝打赏" />
+        </div> 
+        <div class="WeChatpayImg" v-show="tabActive === 'WeChatpay'">
+          <img src="https://i.postimg.cc/wvmv6M5v/IMG-8574.jpg" class="lazyload placeholder" data-srcset="https://i.postimg.cc/wvmv6M5v/IMG-8574.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="微信打赏" />
+        </div>
+      </div>
+    </div>
+  </transition>
+</div>
+
+<script>
+  var body = document.body || document.documentElement || window;
+  var vm = new Vue({
+    el: '#appDonate',
+    data: {
+      visible: false,
+      tabActive: 'Alipay',
+      top: 0,
+    },
+    computed: {
+    },
+    mounted() {
+    },
+    methods: {
+      showDialogDrawer() {
+        this.visible = true;
+        // 防止页面滚动，只能让弹框滚动
+        // function getScroll() {
+        //   return {
+        //     left: window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft || 0,
+        //     top: window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0
+        //   };
+        // }
+        this.top = $(document).scrollTop() // or getScroll().top
+        // console.log('aa', $('.main-content'));
+        body.style.cssText = 'overflow: hidden;';
+      },
+      cancelDialogDrawer() {
+        this.visible = false;
+        body.removeAttribute('style');
+        $(document).scrollTop(this.top)
+      },
+      changeTabActive(name) {
+        this.tabActive = name;
+      }
+    },
+    created() {}
+  })
+</script>
+    
 
     <!-- 分享 -->
+    
+      <!-- https://github.com/overtrue/share.js -->
+<!-- 文章详情页的分享 -->
+<div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+
+<script src="/js/shareJs/social-share.min.js"></script>
+</script>
+
+<style>
+  .social-share {
+    margin: 20px 0;
+  }
+</style>
+
+
     
     
     <!-- 评论 -->
@@ -760,191 +1052,29 @@
   <div class="layout_sticky">    
     
       
-        
-    <section class="widget side_category">
-      
-  <header>
-    
-      <a style="color: " href='/categories'><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i><span class='name'>文章分类</span></a>
-    
-  </header>
-
-
-      <div class='content'>
-        <ul class="entry navigation">
-          
-            <li><a class="flat-box"
-              title="/categories/Computer-Technology/" href="/categories/Computer-Technology/"
-              id="categoriesComputer-Technology"
-              ><div class='name'>Computer Technology</div><div class='badge'>(13)</div></a></li>
-          
-            <li><a class="flat-box"
-              title="/categories/Final-Review/" href="/categories/Final-Review/"
-              id="categoriesFinal-Review"
-              ><div class='name'>Final Review</div><div class='badge'>(3)</div></a></li>
-          
-            <li><a class="flat-box"
-              title="/categories/Math/" href="/categories/Math/"
-              id="categoriesMath"
-              ><div class='name'>Math</div><div class='badge'>(2)</div></a></li>
-          
-            <li><a class="flat-box"
-              title="/categories/Pointless-small-talk/" href="/categories/Pointless-small-talk/"
-              id="categoriesPointless-small-talk"
-              ><div class='name'>Pointless small talk</div><div class='badge'>(3)</div></a></li>
-          
-        </ul>
-      </div>
-    </section>
-  
-  
-      
-      
-        
-<section class="widget side_tagcloud">
-    
-  <header>
-    
-      <a style="color: " href='/tags/'><i class="fas fa-tags fa-fw" aria-hidden="true"></i><span class='name'>热门标签</span></a>
-    
-  </header>
-
-
-    <div class='content'>
-    <a href="/tags/AdaBoost/" style="font-size: 14px; color: #999">AdaBoost</a> <a href="/tags/CV/" style="font-size: 14px; color: #999">CV</a> <a href="/tags/Database/" style="font-size: 14px; color: #999">Database</a> <a href="/tags/Decision-Tree/" style="font-size: 14px; color: #999">Decision Tree</a> <a href="/tags/GPT/" style="font-size: 19px; color: #777">GPT</a> <a href="/tags/Hadoop/" style="font-size: 19px; color: #777">Hadoop</a> <a href="/tags/Hive/" style="font-size: 14px; color: #999">Hive</a> <a href="/tags/Java/" style="font-size: 14px; color: #999">Java</a> <a href="/tags/K-Nearest-Neighbor/" style="font-size: 14px; color: #999">K- Nearest Neighbor</a> <a href="/tags/Lagrange-Multiplier-Method/" style="font-size: 19px; color: #777">Lagrange Multiplier Method</a> <a href="/tags/Logistic-Regression/" style="font-size: 14px; color: #999">Logistic Regression</a> <a href="/tags/ML/" style="font-size: 24px; color: #555">ML</a> <a href="/tags/Matplotlib/" style="font-size: 14px; color: #999">Matplotlib</a> <a href="/tags/Naive-Bayes/" style="font-size: 14px; color: #999">Naive Bayes</a> <a href="/tags/Politics/" style="font-size: 14px; color: #999">Politics</a> <a href="/tags/Python/" style="font-size: 14px; color: #999">Python</a> <a href="/tags/Random-Forest/" style="font-size: 14px; color: #999">Random Forest</a> <a href="/tags/Regression/" style="font-size: 14px; color: #999">Regression</a> <a href="/tags/SVM/" style="font-size: 14px; color: #999">SVM</a> <a href="/tags/Scala/" style="font-size: 19px; color: #777">Scala</a> <a href="/tags/Spark/" style="font-size: 19px; color: #777">Spark</a> <a href="/tags/Tree/" style="font-size: 14px; color: #999">Tree</a>
-    </div>
-</section>
-
-  
-      
-      
-      
-  <section class="widget side_archives">
-    
-    <header><a style="color: red" href='/archives/'><i class="fas fa-archive fa-fw" aria-hidden="true"></i><span class='name'>归档</span></a></header><div class="content"><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/12/"><span class="card-archive-list-date">December 2023</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/08/"><span class="card-archive-list-date">August 2023</span><span class="card-archive-list-count">5</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/07/"><span class="card-archive-list-date">July 2023</span><span class="card-archive-list-count">15</span></a></li></ul></div>
-  </section>
-
-      <section class="widget side_webinfo">
+<section class="widget side_toc">
   
   <header>
     
-      <i style="color: " class="fas fa-chart-line fa-fw" aria-hidden="true"></i><span class='name' style="color: ">站点信息</span>
+      <i style="color: " class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name' style="color: ">本文目录</span>
     
   </header>
 
 
   <div class='content'>
-    <div class="webinfo">
-      
-        <div class="webinfo-item">
-          <div>文章数目：</div>
-          <div>21 篇</div>
-        </div>
-      
-
-      
-        <div class="webinfo-item">
-          <div>已运行时间：</div>
-          <div id="webinfo-runtime-count" publish_date="03/24/2020 21:34:09"></div>
-        </div>
-        <script>
-          var BirthDay = new Date(new Date('2023/07/05'));
-          var today = new Date();
-          var timeold = (today.getTime() - BirthDay.getTime());
-          var daysold = Math.floor(timeold / (24 * 60 * 60 * 1000));
-          document.getElementById('webinfo-runtime-count').innerHTML = daysold + ' 天';
-        </script>
-      
-
-
-      
-        <div class="webinfo-item">
-          <div>本站总字数：</div>
-          <div>101.7k 字</div>
-        </div>
-      
-
-      
-        <div class="webinfo-item">
-          <div>本站访客数：</div>
-          
-          <div><span id="busuanzi_value_site_uv"><i class="fas fa-fan fa-spin fa-fw" aria-hidden="true"></i></span> 人</div>
-          
-        </div>
-      
-
-      
-        <div class="webinfo-item">
-          <div>本站总访问量：</div>
-          
-          <div><span id="busuanzi_value_site_pv"><i class="fas fa-fan fa-spin fa-fw" aria-hidden="true"></i></span> 次</div>
-          
-        </div>
-      
-
-      
-        <div class="webinfo-item">
-          <div>最后活动时间：</div>
-          
-            <div id="last-update" style="display: none;">Fri Dec 29 2023 05:23:25 GMT+0000 (Coordinated Universal Time)</div>
-            <div id="last-update-show">2023-12-29 日</div>
-          
-        </div>
-        
-        <script>
-          function timeago(dateTimeStamp) {
-              var minute = 1000 * 60; //把分，时，天，周，半个月，一个月用毫秒表示
-              var hour = minute * 60;
-              var day = hour * 24;
-              var week = day * 7;
-              var month = day * 30;
-              var now = new Date().getTime(); //获取当前时间毫秒
-              var diffValue = now - dateTimeStamp; //时间差
-              if (diffValue < 0) {
-                  return;
-              }
-              var minC = diffValue / minute; //计算时间差的分，时，天，周，月
-              var hourC = diffValue / hour;
-              var dayC = diffValue / day;
-              var weekC = diffValue / week;
-              var monthC = diffValue / month;
-              if (monthC >= 1 && monthC <= 3) {
-                  result = " " + parseInt(monthC) + " 月前"
-              } else if (weekC >= 1 && weekC <= 3) {
-                  result = " " + parseInt(weekC) + " 周前"
-              } else if (dayC >= 1 && dayC <= 6) {
-                  result = " " + parseInt(dayC) + " 天前"
-              } else if (hourC >= 1 && hourC <= 23) {
-                  result = " " + parseInt(hourC) + " 小时前"
-              } else if (minC >= 1 && minC <= 59) {
-                  result = " " + parseInt(minC) + " 分钟前"
-              } else if (diffValue >= 0 && diffValue <= minute) {
-                  result = "刚刚"
-              } else {
-                  var datetime = new Date();
-                  datetime.setTime(dateTimeStamp);
-                  var Nyear = datetime.getFullYear();
-                  var Nmonth = datetime.getMonth() + 1 < 10 ? "0" + (datetime.getMonth() + 1) : datetime.getMonth() + 1;
-                  var Ndate = datetime.getDate() < 10 ? "0" + datetime.getDate() : datetime.getDate();
-                  var Nhour = datetime.getHours() < 10 ? "0" + datetime.getHours() : datetime.getHours();
-                  var Nminute = datetime.getMinutes() < 10 ? "0" + datetime.getMinutes() : datetime.getMinutes();
-                  var Nsecond = datetime.getSeconds() < 10 ? "0" + datetime.getSeconds() : datetime.getSeconds();
-                  result = Nyear + "-" + Nmonth + "-" + Ndate
-              }
-              return result;
-          }
-          var lastUpDate = document.getElementById('last-update').innerHTML;
-          try {
-            document.getElementById('last-update-show').innerHTML = timeago(new Date(lastUpDate));
-          } catch (error) {
-            document.getElementById('last-update-show').innerHTML = '2023-12-29 日';
-          }
-        </script>
-        
-      
+    <div class="toc-main">
+      <div class="toc-content">
+        <!-- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#SIFT"><span class="toc-text">SIFT</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%BA%E5%BA%A6%E7%A9%BA%E9%97%B4%E6%9E%81%E5%80%BC%E6%A3%80%E6%B5%8B"><span class="toc-text">尺度空间极值检测</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%84%E5%BB%BA%E5%B0%BA%E5%BA%A6%E7%A9%BA%E9%97%B4%E9%87%91%E5%AD%97%E5%A1%94"><span class="toc-text">构建尺度空间金字塔</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9B%BE%E5%83%8F%E5%B0%BA%E5%BA%A6%E7%A9%BA%E9%97%B4"><span class="toc-text">图像尺度空间</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%AB%98%E6%96%AF%E6%BB%A4%E6%B3%A2%E5%99%A8"><span class="toc-text">高斯滤波器</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%BE%E5%88%B0%E5%B1%80%E9%83%A8%E6%9E%81%E5%80%BC%E7%82%B9"><span class="toc-text">找到局部极值点</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9E%84%E5%BB%BA%E9%AB%98%E6%96%AF%E5%B7%AE%E5%88%86%E9%87%91%E5%AD%97%E5%A1%94"><span class="toc-text">构建高斯差分金字塔</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%B2%BE%E7%A1%AE%E5%AE%9A%E4%BD%8D%E6%9E%81%E5%80%BC%E7%82%B9"><span class="toc-text">精确定位极值点</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%98%88%E5%80%BC%E5%A4%84%E7%90%86%E5%92%8C%E8%BE%B9%E7%95%8C%E6%B6%88%E9%99%A4"><span class="toc-text">阈值处理和边界消除</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%98%88%E5%80%BC%E5%A4%84%E7%90%86"><span class="toc-text">阈值处理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B6%88%E9%99%A4%E8%BE%B9%E7%95%8C%E5%93%8D%E5%BA%94"><span class="toc-text">消除边界响应</span></a></li></ol></li></ol></li></ol></li></ol> -->
+        <div class="toc"></div>
+      </div>
     </div>
   </div>
 </section>
+<!-- 手机端目录按钮 -->
+<div id="toc-mobile-btn">
+  <i class="fas fa-list-ul" aria-hidden="true"></i>
+</div>
+
       
     
   </div>
@@ -967,7 +1097,7 @@
 	var vm = new Vue({
 		el: '#appBgSwiper',
 		data: {
-			names: '' || 'fade' || 'fade', // translate-fade fade
+			names: 'fade' || 'fade' || 'fade', // translate-fade fade
 			mark: 0,
 			img: [],
 			bgColor: '',
@@ -1009,7 +1139,7 @@
 				}
 			},
 			play() {
-				let bgImgDelay = '' || '180000'
+				let bgImgDelay = '180000' || '180000'
 				let delay = parseInt(bgImgDelay) || 180000;
 				this.time = setInterval(this.autoPlay, delay);
 			},
@@ -1073,6 +1203,59 @@
 		height: 100%;
 	}
 </style>
+
+
+  <script>
+  // https://github.com/theme-next/hexo-theme-next/blob/master/layout/_third-party/math/mathjax.swig
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = 'https://unpkg.com/mathjax@3.0/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    // 文章章节标题不能为 “MathJax” ，否则会报错。
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
 
 
 
