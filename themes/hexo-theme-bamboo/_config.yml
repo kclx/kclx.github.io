@@ -60,6 +60,7 @@ sidebar:
         - icon: fab fa-youtube
           url: https://www.youtube.com/channel/UCabmZFmLZCFQzFp54o3rQeA
     # ---------------------------------------
+    #side toc设置的是，每篇文章的目录索引
     side_toc:
       on: true
       background: '#fff'
@@ -67,10 +68,10 @@ sidebar:
       header:
         icon: fas fa-list
         icon_color: # 标题字体颜色
-        title: 本文目录
+        title: 让我看看都写了什么
       before: number # number为序号，可以是自定义表情字符
       heading: h2, h3, h4 # h2,3,4标题会在目录显示，可以加上 ,h5则h5标题也会显示在目录里
-      collapseDepth: 20 # 折叠深度, 0则会折叠，0-6即可, 20相当于不折叠
+      collapseDepth: 4 # 折叠深度, 0则会折叠，0-6即可, 20相当于不折叠
     # ---------------------------------------
     # category widget
     side_category:
@@ -92,7 +93,7 @@ sidebar:
         icon: fas fa-tags
         icon_color:
         title: 热门标签
-        url: /tags/
+        url: /tags
       min_font: 14
       max_font: 24
       color: true
@@ -100,17 +101,18 @@ sidebar:
       end_color: '#555'
     # ---------------------------------------
     # recent_post widget
+    # 最新的文章
     side_recent_post:
-      on: false
+      on: true
       background: '#fff'
-      limit: 5
+      limit: 3
       sort: update # date
       order: 6
       header:
         icon: fas fa-book
         icon_color:
         title: 最新文章
-        url: /tags/
+        url: /latest
     # ---------------------------------------
     # side_archives widget
     side_archives:
@@ -118,7 +120,7 @@ sidebar:
       type: monthly # yearly or monthly      or yearly
       format: MMMM YYYY # eg: YYYY年MM月     or YYYY
       timeOrder: -1 # Sort of order. 1, asc for ascending; -1, desc for descending 时间排序
-      limit: 8 # if set 0 will show all
+      limit: 4 # if set 0 will show all
       order: 9 # widget order 卡片排序
       background: '#fff'
       header:
@@ -191,7 +193,7 @@ swiper:
   defaultVideo: '' # video，min-width:992px show
   defaultVideoLoadingImg: '/default/defaultVideoLoadingImg.gif' # video loading img -- use .gif img, 视频预加载动画，使用gif图片作为loading，为空则视频没有预加载动画
   defaultTile: '遇见你的那年，我抓住了一条鱼，便以为抓住了整个夏天' # 标题
-  defaultDesc: [ ] #描 述，例如 ['煮酒洗净尘嚣，论知交', '万般付之一笑，共偕老']
+  defaultDesc: [ '心中有丘壑', '眉目做山河' ] #描 述，例如 ['煮酒洗净尘嚣，论知交', '万般付之一笑，共偕老']
   defaultLeftBtnText: '' # 左边按钮文字, 空字符串则不显示 阅读文档
   defaultLeftBtnLink: 'https://yuang01.gitee.io/2021/02/08/hexo-theme-bamboo-new/' # 左边按钮链接
   defaultRightBtnText: '' # 右边按钮的文字，空字符串则不显示  下载主题
@@ -251,7 +253,7 @@ cursor_effect:
 
 # 头部导航是否显示天气
 weather:
-  on: false
+  on: true
 
 # 全文搜索功能
 search:
@@ -304,7 +306,7 @@ lantern:
 
 # https://scrollrevealjs.org/api/reveal.html 滚动动画, 旧版本用的是aos.js(已经弃用aos.js)
 scrollreveal:
-  on: false
+  on: true
   js: https://unpkg.com/scrollreveal@4.0.6/dist/scrollreveal.min.js
   distance: 120px
   duration: 400 # ms
@@ -325,7 +327,6 @@ baiduAnalytics:
 
 # 百度搜索资源平台提交链接
 baiduPush: true
-
 
 # 音乐
 music:
